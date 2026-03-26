@@ -1,0 +1,2898 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Impossible Group | IT Academy Khujand</title>
+
+<meta name="description" content="Impossible Group — ведущая IT-академия и команда разработчиков в Худжанде. Обучение Web-дизайну и разработке.">
+
+<meta name="keywords" content="IT Academy Khujand, Impossible Group, обучение программированию Таджикистан, веб-дизайн Худжанд">
+        <link rel="icon" type="" href="IMG/logo.png">    
+    
+    <title>Impossible Group | IT Academy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсы программирования | NEXT.DEV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0066ff;
+            --text-main: #1d1d1f;
+            --text-sub: #86868b;
+            --bg-light: #f5f5f7;
+            --card-bg: #ffffff;
+            --accent-green: #27ae60;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+        }
+
+        /* ХИДЕР */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -1px;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 14px;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 8px 15px;
+            border-radius: 50px;
+            margin-left: 10px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 13px;
+            width: 120px;
+            transition: 0.3s;
+        }
+
+        .search-box input:focus {
+            width: 180px;
+        }
+
+        .container {
+            padding: 140px 8% 80px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-title h1 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        .page-title p {
+            color: var(--text-sub);
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* НАВИГАЦИЯ */
+        .tabs {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab {
+            padding: 10px 0;
+            cursor: pointer;
+            color: #666;
+            font-size: 18px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab.active {
+            color: #000;
+            border-bottom-color: #000;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* КАРТОЧКИ КУРСОВ */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: white;
+            border: 3px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(79, 121, 205, 0.919);
+        }
+
+        .card-top {
+            height: 120px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .card-content h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* КАРТОЧКИ БЛОГА */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .blog-card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .blog-image {
+            height: 180px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #999;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-date {
+            color: #999;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .blog-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .blog-excerpt {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 15px;
+            color: #888;
+            font-size: 13px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        /* FAQ СЕКЦИЯ - АККОРДЕОН */
+        .faq-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid #ddd;
+        }
+
+        .faq-title {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background: white;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 18px 20px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #222;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background: #fafafa;
+        }
+
+        .faq-question::after {
+            content: '▼';
+            font-size: 12px;
+            color: #999;
+            transition: transform 0.3s;
+        }
+
+        .faq-question.active::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 20px 20px 20px;
+            color: #666;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .faq-answer.show {
+            display: block;
+        }
+
+        /* ОТЗЫВЫ */
+        .reviews-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
+        }
+
+        .reviews-title {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #666;
+        }
+
+        .review-name {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .review-course {
+            color: #999;
+            font-size: 13px;
+        }
+
+        .review-text {
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .review-rating {
+            color: #FFB800;
+            font-size: 14px;
+        }
+
+        /* ФОРМА ОТЗЫВА */
+        .review-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .review-form h3 {
+            font-weight: 400;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #999;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .submit-btn {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #333;
+        }
+
+        /* МОДАЛКИ */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 24px;
+            border-radius: 8px;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+
+        .close {
+            float: right;
+            font-size: 20px;
+            cursor: pointer;
+            color: #999;
+            line-height: 1;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        #courseTitle {
+            font-size: 28px;
+            font-weight: 500;
+            margin: 20px 0 10px;
+        }
+
+        #courseDesc {
+            color: #555;
+            line-height: 1.6;
+            margin: 20px 0;
+            padding: 16px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* АККОРДЕОН КУРСОВ */
+        .accordion {
+            margin: 8px 0;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+
+        .accordion button {
+            width: 100%;
+            text-align: left;
+            padding: 14px 16px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #222;
+            font-weight: 400;
+        }
+
+        .accordion button:hover {
+            background: #fafafa;
+        }
+
+        .panel {
+            display: none;
+            padding: 16px;
+            background: #fafafa;
+            border-top: 1px solid #eee;
+            line-height: 1.6;
+            color: #444;
+            font-size: 14px;
+        }
+
+        .panel ul {
+            margin: 8px 0 8px 20px;
+        }
+
+        .panel li {
+            margin: 4px 0;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 24px;
+            color: #666;
+            font-size: 14px;
+            margin: 16px 0;
+        }
+
+        /* БЛОГ МОДАЛКА */
+        .blog-modal-content {
+            max-width: 700px;
+        }
+
+        .blog-full-content {
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .blog-full-content p {
+            margin: 20px 0;
+        }
+
+        .blog-full-content h3 {
+            margin: 30px 0 15px;
+            font-weight: 500;
+        }
+
+        .blog-full-content ul,
+        .blog-full-content ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .blog-full-content li {
+            margin: 8px 0;
+        }
+
+        .blog-full-content pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+
+        .blog-full-content code {
+            background: #f5f5f5;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        /* ФУТЕР */
+        .footer {
+            margin-top: 60px;
+            padding: 30px 0;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+            width: 100%;
+        }
+
+        footer {
+            padding: 80px 8%;
+            background: #1d1d1f;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo">NEXT.DEV</a>
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="istori.html">История</a>
+            <a href="news.html">Новости</a>
+            <a href="courses.html" style="color: var(--primary); opacity: 1;">Курсы</a>
+            <a href="contacts.html">Контакты</a>
+            <div class="search-box">
+                <span>🔍</span>
+                <input type="text" placeholder="Найти курс...">
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Образовательная платформа</h1>
+
+        <!-- Вкладки -->
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('courses')">Курсы</div>
+            <div class="tab" onclick="switchTab('blog')">Блог</div>
+        </div>
+
+        <!-- Курсы -->
+        <div id="courses-tab" class="tab-content active">
+            <div class="courses-grid" id="courses"></div>
+        </div>
+
+        <!-- Блог -->
+        <div id="blog-tab" class="tab-content">
+            <div class="blog-grid" id="blog"></div>
+        </div>
+
+        <!-- FAQ СЕКЦИЯ - АККОРДЕОН -->
+        <div class="faq-section">
+            <h2 class="faq-title">Часто задаваемые вопросы</h2>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Что из себя представляет наш сайт?
+                    </button>
+                    <div class="faq-answer">
+                        Это образовательная платформа с бесплатными курсами по программированию и блогом с полезными
+                        статьями. Мы собираем лучшие материалы для изучения современных языков и технологий.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Для кого этот сайт?
+                    </button>
+                    <div class="faq-answer">
+                        Для всех, кто хочет научиться программировать: от полных новичков до опытных разработчиков,
+                        желающих изучить новый язык. У нас есть курсы разного уровня сложности.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Это бесплатно?
+                    </button>
+                    <div class="faq-answer">
+                        Да, все материалы на сайте абсолютно бесплатны. Мы верим, что качественное образование должно
+                        быть доступно каждому.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Какие языки можно изучить?
+                    </button>
+                    <div class="faq-answer">
+                        Java, JavaScript, Python, C++, C#, PHP, Go, Rust, Kotlin, Swift. Постоянно добавляем новые курсы
+                        и обновляем существующие.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Сколько времени занимает курс?
+                    </button>
+                    <div class="faq-answer">
+                        От 18 до 30 часов в зависимости от языка. Вы можете учиться в своем темпе, материалы доступны
+                        24/7.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Есть ли практические задания?
+                    </button>
+                    <div class="faq-answer">
+                        Да, каждый модуль включает практические задания и примеры кода. Мы верим, что программированию
+                        можно научиться только через практику.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Можно ли скачать материалы?
+                    </button>
+                    <div class="faq-answer">
+                        Да, все материалы доступны для скачивания. Вы можете сохранить их и изучать офлайн в любое
+                        удобное время.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Есть ли сертификаты после обучения?
+                    </button>
+                    <div class="faq-answer">
+                        Пока мы не выдаем сертификаты, но работаем над этим. Главное, что вы получите - реальные знания
+                        и навыки программирования.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Как часто обновляются курсы?
+                    </button>
+                    <div class="faq-answer">
+                        Мы стараемся обновлять материалы каждые 3-6 месяцев, чтобы они соответствовали актуальным
+                        требованиям индустрии.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Могу ли я предложить свой курс?
+                    </button>
+                    <div class="faq-answer">
+                        Да, мы открыты к сотрудничеству. Напишите нам на email с описанием вашего курса, и мы
+                        обязательно рассмотрим предложение.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ОТЗЫВЫ -->
+        <div class="reviews-section">
+            <h2 class="reviews-title">Отзывы наших студентов</h2>
+
+            <div class="reviews-grid" id="reviews">
+                <!-- Отзывы будут добавлены через JS -->
+            </div>
+
+            <!-- ФОРМА ОТЗЫВА -->
+            <div class="review-form">
+                <h3>Оставить отзыв</h3>
+                <form onsubmit="addReview(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="nameInput" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="courseInput" required>
+                                <option value="">Выберите курс</option>
+                                <option value="Java">Java</option>
+                                <option value="JavaScript">JavaScript</option>
+                                <option value="Python">Python</option>
+                                <option value="C++">C++</option>
+                                <option value="Другой">Другой</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <select id="ratingInput" required>
+                                <option value="">Оценка</option>
+                                <option value="5">5 ★</option>
+                                <option value="4">4 ★</option>
+                                <option value="3">3 ★</option>
+                                <option value="2">2 ★</option>
+                                <option value="1">1 ★</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="reviewInput" placeholder="Ваш отзыв" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить отзыв</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- МОДАЛКА КУРСА -->
+    <div id="courseModal" class="modal" onclick="if(event.target===this) closeCourseModal()">
+        <div class="modal-content">
+            <span class="close" onclick="closeCourseModal()">✕</span>
+            <div id="courseIcon" style="font-size: 48px;"></div>
+            <h2 id="courseTitle"></h2>
+            <div class="course-meta" id="courseMeta"></div>
+            <p id="courseDesc"></p>
+            <div id="courseTheory"></div>
+        </div>
+    </div>
+
+    <!-- МОДАЛКА БЛОГА -->
+    <div id="blogModal" class="modal" onclick="if(event.target===this) closeBlogModal()">
+        <div class="modal-content blog-modal-content">
+            <span class="close" onclick="closeBlogModal()">✕</span>
+            <div id="blogIcon" style="font-size: 64px; text-align: center; margin: 20px 0;"></div>
+            <h2 id="blogTitle" style="font-size: 28px; margin-bottom: 10px;"></h2>
+            <div style="color: #999; margin-bottom: 20px;" id="blogDate"></div>
+            <div class="blog-full-content" id="blogContent"></div>
+        </div>
+    </div>
+    <footer>
+            <p>© 2026 IT Academy Global. Инвестируй в свои мозги.</p>
+        </footer>
+<script>
+        // ДАННЫЕ КУРСОВ
+        const courses = [
+            {
+                name: "Java",
+                icon: "☕",
+                hours: 60,
+                level: "Начинающий → Продвинутый",
+
+                topics: {
+
+                    "Основы синтаксиса": `
+        <ul>
+            <li>
+                <strong>Переменные и типы данных</strong>
+                <ul>
+                    <li><b>int</b> — целые числа (5, -10)</li>
+                    <li><b>double</b> — дробные числа (3.14)</li>
+                    <li><b>boolean</b> — true / false</li>
+                    <li><b>String</b> — текст ("Java")</li>
+                    <li><b>char</b> — символ ('A')</li>
+                    <li>Объявление: <code>int age = 20;</code></li>
+                    <li>Scope — область видимости переменной</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Операторы</strong>
+                <ul>
+                    <li>Арифметические: +, -, *, /</li>
+                    <li>Сравнения: ==, !=, >, <</li>
+                    <li>Логические: &&, ||, !</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Условные конструкции</strong>
+                <ul>
+                    <li><b>if</b> — проверка условия</li>
+                    <li><b>else</b> — альтернатива</li>
+                    <li><b>switch</b> — множественный выбор</li>
+                    <li>Пример:
+                        <code>
+if(age > 18){
+ System.out.println("OK");
+}
+                        </code>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Циклы</strong>
+                <ul>
+                    <li><b>for</b> — известное число повторений</li>
+                    <li><b>while</b> — пока условие true</li>
+                    <li><b>do-while</b> — минимум 1 выполнение</li>
+                    <li>Пример:
+                        <code>
+for(int i=0;i&lt;5;i++){
+ System.out.println(i);
+}
+                        </code>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Методы</strong>
+                <ul>
+                    <li>Создание функций</li>
+                    <li>Параметры</li>
+                    <li>Возврат значения (return)</li>
+                    <li>Пример: <code>int sum(int a,int b){return a+b;}</code></li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Массивы и строки": `
+        <ul>
+            <li>
+                <strong>Массивы</strong>
+                <ul>
+                    <li>Хранение набора данных</li>
+                    <li>Доступ по индексу</li>
+                    <li>Пример: <code>int[] arr = {1,2,3};</code></li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>String</strong>
+                <ul>
+                    <li>Методы: length(), substring()</li>
+                    <li>Сравнение строк</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>StringBuilder</strong>
+                <ul>
+                    <li>Быстрая работа со строками</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "ООП": `
+        <ul>
+            <li>
+                <strong>Классы и объекты</strong>
+                <ul>
+                    <li>Создание структуры данных</li>
+                    <li>Пример: <code>class User {}</code></li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Инкапсуляция</strong>
+                <ul>
+                    <li>private поля</li>
+                    <li>getter/setter</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Наследование</strong>
+                <ul>
+                    <li>extends</li>
+                    <li>переиспользование кода</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Полиморфизм</strong>
+                <ul>
+                    <li>один метод — разное поведение</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Интерфейсы</strong>
+                <ul>
+                    <li>контракт поведения</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Коллекции": `
+        <ul>
+            <li>
+                <strong>List</strong>
+                <ul>
+                    <li>ArrayList — быстрый доступ</li>
+                    <li>LinkedList — вставки</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Set</strong>
+                <ul>
+                    <li>уникальные значения</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Map</strong>
+                <ul>
+                    <li>ключ → значение</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Generics</strong>
+                <ul>
+                    <li>типизация коллекций</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Исключения": `
+        <ul>
+            <li>
+                <strong>try-catch</strong>
+                <ul>
+                    <li>обработка ошибок</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>finally</strong>
+                <ul>
+                    <li>выполняется всегда</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Custom Exception</strong>
+                <ul>
+                    <li>создание своих ошибок</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Файлы": `
+        <ul>
+            <li>
+                <strong>Работа с файлами</strong>
+                <ul>
+                    <li>FileReader / FileWriter</li>
+                    <li>Чтение и запись</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Сериализация</strong>
+                <ul>
+                    <li>сохранение объектов</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Многопоточность": `
+        <ul>
+            <li>
+                <strong>Thread</strong>
+                <ul>
+                    <li>создание потоков</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Синхронизация</strong>
+                <ul>
+                    <li>защита данных</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Базы данных": `
+        <ul>
+            <li>
+                <strong>SQL</strong>
+                <ul>
+                    <li>SELECT, INSERT, UPDATE</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>JDBC</strong>
+                <ul>
+                    <li>подключение к БД</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>CRUD</strong>
+                <ul>
+                    <li>операции с данными</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Современная Java": `
+        <ul>
+            <li>
+                <strong>Lambda</strong>
+                <ul>
+                    <li>короткие функции</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Stream API</strong>
+                <ul>
+                    <li>filter, map, collect</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Финальный проект": `
+        <ul>
+            <li>Создание полноценного приложения</li>
+            <li>Работа с БД</li>
+            <li>Архитектура</li>
+        </ul>
+        `
+                }
+            },
+            {
+                name: "JavaScript",
+                icon: "JS",
+                hours: 40,
+                level: "Начинающий → Продвинутый",
+                desc: "Язык для создания интерактивных сайтов и приложений.",
+                topics: {
+                    "Основы синтаксиса": `
+<h3>Ядро JavaScript</h3>
+<p>JavaScript — мультипарадигменный язык с динамической типизацией.</p>
+<ul>
+<li><strong>Переменные</strong>: var, let, const — различия и области видимости</li>
+<li><strong>Типы данных</strong>: number, string, boolean, null, undefined, symbol, bigint</li>
+<li><strong>Функции</strong>: declaration, expression, arrow functions, замыкания</li>
+<li><strong>Операторы</strong>: сравнение (=== vs ==), логические, spread/rest</li>
+<li><strong>Циклы</strong>: for, while, for...of, for...in</li>
+<li><strong>Массивы и методы</strong>: map, filter, reduce, forEach, find</li>
+</ul>
+<pre><code>// Пример современного JS
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map(n => n * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]</code></pre>
+`,
+
+                    "Объекты и прототипы": `
+<h3>Объектная модель JavaScript</h3>
+<ul>
+<li><strong>Создание объектов</strong>: литералы, конструкторы, Object.create()</li>
+<li><strong>Свойства и методы</strong>: геттеры, сеттеры, дескрипторы</li>
+<li><strong>Прототипное наследование</strong>: __proto__, prototype, цепочка прототипов</li>
+<li><strong>Классы ES6</strong>: class, constructor, extends, super</li>
+<li><strong>Статические методы и свойства</strong></li>
+</ul>
+`,
+
+                    "DOM и браузер": `
+<h3>Работа с веб-страницей</h3>
+<ul>
+<li><strong>Селекторы</strong>: querySelector, getElementById, getElementsByClass</li>
+<li><strong>Навигация по DOM</strong>: parentNode, children, siblings</li>
+<li><strong>Изменение элементов</strong>: textContent, innerHTML, classList, style</li>
+<li><strong>Создание и удаление</strong>: createElement, appendChild, remove</li>
+<li><strong>Атрибуты и data-атрибуты</strong></li>
+</ul>
+`,
+
+                    "События": `
+<h3>Обработка событий</h3>
+<ul>
+<li><strong>Типы событий</strong>: click, input, submit, load, scroll</li>
+<li><strong>Обработчики</strong>: addEventListener, removeEventListener</li>
+<li><strong>Объект события</strong>: target, preventDefault, stopPropagation</li>
+<li><strong>Всплытие и погружение</strong></li>
+<li><strong>Делегирование событий</strong></li>
+<li><strong>Кастомные события</strong></li>
+</ul>
+`,
+
+                    "Асинхронность": `
+<h3>Асинхронное программирование</h3>
+<ul>
+<li><strong>Callback функции</strong>: проблемы callback hell</li>
+<li><strong>Промисы</strong>: создание, then, catch, finally</li>
+<li><strong>Async/await</strong>: современный подход</li>
+<li><strong>Fetch API</strong>: GET, POST, работа с ответами</li>
+<li><strong>Обработка ошибок в асинхронном коде</strong></li>
+<li><strong>Promise.all, Promise.race, Promise.allSettled</strong></li>
+</ul>
+<pre><code>// Пример async/await
+async function fetchData() {
+    try {
+        const response = await fetch('https://api.example.com/data');
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Ошибка:', error);
+    }
+}</code></pre>
+`,
+
+                    "Продвинутые концепции": `
+<h3>Профессиональный JavaScript</h3>
+<ul>
+<li><strong>Замыкания</strong>: лексическое окружение, практическое применение</li>
+<li><strong>Контекст this</strong>: call, apply, bind, стрелочные функции</li>
+<li><strong>Каррирование и частичное применение</strong></li>
+<li><strong>Мемоизация и оптимизация</strong></li>
+<li><strong>Генераторы и итераторы</strong></li>
+<li><strong>Proxy и Reflect</strong></li>
+<li><strong>Модули ES6: import/export</strong></li>
+</ul>
+`,
+
+                    "Современные инструменты": `
+<h3>Экосистема JavaScript</h3>
+<ul>
+<li><strong>Менеджеры пакетов</strong>: npm, yarn</li>
+<li><strong>Сборщики</strong>: Webpack, Vite, Parcel</li>
+<li><strong>Транспиляция</strong>: Babel</li>
+<li><strong>Линтеры и форматтеры</strong>: ESLint, Prettier</li>
+<li><strong>TypeScript</strong>: статическая типизация</li>
+<li><strong>Тестирование</strong>: Jest, Mocha</li>
+</ul>
+`,
+
+                    "Фреймворки (обзор)": `
+<h3>Популярные фреймворки</h3>
+<ul>
+<li><strong>React</strong>: компоненты, хуки, виртуальный DOM</li>
+<li><strong>Vue</strong>: реактивность, шаблоны, Vuex</li>
+<li><strong>Angular</strong>: TypeScript, dependency injection, RxJS</li>
+<li><strong>Node.js</strong>: серверный JavaScript, Express</li>
+</ul>
+`,
+
+                    "Финальный проект": `
+<h3>Разработка полноценного приложения</h3>
+<ul>
+<li>Планирование архитектуры</li>
+<li>Работа с API и базами данных</li>
+<li>Аутентификация и авторизация</li>
+<li>Оптимизация производительности</li>
+<li>Деплой на хостинг</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "Python",
+                icon: "🐍",
+                hours: 45,
+                level: "Начинающий → Продвинутый",
+                desc: "Универсальный язык для backend, анализа данных и автоматизации.",
+                topics: {
+                    "Основы синтаксиса": `
+<h3>Python с нуля</h3>
+<ul>
+<li><strong>Переменные и типы</strong>: int, float, str, bool, None</li>
+<li><strong>Ввод/вывод</strong>: print, input, форматирование f-строк</li>
+<li><strong>Условные операторы</strong>: if, elif, else, тернарный оператор</li>
+<li><strong>Циклы</strong>: for, while, break, continue, else в циклах</li>
+<li><strong>Базовые структуры</strong>: list, tuple, dict, set</li>
+</ul>
+`,
+
+                    "Функции и модули": `
+<h3>Организация кода</h3>
+<ul>
+<li><strong>Определение функций</strong>: def, параметры, return</li>
+<li><strong>Аргументы</strong>: позиционные, именованные, *args, **kwargs</li>
+<li><strong>Области видимости</strong>: global, nonlocal</li>
+<li><strong>Лямбда-функции</strong></li>
+<li><strong>Декораторы</strong>: создание и применение</li>
+<li><strong>Модули и пакеты</strong>: import, from, __name__, __main__</li>
+</ul>
+`,
+
+                    "Работа с данными": `
+<h3>Структуры данных и алгоритмы</h3>
+<ul>
+<li><strong>Списки и методы</strong>: append, extend, sort, list comprehensions</li>
+<li><strong>Словари</strong>: keys, values, items, dict comprehensions</li>
+<li><strong>Множества</strong>: union, intersection, difference</li>
+<li><strong>Кортежи и namedtuple</strong></li>
+<li><strong>Стеки и очереди</strong>: collections.deque</li>
+<li><strong>Генераторы и yield</strong></li>
+<li><strong>Итераторы и итерируемые объекты</strong></li>
+</ul>
+<pre><code># List comprehension
+squares = [x**2 for x in range(10) if x % 2 == 0]
+print(squares)  # [0, 4, 16, 36, 64]</code></pre>
+`,
+
+                    "ООП в Python": `
+<h3>Объектно-ориентированное программирование</h3>
+<ul>
+<li><strong>Классы и объекты</strong>: class, __init__, self</li>
+<li><strong>Магические методы</strong>: __str__, __repr__, __len__, __getitem__</li>
+<li><strong>Наследование</strong>: super(), MRO</li>
+<li><strong>Инкапсуляция</strong>: private, protected атрибуты</li>
+<li><strong>Полиморфизм</strong>: duck typing</li>
+<li><strong>Абстрактные классы</strong>: ABC, abstractmethod</li>
+<li><strong>Дескрипторы и свойства</strong>: @property, @setter</li>
+</ul>
+`,
+
+                    "Работа с файлами": `
+<h3>Ввод/вывод и файловая система</h3>
+<ul>
+<li><strong>Открытие файлов</strong>: open, режимы (r, w, a, b)</li>
+<li><strong>Контекстный менеджер</strong>: with</li>
+<li><strong>Чтение</strong>: read, readline, readlines</li>
+<li><strong>Запись</strong>: write, writelines</li>
+<li><strong>Работа с JSON</strong>: json.dump, json.load</li>
+<li><strong>CSV файлы</strong>: модуль csv</li>
+<li><strong>Работа с директориями</strong>: os, pathlib</li>
+</ul>
+`,
+
+                    "Обработка ошибок": `
+<h3>Исключения и отладка</h3>
+<ul>
+<li><strong>Иерархия исключений</strong>: Exception, BaseException</li>
+<li><strong>try-except-else-finally</strong></li>
+<li><strong>raise и создание своих исключений</strong></li>
+<li><strong>assert и отладка</strong></li>
+<li><strong>Логирование</strong>: модуль logging</li>
+</ul>
+`,
+
+                    "Библиотеки для данных": `
+<h3>Data Science стек</h3>
+<ul>
+<li><strong>NumPy</strong>: массивы, операции, broadcasting</li>
+<li><strong>Pandas</strong>: DataFrame, Series, группировки, merge</li>
+<li><strong>Matplotlib</strong>: графики, настройка визуализации</li>
+<li><strong>Seaborn</strong>: статистические графики</li>
+<li><strong>Scikit-learn</strong>: основы ML, модели</li>
+</ul>
+`,
+
+                    "Веб-разработка": `
+<h3>Серверный Python</h3>
+<ul>
+<li><strong>Flask</strong>: маршруты, шаблоны, запросы</li>
+<li><strong>Django</strong>: модели, views, templates, admin</li>
+<li><strong>FastAPI</strong>: асинхронность, Pydantic</li>
+<li><strong>SQLAlchemy</strong>: ORM, работа с БД</li>
+<li><strong>Alembic</strong>: миграции</li>
+</ul>
+`,
+
+                    "Асинхронность": `
+<h3>asyncio и параллелизм</h3>
+<ul>
+<li><strong>async/await</strong>: корутины</li>
+<li><strong>Event loop</strong></li>
+<li><strong>Задачи и футуры</strong></li>
+<li><strong>aiohttp</strong>: асинхронные запросы</li>
+<li><strong>Многопоточность</strong>: threading, GIL</li>
+<li><strong>Многопроцессность</strong>: multiprocessing</li>
+</ul>
+`,
+
+                    "Тестирование": `
+<h3>Качество кода</h3>
+<ul>
+<li><strong>unittest</strong>: TestCase, assertions</li>
+<li><strong>pytest</strong>: фикстуры, параметризация</li>
+<li><strong>mock</strong>: подмена объектов</li>
+<li><strong>Тестовое покрытие</strong>: coverage</li>
+</ul>
+`,
+
+                    "Финальный проект": `
+<h3>Комплексная разработка</h3>
+<ul>
+<li>Веб-приложение на Django/Flask</li>
+<li>API с документацией</li>
+<li>Работа с PostgreSQL</li>
+<li>Аутентификация JWT</li>
+<li>Деплой на сервер</li>
+<li>CI/CD настройка</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "C++",
+                icon: "C++",
+                hours: 50,
+                level: "Продвинутый",
+                desc: "Язык для системного программирования и высокопроизводительных приложений.",
+                topics: {
+                    "Основы синтаксиса": `
+<h3>Базовые конструкции</h3>
+<ul>
+<li><strong>Переменные и типы</strong>: int, float, char, bool, auto</li>
+<li><strong>Модификаторы</strong>: const, static, extern, volatile</li>
+<li><strong>Ввод/вывод</strong>: cin, cout, cerr</li>
+<li><strong>Управляющие конструкции</strong>: if, switch, for, while</li>
+<li><strong>Функции</strong>: объявление, определение, перегрузка</li>
+<li><strong>Пространства имен</strong>: namespace, using</li>
+</ul>
+`,
+
+                    "Указатели и ссылки": `
+<h3>Работа с памятью</h3>
+<ul>
+<li><strong>Указатели</strong>: объявление, разыменование, арифметика</li>
+<li><strong>Ссылки</strong>: lvalue и rvalue ссылки</li>
+<li><strong>Динамическая память</strong>: new, delete, new[], delete[]</li>
+<li><strong>Умные указатели</strong>: unique_ptr, shared_ptr, weak_ptr</li>
+<li><strong>Утечки памяти и их предотвращение</strong></li>
+<li><strong>Указатели на функции</strong></li>
+</ul>
+<pre><code>// Пример умных указателей
+#include &lt;memory&gt;
+auto ptr = std::make_unique&lt;int&gt;(42);
+std::shared_ptr&lt;int&gt; shared = std::make_shared&lt;int&gt;(100);</code></pre>
+`,
+
+                    "ООП в C++": `
+<h3>Объектно-ориентированное программирование</h3>
+<ul>
+<li><strong>Классы</strong>: объявление, методы, this</li>
+<li><strong>Конструкторы и деструкторы</strong></li>
+<li><strong>Специальные методы</strong>: копирования, перемещения</li>
+<li><strong>Модификаторы доступа</strong>: public, private, protected</li>
+<li><strong>Наследование</strong>: множественное, виртуальное</li>
+<li><strong>Полиморфизм</strong>: виртуальные функции, абстрактные классы</li>
+<li><strong>Дружественные функции и классы</strong></li>
+</ul>
+`,
+
+                    "STL": `
+<h3>Стандартная библиотека шаблонов</h3>
+<ul>
+<li><strong>Контейнеры</strong>: vector, list, deque, set, map, unordered_map</li>
+<li><strong>Итераторы</strong>: категории, операции</li>
+<li><strong>Алгоритмы</strong>: sort, find, transform, accumulate</li>
+<li><strong>Функциональные объекты</strong>: функторы, лямбды</li>
+<li><strong>Адаптеры</strong>: stack, queue, priority_queue</li>
+</ul>
+`,
+
+                    "Шаблоны": `
+<h3>Generic programming</h3>
+<ul>
+<li><strong>Функциональные шаблоны</strong></li>
+<li><strong>Шаблоны классов</strong></li>
+<li><strong>Специализация шаблонов</strong></li>
+<li><strong>Variadic templates</strong></li>
+<li><strong>SFINAE и концепты (C++20)</strong></li>
+<li><strong>Type traits</strong></li>
+</ul>
+`,
+
+                    "Управление ресурсами": `
+<h3>RAII и исключения</h3>
+<ul>
+<li><strong>RAII идиома</strong></li>
+<li><strong>Исключения</strong>: try, catch, throw, noexcept</li>
+<li><strong>Стек размотки (stack unwinding)</strong></li>
+<li><strong>Стандартные исключения</strong></li>
+<li><strong>Гарантии безопасности исключений</strong></li>
+</ul>
+`,
+
+                    "Многопоточность": `
+<h3>Concurrency в C++</h3>
+<ul>
+<li><strong>Потоки</strong>: thread, join, detach</li>
+<li><strong>Синхронизация</strong>: mutex, lock_guard, unique_lock</li>
+<li><strong>Условные переменные</strong></li>
+<li><strong>Атомарные операции</strong>: atomic</li>
+<li><strong>Future и promise</strong></li>
+<li><strong>Параллельные алгоритмы</strong></li>
+</ul>
+`,
+
+                    "Современный C++": `
+<h3>C++11/14/17/20 особенности</h3>
+<ul>
+<li><strong>auto и decltype</strong></li>
+<li><strong>Range-based for</strong></li>
+<li><strong>Лямбда-выражения</strong></li>
+<li><strong>Move семантика</strong>: std::move, std::forward</li>
+<li><strong>constexpr и compile-time вычисления</strong></li>
+<li><strong>Coroutines (C++20)</strong></li>
+<li><strong>Модули (C++20)</strong></li>
+</ul>
+`,
+
+                    "Финальный проект": `
+<h3>Практическое применение</h3>
+<ul>
+<li>Сетевой сервер/клиент</li>
+<li>Игровой движок или физический симулятор</li>
+<li>Оптимизация алгоритмов</li>
+<li>Работа с большими данными</li>
+<li>Создание библиотеки</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "C#",
+                icon: "C#",
+                hours: 45,
+                level: "Средний → Продвинутый",
+                desc: "Разработка на платформе .NET для Windows, веба и игр.",
+                topics: {
+                    "Основы синтаксиса": `
+<h3>Фундамент C#</h3>
+<ul>
+<li><strong>Типы данных</strong>: value types, reference types, nullable</li>
+<li><strong>Переменные и константы</strong>: var, const, readonly</li>
+<li><strong>Операторы и выражения</strong></li>
+<li><strong>Управляющие конструкции</strong>: if, switch, for, foreach, while</li>
+<li><strong>Массивы и строки</strong></li>
+<li><strong>Методы</strong>: параметры, ref, out, in</li>
+</ul>
+`,
+
+                    "ООП в C#": `
+<h3>Объектно-ориентированное программирование</h3>
+<ul>
+<li><strong>Классы и структуры</strong></li>
+<li><strong>Свойства и поля</strong>: автосвойства, вычисляемые</li>
+<li><strong>Конструкторы</strong>: статические, приватные</li>
+<li><strong>Наследование</strong>: sealed, base</li>
+<li><strong>Полиморфизм</strong>: virtual, override, new</li>
+<li><strong>Абстрактные классы и интерфейсы</strong></li>
+<li><strong>Модификаторы доступа</strong>: internal, protected internal</li>
+</ul>
+`,
+
+                    ".NET платформа": `
+<h3>Экосистема .NET</h3>
+<ul>
+<li><strong>CLR и управляемый код</strong></li>
+<li><strong>Сборка мусора</strong>: поколения, Large Object Heap</li>
+<li><strong>GAC и сборки</strong></li>
+<li><strong>MSIL и JIT компиляция</strong></li>
+<li><strong>AppDomain и процессы</strong></li>
+<li><strong>NuGet пакеты</strong></li>
+</ul>
+`,
+
+                    "Делегаты и события": `
+<h3>Функциональный подход</h3>
+<ul>
+<li><strong>Делегаты</strong>: объявление, multicast</li>
+<li><strong>Анонимные методы и лямбды</strong></li>
+<li><strong>События</strong>: event, publisher/subscriber</li>
+<li><strong>Func, Action, Predicate</strong></li>
+<li><strong>Замыкания</strong></li>
+</ul>
+<pre><code>// Пример делегата и лямбды
+Func&lt;int, int, int&gt; add = (x, y) => x + y;
+Console.WriteLine(add(5, 3)); // 8</code></pre>
+`,
+
+                    "LINQ": `
+<h3>Языковые запросы</h3>
+<ul>
+<li><strong>LINQ to Objects</strong></li>
+<li><strong>Методы расширения</strong></li>
+<li><strong>LINQ синтаксис vs fluent</strong></li>
+<li><strong>Отложенное выполнение</strong></li>
+<li><strong>Select, Where, GroupBy, Join</strong></li>
+<li><strong>LINQ to SQL/Entities</strong></li>
+<li><strong>PLINQ для параллельных запросов</strong></li>
+</ul>
+`,
+
+                    "Коллекции и Generics": `
+<h3>Типизированные структуры данных</h3>
+<ul>
+<li><strong>List, Dictionary, HashSet</strong></li>
+<li><strong>Queue, Stack, LinkedList</strong></li>
+<li><strong>ObservableCollection</strong></li>
+<li><strong>Создание generic классов</strong></li>
+<li><strong>Ковариантность и контравариантность</strong></li>
+<li><strong>IEnumerable, IEnumerator</strong></li>
+</ul>
+`,
+
+                    "Асинхронность": `
+<h3>async/await в C#</h3>
+<ul>
+<li><strong>Task и Task</strong></li>
+<li><strong>async/await ключевые слова</strong></li>
+<li><strong>ConfigureAwait</strong></li>
+<li><strong>Task.WhenAll, Task.WhenAny</strong></li>
+<li><strong>CancellationToken</strong></li>
+<li><strong>IProgress для отчетов</strong></li>
+<li><strong>ValueTask</strong></li>
+</ul>
+`,
+
+                    "Исключения и отладка": `
+<h3>Обработка ошибок</h3>
+<ul>
+<li><strong>try-catch-finally</strong></li>
+<li><strong>Пользовательские исключения</strong></li>
+<li><strong>Debug vs Trace</strong></li>
+<li><strong>Атрибуты и рефлексия</strong></li>
+<li><strong>Логирование: ILogger, Serilog</strong></li>
+</ul>
+`,
+
+                    "Продвинутые темы": `
+<h3>Профессиональная разработка</h3>
+<ul>
+<li><strong>Рефлексия и атрибуты</strong></li>
+<li><strong>Динамические типы: dynamic</strong></li>
+<li><strong>Unsafe код и указатели</strong></li>
+<li><strong>Многопоточность: Thread, ThreadPool</strong></li>
+<li><strong>Синхронизация: lock, Monitor, Mutex</strong></li>
+<li><strong>Memory management: Span, Memory</strong></li>
+</ul>
+`,
+
+                    "Фреймворки": `
+<h3>Практическое применение</h3>
+<ul>
+<li><strong>ASP.NET Core</strong>: MVC, WebAPI, middleware</li>
+<li><strong>Entity Framework Core</strong>: Code First, миграции</li>
+<li><strong>WPF</strong>: XAML, binding, MVVM</li>
+<li><strong>Unity</strong>: разработка игр</li>
+<li><strong>Xamarin/MAUI</strong>: мобильные приложения</li>
+</ul>
+`,
+
+                    "Финальный проект": `
+<h3>Комплексная разработка</h3>
+<ul>
+<li>Web API с авторизацией JWT</li>
+<li>Клиент-серверное приложение</li>
+<li>Работа с PostgreSQL/SQL Server</li>
+<li>Docker контейнеризация</li>
+<li>Unit тесты (xUnit, NUnit)</li>
+<li>Деплой в Azure/AWS</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "PHP",
+                icon: "PHP",
+                hours: 35,
+                level: "Начинающий → Средний",
+                desc: "Серверный язык для веб-разработки.",
+                topics: {
+                    "Основы синтаксиса": `
+<h3>PHP с нуля</h3>
+<ul>
+<li><strong>Теги PHP</strong>: &lt;?php ?&gt;, короткий синтаксис</li>
+<li><strong>Переменные</strong>: объявление, типы, область видимости</li>
+<li><strong>Константы</strong>: define, const</li>
+<li><strong>Типы данных</strong>: string, int, float, bool, array, object, null</li>
+<li><strong>Операторы</strong>: арифметические, сравнения, логические</li>
+<li><strong>Управляющие конструкции</strong>: if, else, switch, match</li>
+<li><strong>Циклы</strong>: for, while, foreach, do-while</li>
+</ul>
+`,
+
+                    "Функции": `
+<h3>Организация кода</h3>
+<ul>
+<li><strong>Объявление функций</strong>: function, параметры, return</li>
+<li><strong>Типизация параметров и возврата</strong></li>
+<li><strong>Значения по умолчанию</strong></li>
+<li><strong>Переменное количество аргументов</strong>: ...$args</li>
+<li><strong>Анонимные функции и замыкания</strong></li>
+<li><strong>Стрелочные функции (PHP 7.4+)</strong></li>
+<li><strong>Callback функции</strong></li>
+</ul>
+<pre><code>// Пример стрелочной функции
+$multiply = fn($a, $b) => $a * $b;
+echo $multiply(5, 3); // 15</code></pre>
+`,
+
+                    "Массивы": `
+<h3>Работа с данными</h3>
+<ul>
+<li><strong>Индексированные и ассоциативные массивы</strong></li>
+<li><strong>Многомерные массивы</strong></li>
+<li><strong>Функции для работы с массивами</strong>: array_map, array_filter, array_reduce</li>
+<li><strong>Сортировка</strong>: sort, asort, ksort, usort</li>
+<li><strong>Разложение массивов</strong>: list, []</li>
+<li><strong>Проверка существования ключей</strong></li>
+</ul>
+`,
+
+                    "ООП в PHP": `
+<h3>Объектно-ориентированное программирование</h3>
+<ul>
+<li><strong>Классы и объекты</strong></li>
+<li><strong>Свойства и методы</strong>: public, private, protected</li>
+<li><strong>Конструктор и деструктор</strong>: __construct, __destruct</li>
+<li><strong>Наследование</strong>: extends, parent::</li>
+<li><strong>Интерфейсы и абстрактные классы</strong></li>
+<li><strong>Трейты</strong></li>
+<li><strong>Статические свойства и методы</strong></li>
+<li><strong>Магические методы</strong>: __get, __set, __call, __toString</li>
+</ul>
+`,
+
+                    "Работа с сервером": `
+<h3>Веб-разработка</h3>
+<ul>
+<li><strong>Суперглобальные массивы</strong>: $_GET, $_POST, $_SERVER, $_SESSION, $_COOKIE</li>
+<li><strong>Обработка форм</strong></li>
+<li><strong>Загрузка файлов</strong>: $_FILES</li>
+<li><strong>Сессии и куки</strong>: session_start, setcookie</li>
+<li><strong>HTTP заголовки</strong>: header()</li>
+<li><strong>Редиректы</strong></li>
+</ul>
+`,
+
+                    "Базы данных": `
+<h3>Работа с MySQL</h3>
+<ul>
+<li><strong>PDO</strong>: подключение, подготовленные запросы</li>
+<li><strong>MySQLi</strong>: объектный и процедурный подход</li>
+<li><strong>CRUD операции</strong></li>
+<li><strong>Транзакции</strong></li>
+<li><strong>Защита от SQL инъекций</strong></li>
+<li><strong>ORM: Eloquent (Laravel), Doctrine</strong></li>
+</ul>
+`,
+
+                    "Обработка ошибок": `
+<h3>Исключения и логирование</h3>
+<ul>
+<li><strong>try-catch-finally</strong></li>
+<li><strong>Пользовательские исключения</strong></li>
+<li><strong>Error handling</strong>: set_error_handler</li>
+<li><strong>Логирование</strong>: error_log, Monolog</li>
+<li><strong>Отладка</strong>: var_dump, print_r, Xdebug</li>
+</ul>
+`,
+
+                    "Современные практики": `
+<h3>Профессиональная разработка</h3>
+<ul>
+<li><strong>Composer</strong>: менеджер зависимостей</li>
+<li><strong>PSR стандарты</strong>: PSR-1, PSR-4, PSR-12</li>
+<li><strong>Автозагрузка классов</strong>: spl_autoload_register</li>
+<li><strong>Пространства имен</strong></li>
+<li><strong>MVC паттерн</strong></li>
+<li><strong>REST API</strong></li>
+<li><strong>JWT аутентификация</strong></li>
+</ul>
+`,
+
+                    "Фреймворки": `
+<h3>Популярные фреймворки</h3>
+<ul>
+<li><strong>Laravel</strong>: Eloquent, Blade, Artisan</li>
+<li><strong>Symfony</strong>: компоненты, Flex</li>
+<li><strong>Yii2</strong>: Gii, ActiveRecord</li>
+<li><strong>WordPress</strong>: темы, плагины, hooks</li>
+</ul>
+`,
+
+                    "Тестирование": `
+<h3>Качество кода</h3>
+<ul>
+<li><strong>PHPUnit</strong>: unit тесты, assertions</li>
+<li><strong>Mockery</strong>: создание моков</li>
+<li><strong>TDD подход</strong></li>
+<li><strong>Интеграционное тестирование</strong></li>
+</ul>
+`,
+
+                    "Финальный проект": `
+<h3>Реальный проект</h3>
+<ul>
+<li>Разработка интернет-магазина</li>
+<li>Система аутентификации и ролей</li>
+<li>Админ-панель</li>
+<li>Интеграция с платежными системами</li>
+<li>API для мобильного приложения</li>
+<li>Деплой на хостинг</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "Go",
+                icon: "GO",
+                hours: 30,
+                level: "Средний",
+                desc: "Современный язык от Google для высоконагруженных систем.",
+                topics: {
+                    "Основы синтаксиса": `
+<h3>Введение в Go</h3>
+<ul>
+<li><strong>Переменные</strong>: var, :=, множественное присваивание</li>
+<li><strong>Типы данных</strong>: int, float64, string, bool, byte, rune</li>
+<li><strong>Константы</strong>: const, iota</li>
+<li><strong>Управляющие конструкции</strong>: if, for, switch</li>
+<li><strong>Функции</strong>: множественный возврат, именованные результаты</li>
+<li><strong>Пакеты и импорты</strong></li>
+</ul>
+<pre><code>// Пример функции с множественным возвратом
+func divide(a, b float64) (float64, error) {
+    if b == 0 {
+        return 0, errors.New("division by zero")
+    }
+    return a / b, nil
+}</code></pre>
+`,
+
+                    "Структуры и интерфейсы": `
+<h3>Организация данных</h3>
+<ul>
+<li><strong>Структуры</strong>: struct, поля, методы</li>
+<li><strong>Интерфейсы</strong>: неявная реализация</li>
+<li><strong>Пустой интерфейс</strong>: interface{}</li>
+<li><strong>Встраивание (embedding)</strong></li>
+<li><strong>Type assertions и type switches</strong></li>
+</ul>
+`,
+
+                    "Коллекции": `
+<h3>Структуры данных</h3>
+<ul>
+<li><strong>Массивы и срезы</strong>: make, append, copy</li>
+<li><strong>Слайсы</strong>: capacity, length, под капотом</li>
+<li><strong>Карты (map)</strong>: создание, проверка существования</li>
+<li><strong>Range итерация</strong></li>
+<li><strong>Конкурентные map</strong>: sync.Map</li>
+</ul>
+`,
+
+                    "Горутины и каналы": `
+<h3>Конкурентность в Go</h3>
+<ul>
+<li><strong>Горутины</strong>: go keyword, легковесные потоки</li>
+<li><strong>Каналы</strong>: буферизированные, небуферизированные</li>
+<li><strong>Select</strong>: мультиплексирование каналов</li>
+<li><strong>WaitGroup</strong>: ожидание горутин</li>
+<li><strong>Mutex</strong>: sync.Mutex, sync.RWMutex</li>
+<li><strong>Атомарные операции</strong>: atomic</li>
+<li><strong>Паттерны конкурентности</strong>: worker pool, fan-in, fan-out</li>
+</ul>
+<pre><code>// Пример горутины и канала
+ch := make(chan int)
+go func() {
+    ch <- 42
+}()
+value := <-ch
+fmt.Println(value)</code></pre>
+`,
+
+                    "Обработка ошибок": `
+<h3>Особенности Go</h3>
+<ul>
+<li><strong>Ошибки как значения</strong>: error interface</li>
+<li><strong>Создание ошибок</strong>: errors.New, fmt.Errorf</li>
+<li><strong>Panic и recover</strong></li>
+<li><strong>defer</strong>: отложенные вызовы</li>
+<li><strong>Пользовательские ошибки</strong></li>
+</ul>
+`,
+
+                    "Ввод/вывод": `
+<h3>Работа с файлами и сетью</h3>
+<ul>
+<li><strong>Пакет io</strong>: Reader, Writer интерфейсы</li>
+<li><strong>Файловые операции</strong>: os.File, bufio</li>
+<li><strong>JSON</strong>: Marshal, Unmarshal, encoder/decoder</li>
+<li><strong>Форматированный ввод/вывод</strong>: fmt</li>
+</ul>
+`,
+
+                    "Стандартная библиотека": `
+<h3>Мощь стандартных пакетов</h3>
+<ul>
+<li><strong>net/http</strong>: сервер, клиент, маршрутизация</li>
+<li><strong>context</strong>: отмена, таймауты, передача значений</li>
+<li><strong>testing</strong>: unit тесты, бенчмарки</li>
+<li><strong>encoding</strong>: json, xml, csv</li>
+<li><strong>time</strong>: работа со временем</li>
+<li><strong>regexp</strong>: регулярные выражения</li>
+</ul>
+`,
+
+                    "Базы данных": `
+<h3>Хранение данных</h3>
+<ul>
+<li><strong>database/sql</strong>: пул соединений</li>
+<li><strong>ORM</strong>: GORM, SQLBoiler</li>
+<li><strong>Миграции</strong>: golang-migrate</li>
+<li><strong>Подключение к PostgreSQL, MySQL</strong></li>
+<li><strong>Транзакции и подготовленные запросы</strong></li>
+</ul>
+`,
+
+                    "Веб-разработка": `
+<h3>Создание веб-приложений</h3>
+<ul>
+<li><strong>HTTP сервер</strong>: маршрутизация, middleware</li>
+<li><strong>Шаблоны</strong>: html/template</li>
+<li><strong>REST API</strong>: JSON ответы, валидация</li>
+<li><strong>Фреймворки</strong>: Gin, Echo, Fiber</li>
+<li><strong>WebSocket</strong>: gorilla/websocket</li>
+<li><strong>JWT аутентификация</strong></li>
+</ul>
+`,
+
+                    "Тестирование": `
+<h3>Качество и производительность</h3>
+<ul>
+<li><strong>Unit тесты</strong>: testing.T</li>
+<li><strong>Табличные тесты</strong></li>
+<li><strong>Бенчмарки</strong>: testing.B</li>
+<li><strong>Mocking</strong>: testify/mock</li>
+<li><strong>Профилирование</strong>: pprof</li>
+<li><strong>Трассировка</strong></li>
+</ul>
+`,
+
+                    "Инструменты": `
+<h3>Экосистема Go</h3>
+<ul>
+<li><strong>go mod</strong>: управление зависимостями</li>
+<li><strong>go build, run, test</strong></li>
+<li><strong>Линтеры</strong>: golangci-lint</li>
+<li><strong>Форматирование</strong>: gofmt, goimports</li>
+<li><strong>Документация</strong>: godoc</li>
+</ul>
+`,
+
+                    "Финальный проект": `
+<h3>Практическое применение</h3>
+<ul>
+<li>Высоконагруженный API сервис</li>
+<li>Микросервисная архитектура</li>
+<li>gRPC сервис</li>
+<li>Очереди сообщений (RabbitMQ, Kafka)</li>
+<li>Контейнеризация Docker</li>
+<li>Мониторинг и логирование</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "Rust",
+                icon: "R",
+                hours: 40,
+                level: "Продвинутый",
+                desc: "Безопасный системный язык с нулевой стоимостью абстракций.",
+                topics: {
+                    "Основы синтаксиса": `
+<h3>Rust fundamentals</h3>
+<ul>
+<li><strong>Переменные</strong>: let, mut, shadowing</li>
+<li><strong>Типы данных</strong>: скалярные и составные</li>
+<li><strong>Константы и статические переменные</strong></li>
+<li><strong>Функции</strong>: объявление, параметры, возврат</li>
+<li><strong>Управляющие конструкции</strong>: if, loop, while, for</li>
+<li><strong>Выражения vs операторы</strong></li>
+</ul>
+<pre><code>// Пример выражения в Rust
+let y = {
+    let x = 3;
+    x + 1  // без точки с запятой - это выражение
+};</code></pre>
+`,
+
+                    "Владение и заимствование": `
+<h3>Уникальная система Rust</h3>
+<ul>
+<li><strong>Владение (ownership)</strong>: правила, перемещение</li>
+<li><strong>Заимствование (borrowing)</strong>: &T, &mut T</li>
+<li><strong>Время жизни (lifetimes)</strong>: явные аннотации, элизия</li>
+<li><strong>Срезы (slices)</strong></li>
+<li><strong>Drop трейт</strong></li>
+<li><strong>Copy и Clone трейты</strong></li>
+</ul>
+`,
+
+                    "Структуры и перечисления": `
+<h3>Пользовательские типы</h3>
+<ul>
+<li><strong>Структуры</strong>: классические, кортежные, unit-like</li>
+<li><strong>Методы</strong>: impl блоки</li>
+<li><strong>Перечисления (enum)</strong>: с данными, Option, Result</li>
+<li><strong>Сопоставление с образцом</strong>: match, if let, while let</li>
+<li><strong>Связанные функции</strong></li>
+</ul>
+`,
+
+                    "Трейты": `
+<h3>Абстракции в Rust</h3>
+<ul>
+<li><strong>Определение и реализация трейтов</strong></li>
+<li><strong>Стандартные трейты</strong>: Display, Debug, Eq, PartialEq</li>
+<li><strong>Трейт-объекты</strong>: dyn Trait</li>
+<li><strong>Обобщения (generics)</strong></li>
+<li><strong>Границы трейтов (trait bounds)</strong></li>
+<li><strong>Ассоциированные типы</strong></li>
+<li><strong>Реализация для внешних типов</strong></li>
+</ul>
+`,
+
+                    "Коллекции": `
+<h3>Стандартные структуры данных</h3>
+<ul>
+<li><strong>Vec</strong>: вектор, методы</li>
+<li><strong>String и &str</strong></li>
+<li><strong>HashMap и BTreeMap</strong></li>
+<li><strong>HashSet и BTreeSet</strong></li>
+<li><strong>VecDeque</strong></li>
+<li><strong>LinkedList</strong></li>
+<li><strong>Итераторы и замыкания</strong>: map, filter, collect</li>
+</ul>
+`,
+
+                    "Управление памятью": `
+<h3>Безопасная работа с памятью</h3>
+<ul>
+<li><strong>Box</strong>: умный указатель для кучи</li>
+<li><strong>Rc и Arc</strong>: подсчет ссылок</li>
+<li><strong>RefCell и внутренняя изменяемость</strong></li>
+<li><strong>Утечки памяти и их предотвращение</strong></li>
+<li><strong>Циклические ссылки</strong>: Weak</li>
+</ul>
+`,
+
+                    "Обработка ошибок": `
+<h3>Надежность</h3>
+<ul>
+<li><strong>panic!</strong>: неустранимые ошибки</li>
+<li><strong>Result</strong>: Ok, Err</li>
+<li><strong>Option</strong>: Some, None</li>
+<li><strong>Оператор ?</strong></li>
+<li><strong>Комбинаторы</strong>: map, and_then, or_else</li>
+<li><strong>Создание своих типов ошибок</strong></li>
+<li><strong>anyhow и thiserror крейты</strong></li>
+</ul>
+`,
+
+                    "Многопоточность": `
+<h3>Конкурентность без страха</h3>
+<ul>
+<li><strong>Потоки</strong>: thread::spawn, join</li>
+<li><strong>Каналы</strong>: mpsc</li>
+<li><strong>Mutex и RwLock</strong></li>
+<li><strong>Атомарные типы</strong></li>
+<li><strong>Send и Sync трейты</strong></li>
+<li><strong>Rayon</strong>: параллельные итераторы</li>
+<li><strong>async/await в Rust</strong></li>
+</ul>
+`,
+
+                    "Модули и организация": `
+<h3>Структура проекта</h3>
+<ul>
+<li><strong>Модули</strong>: mod, pub, use</li>
+<li><strong>Крейты</strong>: библиотечные и исполняемые</li>
+<li><strong>Cargo.toml</strong>: зависимости, фичи</li>
+<li><strong>Рабочие пространства</strong></li>
+<li><strong>Атрибуты</strong></li>
+<li><strong>Тесты и документация</strong></li>
+</ul>
+`,
+
+                    "Продвинутые темы": `
+<h3>Профессиональный Rust</h3>
+<ul>
+<li><strong>Макросы</strong>: declarative и procedural</li>
+<li><strong>FFI</strong>: вызов C кода</li>
+<li><strong>Небезопасный Rust</strong>: unsafe</li>
+<li><strong>Pin и Unpin</strong></li>
+<li><strong>Асинхронный Rust</strong>: tokio, async-std</li>
+<li><strong>WebAssembly</strong></li>
+</ul>
+`,
+
+                    "Экосистема": `
+<h3>Инструменты и библиотеки</h3>
+<ul>
+<li><strong>Cargo</strong>: build, run, test, doc</li>
+<li><strong>clippy</strong>: линтер</li>
+<li><strong>rustfmt</strong>: форматирование</li>
+<li><strong>Популярные крейты</strong>: serde, rayon, tokio</li>
+<li><strong>Веб-фреймворки</strong>: Actix, Rocket, Warp</li>
+<li><strong>Бенчмаркинг</strong></li>
+</ul>
+`,
+
+                    "Финальный проект": `
+<h3>Реальные приложения</h3>
+<ul>
+<li>Сетевой сервер/клиент</li>
+<li>Парсер или утилита CLI</li>
+<li>Игровой движок (Bevy)</li>
+<li>WebAssembly приложение</li>
+<li>Блокчейн компонент</li>
+<li>Высокопроизводительная библиотека</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "Kotlin",
+                icon: "K",
+                hours: 35,
+                level: "Средний → Продвинутый",
+                desc: "Современный язык для Android и backend разработки.",
+                topics: {
+                    "Основы синтаксиса": `
+<h3>Kotlin fundamentals</h3>
+<ul>
+<li><strong>Переменные</strong>: val (immutable), var (mutable)</li>
+<li><strong>Типы данных</strong>: Int, Long, Float, Double, String, Boolean</li>
+<li><strong>Null safety</strong>: ?., ?:, !!, safe calls</li>
+<li><strong>Функции</strong>: fun, параметры, return</li>
+<li><strong>Условные выражения</strong>: if, when</li>
+<li><strong>Циклы</strong>: for, while, repeat</li>
+<li><strong>Диапазоны</strong>: .., until, downTo</li>
+</ul>
+<pre><code>// Пример null safety
+var name: String? = null
+val length = name?.length ?: 0  // элвис-оператор</code></pre>
+`,
+
+                    "Функциональное программирование": `
+<h3>Функциональный подход</h3>
+<ul>
+<li><strong>Лямбда-выражения</strong></li>
+<li><strong>Функции высшего порядка</strong></li>
+<li><strong>Ссылки на функции</strong>: ::</li>
+<li><strong>Замыкания</strong></li>
+<li><strong>Встроенные функции</strong>: inline, noinline, crossinline</li>
+<li><strong>Последовательности (sequences)</strong></li>
+</ul>
+`,
+
+                    "Коллекции": `
+<h3>Работа с данными</h3>
+<ul>
+<li><strong>Типы коллекций</strong>: List, Set, Map</li>
+<li><strong>Изменяемые и неизменяемые</strong>: mutableListOf, listOf</li>
+<li><strong>Функции для коллекций</strong>: filter, map, flatMap, groupBy</li>
+<li><strong>Последовательности для больших данных</strong></li>
+<li><strong>Деструктуризация</strong></li>
+</ul>
+`,
+
+                    "Классы и объекты": `
+<h3>ООП в Kotlin</h3>
+<ul>
+<li><strong>Классы</strong>: конструкторы (primary, secondary)</li>
+<li><strong>Свойства</strong>: геттеры, сеттеры, backing fields</li>
+<li><strong>Data классы</strong>: copy, componentN</li>
+<li><strong>Enum классы</strong></li>
+<li><strong>Sealed классы</strong></li>
+<li><strong>Object и companion object</strong></li>
+<li><strong>Наследование</strong>: open, final, abstract</li>
+<li><strong>Интерфейсы</strong></li>
+</ul>
+`,
+
+                    "Расширения и делегаты": `
+<h3>Мощные возможности</h3>
+<ul>
+<li><strong>Extension функции и свойства</strong></li>
+<li><strong>Делегирование свойств</strong>: by lazy, by Delegates.observable</li>
+<li><strong>Стандартные делегаты</strong></li>
+<li><strong>Делегирование классов</strong>: by</li>
+</ul>
+`,
+
+                    "Coroutines": `
+<h3>Асинхронное программирование</h3>
+<ul>
+<li><strong>Корутины</strong>: launch, async, runBlocking</li>
+<li><strong>Suspend функции</strong></li>
+<li><strong>Контекст и диспетчеры</strong>: Dispatchers.IO, Main, Default</li>
+<li><strong>Структура корутин</strong>: Job, Deferred</li>
+<li><strong>Каналы</strong></li>
+<li><strong>Flow</strong>: холодные и горячие потоки</li>
+<li><strong>Обработка исключений</strong></li>
+</ul>
+`,
+
+                    "Работа с Java": `
+<h3>Интероперабельность</h3>
+<ul>
+<li><strong>Вызов Java из Kotlin</strong></li>
+<li><strong>Вызов Kotlin из Java</strong></li>
+<li><strong>Аннотации</strong>: @JvmStatic, @JvmField, @JvmOverloads</li>
+<li><strong>Платформенные типы</strong></li>
+<li><strong>SAM конверсии</strong></li>
+</ul>
+`,
+
+                    "Android разработка": `
+<h3>Мобильные приложения</h3>
+<ul>
+<li><strong>Activity и Fragment</strong></li>
+<li><strong>Jetpack Compose</strong>: декларативный UI</li>
+<li><strong>ViewModel и LiveData</strong></li>
+<li><strong>Room</strong>: работа с БД</li>
+<li><strong>Navigation</strong></li>
+<li><strong>Dagger/Hilt</strong>: dependency injection</li>
+<li><strong>Retrofit</strong>: сетевые запросы</li>
+<li><strong>Coroutines в Android</strong></li>
+</ul>
+`,
+
+                    "Backend разработка": `
+<h3>Серверная часть</h3>
+<ul>
+<li><strong>Ktor</strong>: асинхронный фреймворк</li>
+<li><strong>Spring Boot с Kotlin</strong></li>
+<li><strong>Exposed</strong>: DSL для SQL</li>
+<li><strong>Микросервисы</strong></li>
+<li><strong>WebSockets</strong></li>
+</ul>
+`,
+
+                    "Тестирование": `
+<h3>Качество кода</h3>
+<ul>
+<li><strong>Unit тесты</strong>: JUnit, Kotest</li>
+<li><strong>MockK</strong>: мокирование</li>
+<li><strong>Тестирование корутин</strong>: runTest, TestCoroutineDispatcher</li>
+<li><strong>UI тесты</strong></li>
+</ul>
+`,
+
+                    "Инструменты": `
+<h3>Экосистема</h3>
+<ul>
+<li><strong>Gradle Kotlin DSL</strong></li>
+<li><strong>Kotlinx.serialization</strong></li>
+<li><strong>Kotlin/JS</strong></li>
+<li><strong>Kotlin/Native</strong></li>
+<li><strong>KMM</strong>: Kotlin Multiplatform Mobile</li>
+</ul>
+`,
+
+                    "Финальный проект": `
+<h3>Практическое применение</h3>
+<ul>
+<li>Мобильное приложение на Compose</li>
+<li>REST API на Ktor/Spring</li>
+<li>Мультиплатформенный проект</li>
+<li>Работа с базами данных</li>
+<li>Интеграция с внешними API</li>
+<li>Публикация в Google Play</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "Swift",
+                icon: "S",
+                hours: 38,
+                level: "Средний → Продвинутый",
+                desc: "Современный язык для разработки под iOS и macOS.",
+                topics: {
+                    "Основы синтаксиса": `
+<h3>Swift fundamentals</h3>
+<ul>
+<li><strong>Переменные</strong>: var, let</li>
+<li><strong>Типы данных</strong>: Int, Float, Double, String, Bool, Character</li>
+<li><strong>Опциональные типы</strong>: Optional, ?, !</li>
+<li><strong>Базовые операторы</strong></li>
+<li><strong>Управление потоком</strong>: if, guard, switch</li>
+<li><strong>Циклы</strong>: for-in, while, repeat-while</li>
+<li><strong>Функции</strong>: параметры, возвращаемые значения</li>
+</ul>
+<pre><code>// Пример опциональных типов
+var name: String? = "John"
+guard let unwrappedName = name else {
+    return
+}
+print(unwrappedName)</code></pre>
+`,
+
+                    "Коллекции и замыкания": `
+<h3>Структуры данных</h3>
+<ul>
+<li><strong>Массивы</strong>: Array, методы</li>
+<li><strong>Словари</strong>: Dictionary</li>
+<li><strong>Множества</strong>: Set</li>
+<li><strong>Замыкания</strong>: синтаксис, захват значений</li>
+<li><strong>Функции высшего порядка</strong>: map, filter, reduce, compactMap</li>
+</ul>
+`,
+
+                    "ООП в Swift": `
+<h3>Объектно-ориентированное программирование</h3>
+<ul>
+<li><strong>Классы</strong>: свойства, методы, наследование</li>
+<li><strong>Структуры</strong>: value types</li>
+<li><strong>Перечисления</strong>: associated values, raw values</li>
+<li><strong>Свойства</strong>: stored, computed, наблюдатели</li>
+<li><strong>Инициализаторы</strong>: designated, convenience, required</li>
+<li><strong>Протоколы</strong>: определение, реализация</li>
+<li><strong>Расширения</strong></li>
+</ul>
+`,
+
+                    "Protocol-Oriented Programming": `
+<h3>Протокол-ориентированное программирование</h3>
+<ul>
+<li><strong>Расширения протоколов</strong></li>
+<li><strong>Дефолтные реализации</strong></li>
+<li><strong>Композиция протоколов</strong></li>
+<li><strong>Связанные типы (associated types)</strong></li>
+<li><strong>Protocol constraints</strong></li>
+<li><strong>POP vs OOP</strong></li>
+</ul>
+`,
+
+                    "Управление памятью": `
+<h3>ARC в Swift</h3>
+<ul>
+<li><strong>Автоматический подсчет ссылок</strong></li>
+<li><strong>Сильные и слабые ссылки</strong>: weak, unowned</li>
+<li><strong>Циклы сильных ссылок</strong></li>
+<li><strong>Замыкания и захват списка</strong>: [weak self]</li>
+<li><strong>Утечки памяти и их предотвращение</strong></li>
+</ul>
+`,
+
+                    "Обработка ошибок": `
+<h3>Error handling</h3>
+<ul>
+<li><strong>Представление ошибок</strong>: Error протокол</li>
+<li><strong>Throwing функции</strong>: throws, rethrows</li>
+<li><strong>Do-catch блоки</strong></li>
+<li><strong>Опциональные значения try?</strong></li>
+<li><strong>Принудительное try!</strong></li>
+<li><strong>Defer</strong></li>
+</ul>
+`,
+
+                    "Асинхронность": `
+<h3>Concurrency в Swift</h3>
+<ul>
+<li><strong>GCD</strong>: DispatchQueue, QoS</li>
+<li><strong>Operation и OperationQueue</strong></li>
+<li><strong>Async/await (Swift 5.5+)</strong></li>
+<li><strong>Actors</strong></li>
+<li><strong>Task и TaskGroup</strong></li>
+<li><strong>Sendable протокол</strong></li>
+<li><strong>MainActor</strong></li>
+</ul>
+<pre><code>// Пример async/await
+func fetchData() async throws -> Data {
+    let url = URL(string: "https://api.example.com")!
+    let (data, _) = try await URLSession.shared.data(from: url)
+    return data
+}</code></pre>
+`,
+
+                    "UIKit": `
+<h3>Разработка интерфейсов</h3>
+<ul>
+<li><strong>UIViewController</strong>: жизненный цикл</li>
+<li><strong>UIView и иерархия</strong></li>
+<li><strong>Auto Layout</strong>: NSLayoutConstraint, StackView</li>
+<li><strong>UITableView и UICollectionView</strong></li>
+<li><strong>Storyboards и XIB</strong></li>
+<li><strong>Навигация</strong>: UINavigationController, UITabBarController</li>
+<li><strong>Анимации</strong>: UIView.animate</li>
+</ul>
+`,
+
+                    "SwiftUI": `
+<h3>Современный UI</h3>
+<ul>
+<li><strong>Декларативный синтаксис</strong></li>
+<li><strong>View и модификаторы</strong></li>
+<li><strong>State и Binding</strong></li>
+<li><strong>@State, @Binding, @ObservedObject, @EnvironmentObject</strong></li>
+<li><strong>Композиция вью</strong></li>
+<li><strong>Анимации в SwiftUI</strong></li>
+<li><strong>PreviewProvider</strong></li>
+</ul>
+`,
+
+                    "Хранение данных": `
+<h3>Persistent storage</h3>
+<ul>
+<li><strong>UserDefaults</strong></li>
+<li><strong>Core Data</strong>: NSManagedObject, NSPersistentContainer</li>
+<li><strong>Realm</strong></li>
+<li><strong>FileManager</strong></li>
+<li><strong>Keychain</strong></li>
+<li><strong>Codable протокол</strong>: JSON encode/decode</li>
+<li><strong>SwiftData (iOS 17+)</strong></li>
+</ul>
+`,
+
+                    "Сетевые запросы": `
+<h3>Networking</h3>
+<ul>
+<li><strong>URLSession</strong>: запросы, задачи</li>
+<li><strong>Codable для JSON</strong></li>
+<li><strong>Загрузка изображений</strong></li>
+<li><strong>Alamofire</strong></li>
+<li><strong>WebSockets</strong></li>
+<li><strong>Кеширование</strong></li>
+</ul>
+`,
+
+                    "Архитектурные паттерны": `
+<h3>Архитектура приложений</h3>
+<ul>
+<li><strong>MVC</strong></li>
+<li><strong>MVVM</strong>: ObservableObject, @Published</li>
+<li><strong>VIPER</strong></li>
+<li><strong>Clean Architecture</strong></li>
+<li><strong>Coordinator паттерн</strong></li>
+<li><strong>Dependency Injection</strong></li>
+</ul>
+`,
+
+                    "Тестирование": `
+<h3>Quality assurance</h3>
+<ul>
+<li><strong>Unit тесты</strong>: XCTest</li>
+<li><strong>UI тесты</strong></li>
+<li><strong>Performance тесты</strong></li>
+<li><strong>Mocking</strong></li>
+<li><strong>TDD подход</strong></li>
+</ul>
+`,
+
+                    "Инструменты": `
+<h3>Экосистема Apple</h3>
+<ul>
+<li><strong>Xcode</strong>: IDE, Interface Builder, Simulator</li>
+<li><strong>Swift Package Manager</strong></li>
+<li><strong>CocoaPods и Carthage</strong></li>
+<li><strong>Instruments</strong>: профилирование</li>
+<li><strong>App Store Connect</strong></li>
+<li><strong>TestFlight</strong></li>
+</ul>
+`,
+
+                    "Финальный проект": `
+<h3>Разработка приложения</h3>
+<ul>
+<li>Полноценное iOS приложение</li>
+<li>Работа с API и локальным хранилищем</li>
+<li>Аутентификация пользователей</li>
+<li>Пуш-уведомления</li>
+<li>In-App покупки</li>
+<li>Публикация в App Store</li>
+<li>Аналитика и мониторинг</li>
+</ul>
+`
+                }
+            }
+
+        ];
+
+        // ДАННЫЕ БЛОГА
+        const blogPosts = [
+            {
+                id: 1,
+                title: "Как учить Java: план на 3 месяца",
+                date: "15 марта 2024",
+                excerpt: "Пошаговый план изучения Java с нуля до первого трудоустройства.",
+                icon: "📚",
+                readTime: 5,
+                comments: 12,
+                content: `
+        <h3>Месяц 1: Основы</h3>
+        <p>Начните с синтаксиса Java, типов данных и базовых конструкций. Изучите:</p>
+        <ul>
+            <li>Переменные и типы данных</li>
+            <li>Условные операторы и циклы</li>
+            <li>Массивы и методы</li>
+            <li>Основы ООП: классы и объекты</li>
+        </ul>
+        
+        <h3>Месяц 2: Продвинутые темы</h3>
+        <p>Углубитесь в ООП и начните работать с коллекциями:</p>
+        <ul>
+            <li>Наследование и полиморфизм</li>
+            <li>Интерфейсы и абстрактные классы</li>
+            <li>Коллекции: List, Set, Map</li>
+            <li>Обработка исключений</li>
+        </ul>
+        
+        <h3>Месяц 3: Инструменты и проекты</h3>
+        <p>Изучите инструменты разработки и создайте свой первый проект:</p>
+        <ul>
+            <li>Системы контроля версий (Git)</li>
+            <li>Работа с базами данных (JDBC)</li>
+            <li>Сборщики проектов (Maven/Gradle)</li>
+            <li>Создание простого веб-приложения</li>
+        </ul>
+        
+        <pre><code>// Пример кода
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, Java!");
+    }
+}</code></pre>
+    `
+            },
+            {
+                id: 2,
+                title: "JavaScript: 5 частых ошибок новичков",
+                date: "10 марта 2024",
+                excerpt: "Разбираем типичные ошибки при изучении JavaScript и как их избежать.",
+                icon: "⚡",
+                readTime: 4,
+                comments: 8,
+                content: `
+        <h3>1. Путаница с this</h3>
+        <p>Ключевое слово this ведет себя по-разному в обычных функциях и стрелочных функциях.</p>
+        
+        <h3>2. Непонимание асинхронности</h3>
+        <p>JavaScript асинхронный, и это нужно учитывать при работе с setTimeout, промисами и fetch.</p>
+        
+        <h3>3. Сравнение == вместо ===</h3>
+        <p>Всегда используйте строгое сравнение ===, чтобы избежать неявного приведения типов.</p>
+        
+        <h3>4. Глобальные переменные</h3>
+        <p>Случайное создание глобальных переменных - частая ошибка. Всегда используйте let, const.</p>
+        
+        <h3>5. Неправильная работа с массивами</h3>
+        <p>Изучите методы map, filter, reduce вместо циклов for.</p>
+    `
+            },
+            {
+                id: 3,
+                title: "Python для Data Science: с чего начать",
+                date: "5 марта 2024",
+                excerpt: "Гайд для начинающих по входу в анализ данных и машинное обучение.",
+                icon: "📊",
+                readTime: 6,
+                comments: 15,
+                content: `
+        <h3>Необходимые библиотеки</h3>
+        <ul>
+            <li>NumPy - работа с массивами и матрицами</li>
+            <li>Pandas - анализ и обработка данных</li>
+            <li>Matplotlib - визуализация</li>
+            <li>Scikit-learn - машинное обучение</li>
+        </ul>
+        
+        <h3>План обучения</h3>
+        <p>1. Основы Python (1 месяц)</p>
+        <p>2. Библиотеки для данных (1 месяц)</p>
+        <p>3. Статистика и математика (параллельно)</p>
+        <p>4. Проекты и Kaggle (постоянно)</p>
+    `
+            },
+            {
+                id: 4,
+                title: "Git: гайд для начинающих",
+                date: "1 марта 2024",
+                excerpt: "Основные команды Git, которые нужно знать каждому разработчику.",
+                icon: "🔄",
+                readTime: 4,
+                comments: 10,
+                content: `
+        <h3>Основные команды</h3>
+        <pre><code>git init - создать репозиторий
+git add . - добавить все файлы
+git commit -m "message" - создать коммит
+git push - отправить на сервер
+git pull - забрать с сервера
+git branch - работа с ветками</code></pre>
+        
+        <h3>Рабочий процесс</h3>
+        <p>1. Создаете ветку для новой фичи</p>
+        <p>2. Работаете в ней, делаете коммиты</p>
+        <p>3. Сливаете с основной веткой через pull request</p>
+        <p>4. Повторяете</p>
+    `
+            },
+            {
+                id: 5,
+                title: "Собеседование в IT: вопросы по алгоритмам",
+                date: "25 февраля 2024",
+                excerpt: "Самые частые алгоритмические задачи на собеседованиях.",
+                icon: "💡",
+                readTime: 7,
+                comments: 21,
+                content: `
+        <h3>Типичные задачи</h3>
+        <ul>
+            <li>Развернуть связный список</li>
+            <li>Проверить строку на палиндром</li>
+            <li>Найти дубликаты в массиве</li>
+            <li>Реализовать бинарный поиск</li>
+            <li>Обход дерева в глубину/ширину</li>
+        </ul>
+        
+        <h3>Советы</h3>
+        <p>Решайте задачи на LeetCode, начиная с легких. Понимайте временную сложность. Тренируйтесь объяснять решение вслух.</p>
+    `
+            },
+            {
+                id: 6,
+                title: "Базы данных: SQL или NoSQL?",
+                date: "20 февраля 2024",
+                excerpt: "Когда выбирать SQL, а когда NoSQL базы данных.",
+                icon: "🗄️",
+                readTime: 5,
+                comments: 9,
+                content: `
+        <h3>SQL базы (PostgreSQL, MySQL)</h3>
+        <p>Подходят для:</p>
+        <ul>
+            <li>Четкой структуры данных</li>
+            <li>Сложных запросов с JOIN</li>
+            <li>Транзакций (банкинг, финансы)</li>
+        </ul>
+        
+        <h3>NoSQL (MongoDB, Redis)</h3>
+        <p>Подходят для:</p>
+        <ul>
+            <li>Гибкой схемы данных</li>
+            <li>Больших объемов данных</li>
+            <li>Высокой скорости записи</li>
+            <li>Кеширования (Redis)</li>
+        </ul>
+    `
+            }
+        ];
+
+        // ОТЗЫВЫ
+        let reviews = [
+            {
+                name: "Анна",
+                course: "Java",
+                rating: 5,
+                text: "Отличный курс для начинающих! Все объясняется понятно, много практики. После курса смогла устроиться стажером."
+            },
+            {
+                name: "Максим",
+                course: "JavaScript",
+                rating: 5,
+                text: "JavaScript был для меня темным лесом, но после этого курса я начал понимать, как работает фронтенд. Спасибо!"
+            },
+            {
+                name: "Елена",
+                course: "Python",
+                rating: 4,
+                text: "Хорошая база для старта. Понравилось, что есть примеры кода и объяснения. Немного не хватило сложных заданий."
+            }
+        ];
+
+        // РЕНДЕР КУРСОВ
+        const coursesContainer = document.getElementById("courses");
+
+        function renderCourses() {
+            coursesContainer.innerHTML = "";
+            courses.forEach((course, i) => {
+                let views = localStorage.getItem('course_' + course.name) || 0;
+
+                coursesContainer.innerHTML += `
+        <div class="card" onclick="openCourseModal(${i})">
+            <div class="card-top">${course.icon}</div>
+            <div class="card-content">
+                <h3>${course.name}</h3>
+                <div class="stats">
+                    <span>⏱ ${course.hours}ч</span>
+                    <span>${course.level}</span>
+                    <span>👁 ${views}</span>
+                </div>
+            </div>
+        </div>
+        `;
+            });
+        }
+
+        // РЕНДЕР БЛОГА
+        const blogContainer = document.getElementById("blog");
+
+        function renderBlog() {
+            blogContainer.innerHTML = "";
+            blogPosts.forEach((post, i) => {
+                blogContainer.innerHTML += `
+        <div class="blog-card" onclick="openBlogModal(${i})">
+            <div class="blog-image">${post.icon}</div>
+            <div class="blog-content">
+                <div class="blog-date">${post.date}</div>
+                <div class="blog-title">${post.title}</div>
+                <div class="blog-excerpt">${post.excerpt}</div>
+                <div class="blog-meta">
+                    <span>📖 ${post.readTime} мин</span>
+                    <span>💬 ${post.comments}</span>
+                </div>
+            </div>
+        </div>
+        `;
+            });
+        }
+
+        // РЕНДЕР ОТЗЫВОВ
+        const reviewsContainer = document.getElementById("reviews");
+
+        function renderReviews() {
+            reviewsContainer.innerHTML = "";
+            reviews.forEach(review => {
+                const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+
+                reviewsContainer.innerHTML += `
+        <div class="review-card">
+            <div class="review-header">
+                <div class="review-avatar">${review.name[0]}</div>
+                <div>
+                    <div class="review-name">${review.name}</div>
+                    <div class="review-course">Курс: ${review.course}</div>
+                </div>
+            </div>
+            <div class="review-text">"${review.text}"</div>
+            <div class="review-rating">${stars}</div>
+        </div>
+        `;
+            });
+        }
+
+        // ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+            if (tab === 'courses') {
+                document.querySelector('.tab').classList.add('active');
+                document.getElementById('courses-tab').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab')[1].classList.add('active');
+                document.getElementById('blog-tab').classList.add('active');
+            }
+        }
+
+        // МОДАЛКА КУРСА
+        function openCourseModal(i) {
+            const course = courses[i];
+
+            let views = localStorage.getItem('course_' + course.name) || 0;
+            views++;
+            localStorage.setItem('course_' + course.name, views);
+            renderCourses();
+
+            document.getElementById("courseModal").style.display = "block";
+            document.getElementById("courseIcon").innerText = course.icon;
+            document.getElementById("courseTitle").innerText = course.name;
+            document.getElementById("courseDesc").innerText = course.desc;
+            document.getElementById("courseMeta").innerHTML = `
+        <span>⏱ ${course.hours} часов</span>
+        <span>📊 ${course.level}</span>
+    `;
+
+            let html = "";
+            for (let t in course.topics) {
+                html += `
+        <div class="accordion">
+            <button onclick="toggleTopic(this)">${t}</button>
+            <div class="panel">${course.topics[t]}</div>
+        </div>
+        `;
+            }
+
+            document.getElementById("courseTheory").innerHTML = html;
+        }
+
+        // МОДАЛКА БЛОГА
+        function openBlogModal(i) {
+            const post = blogPosts[i];
+
+            document.getElementById("blogModal").style.display = "block";
+            document.getElementById("blogIcon").innerText = post.icon;
+            document.getElementById("blogTitle").innerText = post.title;
+            document.getElementById("blogDate").innerText = post.date;
+            document.getElementById("blogContent").innerHTML = post.content;
+        }
+
+        function toggleTopic(btn) {
+            const panel = btn.nextElementSibling;
+            panel.style.display = panel.style.display === "block" ? "none" : "block";
+        }
+
+        // TOGGLE FAQ
+        function toggleFAQ(btn) {
+            btn.classList.toggle('active');
+            const answer = btn.nextElementSibling;
+
+            // Закрываем все другие
+            document.querySelectorAll('.faq-answer').forEach(a => {
+                if (a !== answer) a.classList.remove('show');
+            });
+            document.querySelectorAll('.faq-question').forEach(q => {
+                if (q !== btn) q.classList.remove('active');
+            });
+
+            // Открываем/закрываем текущий
+            answer.classList.toggle('show');
+        }
+
+        function closeCourseModal() {
+            document.getElementById("courseModal").style.display = "none";
+        }
+
+        function closeBlogModal() {
+            document.getElementById("blogModal").style.display = "none";
+        }
+
+        // ДОБАВЛЕНИЕ ОТЗЫВА
+        function addReview(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("nameInput").value;
+            const course = document.getElementById("courseInput").value;
+            const rating = parseInt(document.getElementById("ratingInput").value);
+            const text = document.getElementById("reviewInput").value;
+
+            const newReview = {
+                name: name,
+                course: course,
+                rating: rating,
+                text: text
+            };
+
+            reviews.push(newReview);
+            renderReviews();
+
+            // Очистка формы
+            document.getElementById("nameInput").value = "";
+            document.getElementById("courseInput").value = "";
+            document.getElementById("ratingInput").value = "";
+            document.getElementById("reviewInput").value = "";
+
+            alert("Спасибо за отзыв!");
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeCourseModal();
+                closeBlogModal();
+            }
+        });
+
+        // ИНИЦИАЛИЗАЦИЯ
+        renderCourses();
+        renderBlog();
+        renderReviews();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Impossible Group | IT Academy Khujand</title>
+
+<meta name="description" content="Impossible Group — ведущая IT-академия и команда разработчиков в Худжанде. Обучение Web-дизайну и разработке.">
+
+<meta name="keywords" content="IT Academy Khujand, Impossible Group, обучение программированию Таджикистан, веб-дизайн Худжанд">
+        <link rel="icon" type="" href="IMG/logo.png">    
+    
+    <title>Impossible Group | IT Academy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT News Professional | NEXT.DEV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* МАГИЧЕСКИЙ КУРСОР */
+        #cursor-glow {
+            position: fixed; top: 0; left: 0; width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(0,102,255,0.07) 0%, rgba(0,102,255,0) 70%);
+            border-radius: 50%; pointer-events: none; z-index: 9999;
+            transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s;
+        }
+
+        /* ЭФФЕКТ МАТРИЦЫ (ДЛЯ ПАСХАЛКИ) */
+        #matrix-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 10000; display: none; background: rgba(0,0,0,0.9);
+        }
+
+        /* КНОПКА ПОДПИСКИ В ФУТЕРЕ (СТИЛЬ APPLE) */
+        .sub-box {
+            background: #1d1d1f; padding: 40px; border-radius: 30px;
+            margin-top: 50px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .sub-input {
+            background: #2d2d2f; border: none; padding: 15px 25px; border-radius: 15px;
+            color: white; width: 60%; font-size: 16px;
+        }
+        .sub-btn {
+            background: var(--primary); color: white; border: none;
+            padding: 15px 30px; border-radius: 15px; font-weight: 700; cursor: pointer;
+        }
+        /* ЭФФЕКТ ПЕЧАТНОЙ МАШИНКИ */
+        .typing-text::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* ТЕГИ (АНАЛИЗАТОР) */
+        .ai-tags {
+            display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;
+        }
+        .tag {
+            background: rgba(0, 102, 255, 0.1); color: var(--primary);
+            padding: 5px 12px; border-radius: 10px; font-size: 11px; font-weight: 700;
+        }
+
+        /* КНОПКА КОПИРОВАНИЯ */
+        .share-btn {
+            margin-top: 30px; padding: 12px 25px; border-radius: 15px;
+            background: #f2f2f7; border: none; cursor: pointer;
+            font-weight: 600; font-size: 13px; transition: 0.3s;
+        }
+        .share-btn:hover { background: var(--primary); color: white; }
+        /* HERO VIDEO SECTION */
+        .hero-video-container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            margin-top: 70px;
+        }
+
+        #hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            opacity: 0.6;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px);
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+            animation: heroAppear 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes heroAppear {
+            from { opacity: 0; transform: translateY(50px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .hero-overlay h1 {
+            font-size: 82px;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
+            background: linear-gradient(to bottom, #fff, #999);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--primary);
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            color: white;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0.5;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translate(-50%, 0);}
+            40% {transform: translate(-50%, -10px);}
+            60% {transform: translate(-50%, -5px);}
+        }
+        :root {
+            --primary: #0066ff;
+            --accent: #5856d6;
+            --bg: #fbfbfd;
+            --card: #ffffff;
+            --text: #1d1d1f;
+            --sub: #86868b;
+            --glass: rgba(255, 255, 255, 0.8);
+            --border: rgba(0, 0, 0, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; overflow-x: hidden; }
+
+        /* HEADER */
+        header {
+            position: fixed; top: 0; width: 100%; height: 60px;
+            background: var(--glass); backdrop-filter: saturate(180%) blur(20px);
+            z-index: 1000; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center; padding: 0 8%;
+        }
+        .logo { font-size: 20px; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--primary); }
+        nav { display: flex; gap: 30px; }
+        nav a { text-decoration: none; color: var(--text); font-size: 13px; font-weight: 500; opacity: 0.7; transition: 0.3s; }
+        nav a:hover { opacity: 1; color: var(--primary); }
+
+        /* НОВЫЕ СТИЛИ ОТ БРАТА */
+        #progress-bar {
+            position: fixed; top: 60px; left: 0; width: 0%; height: 3px;
+            background: linear-gradient(to right, var(--primary), #00c6ff);
+            z-index: 1001; transition: 0.1s;
+        }
+        .market-widget {
+            display: flex; gap: 20px; margin-bottom: 40px; overflow-x: auto; padding-bottom: 10px;
+        }
+        .market-item {
+            background: white; padding: 15px 25px; border-radius: 20px;
+            border: 1px solid var(--border); display: flex; align-items: center; gap: 15px;
+            min-width: 180px; box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        .up { color: #34c759; font-weight: 700; }
+        .live-dot {
+            width: 8px; height: 8px; background: #ff3b30; border-radius: 50%;
+            display: inline-block; margin-right: 8px; animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.5); opacity: 0.5; } 100% { transform: scale(1); } }
+
+        /* MAIN CONTAINER */
+        .container { padding: 120px 8% 100px; max-width: 1400px; margin: 0 auto; }
+
+        .page-header { margin-bottom: 80px; text-align: left; }
+        .page-header h1 { font-size: 64px; font-weight: 900; letter-spacing: -3px; line-height: 1.1; margin-bottom: 20px; }
+        .page-header p { font-size: 20px; color: var(--sub); max-width: 600px; }
+
+        /* NEWS GRID SYSTEM */
+        .news-wrapper { display: grid; grid-template-columns: repeat(12, 1fr); gap: 30px; perspective: 1000px; }
+
+        .news-card {
+            background: var(--card); border-radius: 32px; padding: 40px;
+            border: 1px solid var(--border); cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: space-between;
+            transform-style: preserve-3d;
+        }
+        .news-card:hover { 
+            box-shadow: 0 40px 80px rgba(0,0,0,0.06);
+            border-color: var(--primary);
+        }
+
+        /* Card Sizes */
+        .card-lg { grid-column: span 8; height: 550px; }
+        .card-md { grid-column: span 4; height: 550px; }
+        .card-sm { grid-column: span 4; height: 400px; }
+        .card-full { grid-column: span 12; height: 450px; display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; gap: 50px; }
+
+        .category { font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--primary); letter-spacing: 1.5px; margin-bottom: 15px; display: block; }
+        .news-title { font-size: 32px; font-weight: 800; line-height: 1.2; letter-spacing: -1px; margin-bottom: 20px; }
+        .news-excerpt { color: var(--sub); font-size: 17px; margin-bottom: 30px; }
+        .card-footer { display: flex; align-items: center; gap: 15px; font-size: 13px; font-weight: 600; color: #aaa; }
+
+        /* SIDE PANEL (DETAILED NEWS) */
+        .side-panel {
+            position: fixed; top: 0; right: -100%; width: 50%; height: 100vh;
+            background: white; z-index: 2000; box-shadow: -20px 0 60px rgba(0,0,0,0.1);
+            transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 80px 60px; overflow-y: auto;
+        }
+        .side-panel.active { right: 0; }
+        .panel-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3); backdrop-filter: blur(5px);
+            z-index: 1999; display: none;
+        }
+        .close-panel { position: absolute; top: 30px; left: 60px; cursor: pointer; font-size: 14px; font-weight: 700; color: var(--primary); }
+
+        /* CONTENT INSIDE PANEL */
+        .content-header h4 { color: var(--primary); font-size: 14px; margin-bottom: 10px; }
+        .content-header h2 { font-size: 48px; font-weight: 900; line-height: 1.1; margin-bottom: 30px; }
+        .tech-specs { background: var(--bg); border-radius: 24px; padding: 30px; margin: 40px 0; }
+        .spec-item { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #eee; }
+        .spec-item:last-child { border: none; }
+        .spec-label { font-weight: 700; color: var(--sub); }
+        .spec-value { font-weight: 600; color: var(--text); }
+
+        .rich-text { font-size: 19px; line-height: 1.8; color: #424245; }
+        .rich-text b { color: var(--text); }
+
+        /* FOOTER */
+        footer { padding: 100px 8%; background: #000; color: white; text-align: left; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
+        .footer-logo { font-size: 24px; font-weight: 800; margin-bottom: 20px; }
+        .footer-links h5 { font-size: 14px; margin-bottom: 20px; color: var(--sub); }
+        .footer-links a { display: block; color: #fff; text-decoration: none; margin-bottom: 10px; font-size: 14px; opacity: 0.6; }
+        .footer-links a:hover { opacity: 1; }
+.filter-btn {
+            padding: 10px 20px; border-radius: 12px; border: 1px solid var(--border);
+            background: white; cursor: pointer; font-weight: 600; transition: 0.3s;
+        }
+        .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        
+        /* Эффект появления карточек */
+        .news-card { animation: fadeIn 0.5s ease backwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    
+<div id="progress-bar"></div>
+<header>
+    <a href="index.html" class="logo">NEXT<span>.</span>DEV</a>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="istori.html">История</a>
+        <a href="news.html" style="color: var(--primary); opacity: 1;">Новости</a>
+        <a href="courses.html">Курсы</a>
+        <a href="contacts.html">Контакты</a>
+    </nav>
+</header>
+
+<section class="hero-video-container">
+    <video autoplay muted loop playsinline id="hero-video">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-data-31425-large.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-overlay">
+        <span class="hero-badge">Next Generation IT</span>
+        <h1>Инсайды. Технологии. Будущее.</h1>
+        <p style="font-size: 22px; opacity: 0.8; margin-bottom: 40px; font-weight: 300;">
+            Прямые репортажи из мира разработки, подробные разборы девайсов 
+            и аналитика, которая меняет правила игры.
+        </p>
+        <button onclick="document.querySelector('.container').scrollIntoView({behavior: 'smooth'})" 
+                style="padding: 20px 50px; border-radius: 50px; border: none; background: white; color: black; font-weight: 800; font-size: 16px; cursor: pointer; transition: 0.3s;">
+            Начать чтение
+        </button>
+    </div>
+
+    <div class="scroll-indicator">Листайте вниз</div>
+</section>
+
+<div class="container">
+    <div class="market-widget">
+        <div class="market-item"><span class="symbol">BTC/USD</span><span class="price">$245k</span><span class="change up">+4.2%</span></div>
+        <div class="market-item"><span class="symbol">NVDA</span><span class="price">$942</span><span class="change up">+1.5%</span></div>
+        <div class="market-item"><span class="symbol">TSLA</span><span class="price">$210</span><span class="change up">+0.8%</span></div>
+    </div>
+    <p style="margin-bottom: 30px; font-weight: 700; font-size: 14px; color: var(--sub);"><span class="live-dot"></span> LIVE: РЫНОК ТЕХНОЛОГИЙ 2026</p>
+
+    <div class="page-header">
+        <h1>Инсайды индустрии.</h1>
+        <p>Глубокая аналитика технологий, которые изменят мир завтра. Мы фильтруем шум и оставляем только суть.</p>
+    </div>
+<div class="filter-bar" style="margin-bottom: 40px; display: flex; gap: 15px;">
+    <button class="filter-btn active" onclick="filterNews('all')">Все</button>
+    <button class="filter-btn" onclick="filterNews('Флагманы 2026')">Гаджеты</button>
+    <button class="filter-btn" onclick="filterNews('Artificial Intelligence')">ИИ</button>
+    <button class="filter-btn" onclick="filterNews('Карьера & Деньги')">Карьера</button>
+</div>
+
+<div class="news-wrapper" id="newsGrid">
+    </div>
+
+        <div class="news-card card-md" onclick="openPanel('gpt-6')">
+            <div>
+                <span class="category">AI & Future</span>
+                <h2 class="news-title" style="font-size: 26px;">GPT-6: Конец эры джуниоров?</h2>
+                <p class="news-excerpt">OpenAI выпустила модель, которая понимает контекст всей кодовой базы проекта сразу.</p>
+            </div>
+            <div class="card-footer">
+                <span>8 мин чтения</span>
+            </div>
+        </div>
+
+        <div class="news-card card-sm" onclick="openPanel('apple-vision')">
+            <div>
+                <span class="category">Hardware</span>
+                <h2 class="news-title" style="font-size: 22px;">Vision Pro 2: Работа в облаках</h2>
+                <p class="news-excerpt">Теперь шлем заменяет 5 мониторов для программирования в 8K.</p>
+            </div>
+            <div class="card-footer">
+                <span>5 мин чтения</span>
+            </div>
+        </div>
+
+        <div class="news-card card-sm" onclick="openPanel('tj-it')">
+            <div>
+                <span class="category">Local News</span>
+                <h2 class="news-title" style="font-size: 22px;">IT-Парк в Худжанде: Новый хаб</h2>
+                <p class="news-excerpt">Инвестиции в регион превысили $10 млн за первый квартал 2026 года.</p>
+            </div>
+            <div class="card-footer">
+                <span>4 мин чтения</span>
+            </div>
+        </div>
+
+        <div class="news-card card-sm" onclick="openPanel('quantum')">
+            <div>
+                <span class="category">Science</span>
+                <h2 class="news-title" style="font-size: 22px;">Квантовый скачок Google</h2>
+                <p class="news-excerpt">Процессор Sycamore 3 решил задачу, на которую ушло бы 50 лет.</p>
+            </div>
+            <div class="card-footer">
+                <span>15 мин чтения</span>
+            </div>
+        </div>
+
+        <div class="news-card card-full" onclick="openPanel('web-4')">
+            <div style="background: var(--bg); height: 100%; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 80px;">🌐</div>
+            <div>
+                <span class="category">Special Report</span>
+                <h2 class="news-title">Web 4.0: Децентрализованный разум</h2>
+                <p class="news-excerpt">Интернет перестает быть набором сайтов. Это глобальная нейронная сеть, где данные принадлежат только вам. Разбираем архитектуру новой сети.</p>
+                <div class="card-footer">
+                    <span>Читать лонгрид (25 мин)</span>
+                </div>
+            </div>
+        </div>
+        <div class="news-card card-lg" onclick="openPanel('salaries-2026')">
+            <div>
+                <span class="category">Карьера & Деньги</span>
+                <h2 class="news-title">Зарплаты в IT 2026: Кто зарабатывает больше всех?</h2>
+                <p class="news-excerpt">Аналитика рынка труда Таджикистана и Центральной Азии. Почему AI-инженеры обогнали Fullstack-разработчиков и сколько платят за знание Rust.</p>
+            </div>
+            <div class="card-footer">
+                <span>Март 2026</span> • <span>18 мин чтения</span>
+            </div>
+        </div>
+
+        <div class="news-card card-md" onclick="openPanel('crypto-future')">
+            <div>
+                <span class="category">Economy 2.0</span>
+                <h2 class="news-title" style="font-size: 26px;">Биткоин по $250k: Что дальше?</h2>
+                <p class="news-excerpt">Цифровое золото закрепилось в резервах центральных банков. Разбираем влияние на майнинг в нашем регионе.</p>
+            </div>
+            <div class="card-footer">
+                <span>10 мин чтения</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel-overlay" id="overlay" onclick="closePanel()"></div>
+
+<div class="side-panel" id="sidePanel">
+    <div class="close-panel" onclick="closePanel()">← НАЗАД К СПИСКУ</div>
+    <div id="panelContent">
+        </div>
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <div>
+            <div class="footer-logo">NEXT.DEV</div>
+            <p style="opacity: 0.5;">Первая академия в Худжанде, готовящая инженеров мирового уровня. Мы не просто пишем код, мы строим экосистему будущего.</p>
+        </div>
+        <div class="footer-links">
+            <h5>Навигация</h5>
+            <a href="#">Главная</a>
+            <a href="#">Курсы</a>
+            <a href="#">События</a>
+            <a href="#">Вакансии</a>
+        </div>
+        <div class="footer-links">
+            <h5>Поддержка</h5>
+            <a href="#">Для студентов</a>
+            <a href="#">Бизнес-партнерам</a>
+            <a href="#">API новостей</a>
+            <a href="#">Конфиденциальность</a>
+        </div>
+    </div>
+    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; font-size: 12px; opacity: 0.3;">
+        © 2026 NEXT.DEV Academy. Все права защищены. Разработка: Student Team.
+    </div>
+</footer>
+
+<script>
+  const newsData = {
+        'samsung-s26': {
+            cat: 'Флагманы 2026',
+            title: 'Samsung Galaxy S26 Ultra: Полный разбор характеристик',
+            text: `Новый флагман от Samsung — это не просто телефон, это портативная рабочая станция...`,
+            specs: [['Процессор', 'Exynos 2600 Gen 2'], ['RAM', '24GB'], ['Камера', '400MP']]
+        },
+        'salaries-2026': {
+            cat: 'Карьера & Деньги',
+            title: 'Аналитика зарплат IT-сектора 2026',
+            text: `В 2026 году знание AI инструментов стало обязательным для каждого разработчика в Худжанде...`,
+            specs: [['AI Engineer', '$8,000'], ['Fullstack', '$5,000'], ['Rust Dev', '$7,500']]
+        },
+        'gpt-6': {
+            cat: 'Artificial Intelligence',
+            title: 'GPT-6: Конец ручного тестирования',
+            text: `Модель шестого поколения способна сама находить баги и исправлять их в реальном времени.`,
+            specs: [['Точность', '99.9%'], ['Контекст', '5M токенов']]
+        },
+        'crypto-future': {
+            cat: 'Economy 2.0',
+            title: 'Экономика после гипербиткоинизации',
+            text: `Биткоин закрепился на отметке $250,000. В Таджикистане майнинг стал легальной отраслью ВВП.`,
+            specs: [['Цена BTC', '$250,000'], ['Dominance', '65%']]
+        },
+        'apple-vision': {
+            cat: 'Hardware',
+            title: 'Apple Vision Pro 2: Рабочий стол будущего',
+            text: `Легкий корпус и 8K экраны делают работу в виртуальном офисе комфортнее, чем в реальном.`,
+            specs: [['Разрешение', '8K per eye'], ['Вес', '280g']]
+        },
+        'tj-it': {
+            cat: 'Local News',
+            title: 'IT-Парк Худжанд: Новая эра',
+            text: `В центре Худжанда открылся крупнейший IT-хаб в регионе. Более 50 стартапов получили гранты.`,
+            specs: [['Инвестиции', '$10M'], ['Рабочие места', '2000+']]
+        },
+        'quantum': {
+            cat: 'Science',
+            title: 'Квантовый скачок Google',
+            text: `Процессор Sycamore 3 взламывает классическое шифрование за секунды. Мир переходит на пост-квантовую защиту.`,
+            specs: [['Кубиты', '1124'], ['Статус', 'Экспериментальный']]
+        },
+        'web-4': {
+            cat: 'Special Report',
+            title: 'Web 4.0: Децентрализованный разум',
+            text: `Интернет будущего основан на блокчейн-протоколах без центральных серверов. Ваши данные — это ваши активы.`,
+            specs: [['Протокол', 'NeuralMesh'], ['Скорость', '10Gbps']]
+        }
+    };
+
+function openPanel(id) {
+        const data = newsData[id];
+        if(!data) return;
+        
+        const views = Math.floor(Math.random() * 10000);
+        // Генерируем случайные теги для вида
+        const tags = ['#NextDev', '#IT_2026', '#' + data.cat.replace(/\s/g, '')];
+
+        const content = `
+            <div class="content-header">
+                <h4>${data.cat}</h4>
+                <h2 style="font-size: 40px;">${data.title}</h2>
+                <div class="ai-tags">
+                    ${tags.map(t => `<span class="tag">${t}</span>`).join('')}
+                </div>
+                <p style="color:#34c759; font-size:12px; margin-top:15px; font-weight:700;">
+                    ● LIVE: Читают ${Math.floor(views/10)} человек
+                </p>
+            </div>
+            <div class="rich-text" style="margin-top:30px;"><p>${data.text}</p></div>
+            <div class="tech-specs">
+                <h3 style="margin-bottom:20px;">Технические данные</h3>
+                ${data.specs.map(s => `<div class="spec-item"><span class="spec-label">${s[0]}</span><span class="spec-value">${s[1]}</span></div>`).join('')}
+            </div>
+            <button class="share-btn" onclick="copyUrl()">🔗 Скопировать ссылку на статью</button>
+        `;
+        
+        document.getElementById('panelContent').innerHTML = content;
+        document.getElementById('sidePanel').classList.add('active');
+        document.getElementById('overlay').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function copyUrl() {
+        navigator.clipboard.writeText(window.location.href);
+        alert("Ссылка скопирована! Бро, теперь можно репостить в Telegram.");
+    }
+
+    function closePanel() {
+        document.getElementById('sidePanel').classList.remove('active');
+        document.getElementById('overlay').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // СКРИПТЫ ОТ БРАТА: ПРОГРЕСС И 3D
+    window.onscroll = () => {
+        let winScroll = document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        document.getElementById("progress-bar").style.width = (winScroll / height) * 100 + "%";
+    };
+
+    document.querySelectorAll('.news-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            card.style.transform = `translateY(-10px) rotateX(${-y * 20}deg) rotateY(${x * 20}deg)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `translateY(0) rotateX(0) rotateY(0)`;
+        });
+    });
+    const heroH1 = document.querySelector('.hero-overlay h1');
+    const fullText = heroH1.innerText;
+    heroH1.innerText = '';
+    heroH1.classList.add('typing-text');
+    
+    let i = 0;
+    function typeWriter() {
+        if (i < fullText.length) {
+            heroH1.innerHTML += fullText.charAt(i);
+            i++;
+            setTimeout(typeWriter, 50);
+        }
+    }
+    // Запускаем через секунду после загрузки
+    setTimeout(typeWriter, 1000);
+    // Функция отрисовки карточек
+    function renderNews(filter = 'all') {
+        const container = document.getElementById('newsGrid');
+        container.innerHTML = ''; // Очистка
+        
+        for (let id in newsData) {
+            const item = newsData[id];
+            if (filter !== 'all' && item.cat !== filter) continue;
+
+            const card = document.createElement('div');
+            // Авто-выбор размера: если текста много, делаем большую карточку
+            const sizeClass = item.text.length > 200 ? 'card-lg' : 'card-md';
+            
+            card.className = `news-card ${sizeClass}`;
+            card.onclick = () => openPanel(id);
+            card.innerHTML = `
+                <div>
+                    <span class="category">${item.cat}</span>
+                    <h2 class="news-title">${item.title}</h2>
+                    <p class="news-excerpt">${item.text.substring(0, 120)}...</p>
+                </div>
+                <div class="card-footer">
+                    <span>${Math.ceil(item.text.length / 500)} мин чтения</span>
+                </div>
+            `;
+            container.appendChild(card);
+        }
+    }
+
+    function filterNews(category) {
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+        renderNews(category);
+    }
+
+    // Запускаем при загрузке
+    renderNews();           
+</script>
+<script src="chat.js"></script>
+</body>
+</html>
