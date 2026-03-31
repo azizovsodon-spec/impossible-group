@@ -1,0 +1,2887 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+        <link rel="icon" type="" href="IMG/logo.png">    
+    
+    <title>Impossible Group | IT Academy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсы программирования | NEXT.DEV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0066ff;
+            --text-main: #1d1d1f;
+            --text-sub: #86868b;
+            --bg-light: #f5f5f7;
+            --card-bg: #ffffff;
+            --accent-green: #27ae60;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+        }
+
+        /* ХИДЕР */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -1px;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 14px;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 8px 15px;
+            border-radius: 50px;
+            margin-left: 10px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 13px;
+            width: 120px;
+            transition: 0.3s;
+        }
+
+        .search-box input:focus {
+            width: 180px;
+        }
+
+        .container {
+            padding: 140px 8% 80px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-title h1 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        .page-title p {
+            color: var(--text-sub);
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* НАВИГАЦИЯ */
+        .tabs {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab {
+            padding: 10px 0;
+            cursor: pointer;
+            color: #666;
+            font-size: 18px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab.active {
+            color: #000;
+            border-bottom-color: #000;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* КАРТОЧКИ КУРСОВ */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: white;
+            border: 3px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(79, 121, 205, 0.919);
+        }
+
+        .card-top {
+            height: 120px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .card-content h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* КАРТОЧКИ БЛОГА */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .blog-card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .blog-image {
+            height: 180px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #999;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-date {
+            color: #999;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .blog-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .blog-excerpt {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 15px;
+            color: #888;
+            font-size: 13px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        /* FAQ СЕКЦИЯ - АККОРДЕОН */
+        .faq-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid #ddd;
+        }
+
+        .faq-title {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background: white;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 18px 20px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #222;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background: #fafafa;
+        }
+
+        .faq-question::after {
+            content: '▼';
+            font-size: 12px;
+            color: #999;
+            transition: transform 0.3s;
+        }
+
+        .faq-question.active::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 20px 20px 20px;
+            color: #666;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .faq-answer.show {
+            display: block;
+        }
+
+        /* ОТЗЫВЫ */
+        .reviews-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
+        }
+
+        .reviews-title {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #666;
+        }
+
+        .review-name {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .review-course {
+            color: #999;
+            font-size: 13px;
+        }
+
+        .review-text {
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .review-rating {
+            color: #FFB800;
+            font-size: 14px;
+        }
+
+        /* ФОРМА ОТЗЫВА */
+        .review-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .review-form h3 {
+            font-weight: 400;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #999;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .submit-btn {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #333;
+        }
+
+        /* МОДАЛКИ */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 24px;
+            border-radius: 8px;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+
+        .close {
+            float: right;
+            font-size: 20px;
+            cursor: pointer;
+            color: #999;
+            line-height: 1;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        #courseTitle {
+            font-size: 28px;
+            font-weight: 500;
+            margin: 20px 0 10px;
+        }
+
+        #courseDesc {
+            color: #555;
+            line-height: 1.6;
+            margin: 20px 0;
+            padding: 16px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* АККОРДЕОН КУРСОВ */
+        .accordion {
+            margin: 8px 0;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+
+        .accordion button {
+            width: 100%;
+            text-align: left;
+            padding: 14px 16px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #222;
+            font-weight: 400;
+        }
+
+        .accordion button:hover {
+            background: #fafafa;
+        }
+
+        .panel {
+            display: none;
+            padding: 16px;
+            background: #fafafa;
+            border-top: 1px solid #eee;
+            line-height: 1.6;
+            color: #444;
+            font-size: 14px;
+        }
+
+        .panel ul {
+            margin: 8px 0 8px 20px;
+        }
+
+        .panel li {
+            margin: 4px 0;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 24px;
+            color: #666;
+            font-size: 14px;
+            margin: 16px 0;
+        }
+
+        /* БЛОГ МОДАЛКА */
+        .blog-modal-content {
+            max-width: 700px;
+        }
+
+        .blog-full-content {
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .blog-full-content p {
+            margin: 20px 0;
+        }
+
+        .blog-full-content h3 {
+            margin: 30px 0 15px;
+            font-weight: 500;
+        }
+
+        .blog-full-content ul,
+        .blog-full-content ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .blog-full-content li {
+            margin: 8px 0;
+        }
+
+        .blog-full-content pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 20px 0;
+        }
+
+        .blog-full-content code {
+            background: #f5f5f5;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        /* ФУТЕР */
+        .footer {
+            margin-top: 60px;
+            padding: 30px 0;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+            width: 100%;
+        }
+
+        footer {
+            padding: 80px 8%;
+            background: #1d1d1f;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<header id="main-header">
+    <a href="index.html" class="logo">NEXT.DEV</a>
+    <nav>
+        <a href="courses.html" style="color: var(--primary); opacity: 1;">RU</a>
+        <a href="courses_tj.html">TJ</a>
+        <a href="courses_en.html">EN</a>
+        <span style="margin: 0 20px; color: #ddd;">|</span>
+        <a href="index.html">Главная</a>
+        <a href="istori.html">История</a>
+        <a href="news.html">Новости</a>
+        <a href="contacts.html">Контакты</a>
+        <div class="search-box">
+            <span>🔍</span>
+            <input type="text" placeholder="Поиск в академии...">
+        </div>
+    </nav>
+</header>
+
+    <div class="container">
+        <h1>Платформаи таълимӣ</h1>
+
+        <!-- Вкладки -->
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('courses')">Курсҳо</div>
+            <div class="tab" onclick="switchTab('blog')">Блог</div>
+        </div>
+
+        <!-- Курсы -->
+        <div id="courses-tab" class="tab-content active">
+            <div class="courses-grid" id="courses"></div>
+        </div>
+
+        <!-- Блог -->
+        <div id="blog-tab" class="tab-content">
+            <div class="blog-grid" id="blog"></div>
+        </div>
+
+        <!-- FAQ СЕКЦИЯ - АККОРДЕОН -->
+        <div class="faq-section">
+            <h2 class="faq-title">Саволҳои зиёд пурсидашаванда</h2>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Сайти мо чӣ гуна аст?
+                    </button>
+                    <div class="faq-answer">
+                        Ин як платформаи таълимӣ бо курсҳои ройгони барномасозӣ ва блоги дорои мақолаҳои муфид мебошад. Мо беҳтарин маводҳоро барои омӯзиши забонҳо ва технологияҳои муосир ҷамъоварӣ мекунем.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Ин сайт барои кӣ аст?
+                    </button>
+                    <div class="faq-answer">
+                        Барои ҳамаи онҳое, ки мехоҳанд барномасозӣ омӯзанд: аз шурӯъкунандагони комил то барномасозони ботаҷрибае, ки мехоҳанд забони нав омӯзанд. Мо курсҳои сатҳҳои гуногуни душворӣ дорем.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Ин ройгон аст?
+                    </button>
+                    <div class="faq-answer">
+                        Бале, ҳама маводҳои дар сайти мо ройгонанд. Мо бовар дорем, ки таҳсилоти босифат бояд барои ҳама дастрас бошад.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Кадом забонҳоро омӯхтан мумкин аст?
+                    </button>
+                    <div class="faq-answer">
+                        Java, JavaScript, Python, C++, C#, PHP, Go, Rust, Kotlin, Swift. Мо пайваста курсҳои нав илова мекунем ва мавҷударо нав мекунем.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Курс чанд вақт давом мекунад?
+                    </button>
+                    <div class="faq-answer">
+                        Аз 18 то 30 соат вобаста ба забон. Шумо метавонед бо суръати худ омӯзед, маводҳо 24/7 дастрасанд.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Вазифаҳои амалӣ доред?
+                    </button>
+                    <div class="faq-answer">
+                        Бале, ҳар модул вазифаҳои амалӣ ва намунаҳои рамзро дар бар мегирад. Мо бовар дорем, ки барномасозиро танҳо тавассути амалия омӯхтан мумкин аст.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Оё маводҳоро зеркашӣ кардан мумкин аст?
+                    </button>
+                    <div class="faq-answer">
+                        Бале, ҳама маводҳо барои зеркашӣ дастрасанд. Шумо метавонед онҳоро нигоҳ доред ва дар вақти дилхоҳ офлайн омӯзед.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Оё пас аз омӯзиш сертификат дода мешавад?
+                    </button>
+                    <div class="faq-answer">
+                        Ҳоло мо сертификат намедиҳем, аммо дар ин самт кор мекунем. Муҳимтарин чизе, ки шумо ба даст меоред - дониш ва маҳорати воқеии барномасозӣ аст.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Курсҳо чанд вақт як бор нав карда мешаванд?
+                    </button>
+                    <div class="faq-answer">
+                        Мо кӯшиш мекунем маводҳоро ҳар 3-6 моҳ як бор нав кунем, то ки ба талаботи муосири соҳа мувофиқат кунанд.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Оё ман метавонам курси худро пешниҳод кунам?
+                    </button>
+                    <div class="faq-answer">
+                        Бале, мо ба ҳамкорӣ ошкорем. Ба мо дар почтаи электронӣ бо тавсифи курси худ нависед ва мо пешниҳоди шуморо баррасӣ хоҳем кард.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ОТЗЫВЫ -->
+        <div class="reviews-section">
+            <h2 class="reviews-title">Тақризҳои донишҷӯёни мо</h2>
+
+            <div class="reviews-grid" id="reviews">
+                <!-- Отзывы будут добавлены через JS -->
+            </div>
+
+            <!-- ФОРМА ОТЗЫВА -->
+            <div class="review-form">
+                <h3>Гузоштани тақриз</h3>
+                <form onsubmit="addReview(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="nameInput" placeholder="Номи шумо" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="courseInput" required>
+                                <option value="">Курсро интихоб кунед</option>
+                                <option value="Java">Java</option>
+                                <option value="JavaScript">JavaScript</option>
+                                <option value="Python">Python</option>
+                                <option value="C++">C++</option>
+                                <option value="Дигар">Дигар</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <select id="ratingInput" required>
+                                <option value="">Баҳо</option>
+                                <option value="5">5 ★</option>
+                                <option value="4">4 ★</option>
+                                <option value="3">3 ★</option>
+                                <option value="2">2 ★</option>
+                                <option value="1">1 ★</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="reviewInput" placeholder="Тақризи шумо" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Фиристодани тақриз</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- МОДАЛКА КУРСА -->
+    <div id="courseModal" class="modal" onclick="if(event.target===this) closeCourseModal()">
+        <div class="modal-content">
+            <span class="close" onclick="closeCourseModal()">✕</span>
+            <div id="courseIcon" style="font-size: 48px;"></div>
+            <h2 id="courseTitle"></h2>
+            <div class="course-meta" id="courseMeta"></div>
+            <p id="courseDesc"></p>
+            <div id="courseTheory"></div>
+        </div>
+    </div>
+
+    <!-- МОДАЛКА БЛОГА -->
+    <div id="blogModal" class="modal" onclick="if(event.target===this) closeBlogModal()">
+        <div class="modal-content blog-modal-content">
+            <span class="close" onclick="closeBlogModal()">✕</span>
+            <div id="blogIcon" style="font-size: 64px; text-align: center; margin: 20px 0;"></div>
+            <h2 id="blogTitle" style="font-size: 28px; margin-bottom: 10px;"></h2>
+            <div style="color: #999; margin-bottom: 20px;" id="blogDate"></div>
+            <div class="blog-full-content" id="blogContent"></div>
+        </div>
+    </div>
+    <footer>
+        <p>© 2026 Академияи IT Global. Дар майнаи худ сармоягузорӣ кунед.</p>
+    </footer>
+<script>
+    
+                // ДАННЫЕ КУРСОВ
+        const courses = [
+            {
+                name: "Java",
+                icon: "☕",
+                hours: 60,
+                level: "Шурӯъкунанда → Пешрафта",
+
+                topics: {
+
+                    "Асосҳои синтаксис": `
+        <ul>
+            <li>
+                <strong>Тағйирёбандаҳо ва намудҳои додаҳо</strong>
+                <ul>
+                    <li><b>int</b> — ададҳои бутун (5, -10)</li>
+                    <li><b>double</b> — ададҳои касрӣ (3.14)</li>
+                    <li><b>boolean</b> — true / false</li>
+                    <li><b>String</b> — матн ("Java")</li>
+                    <li><b>char</b> — аломат ('A')</li>
+                    <li>Эълон: <code>int age = 20;</code></li>
+                    <li>Scope — доираи намоёнии тағйирёбанда</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Операторҳо</strong>
+                <ul>
+                    <li>Арифметикӣ: +, -, *, /</li>
+                    <li>Муқоиса: ==, !=, >, <</li>
+                    <li>Мантиқӣ: &&, ||, !</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Сохторҳои шартӣ</strong>
+                <ul>
+                    <li><b>if</b> — санҷиши шарт</li>
+                    <li><b>else</b> — алтернатива</li>
+                    <li><b>switch</b> — интихоби сершумор</li>
+                    <li>Намуна:
+                        <code>
+if(age > 18){
+ System.out.println("OK");
+}
+                        </code>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Даврҳо</strong>
+                <ul>
+                    <li><b>for</b> — шумораи маълуми такрор</li>
+                    <li><b>while</b> — то он даме ки шарт true</li>
+                    <li><b>do-while</b> — ҳадди ақал 1 иҷро</li>
+                    <li>Намуна:
+                        <code>
+for(int i=0;i&lt;5;i++){
+ System.out.println(i);
+}
+                        </code>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Методҳо</strong>
+                <ul>
+                    <li>Эҷоди функсияҳо</li>
+                    <li>Параметрҳо</li>
+                    <li>Бозгардонидани қимат (return)</li>
+                    <li>Намуна: <code>int sum(int a,int b){return a+b;}</code></li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Массивҳо ва сатрҳо": `
+        <ul>
+            <li>
+                <strong>Массивҳо</strong>
+                <ul>
+                    <li>Нигоҳдории маҷмӯи додаҳо</li>
+                    <li>Дастрасӣ бо индекс</li>
+                    <li>Намуна: <code>int[] arr = {1,2,3};</code></li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>String</strong>
+                <ul>
+                    <li>Методҳо: length(), substring()</li>
+                    <li>Муқоисаи сатрҳо</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>StringBuilder</strong>
+                <ul>
+                    <li>Кори зуд бо сатрҳо</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Барномасозии объектгаро (ООП)": `
+        <ul>
+            <li>
+                <strong>Классҳо ва объектҳо</strong>
+                <ul>
+                    <li>Эҷоди сохтори додаҳо</li>
+                    <li>Намуна: <code>class User {}</code></li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Инкапсулятсия</strong>
+                <ul>
+                    <li>майдонҳои private</li>
+                    <li>getter/setter</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Мерос</strong>
+                <ul>
+                    <li>extends</li>
+                    <li>аз нав истифодабарии рамз</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Полиморфизм</strong>
+                <ul>
+                    <li>як метод — рафтори гуногун</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Интерфейсҳо</strong>
+                <ul>
+                    <li>шартномаи рафтор</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Коллексияҳо": `
+        <ul>
+            <li>
+                <strong>List</strong>
+                <ul>
+                    <li>ArrayList — дастрасии зуд</li>
+                    <li>LinkedList — воридкунӣ</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Set</strong>
+                <ul>
+                    <li>қиматҳои ягона</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Map</strong>
+                <ul>
+                    <li>калид → қимат</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Generics</strong>
+                <ul>
+                    <li>намудгузории коллексияҳо</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Истисноҳо": `
+        <ul>
+            <li>
+                <strong>try-catch</strong>
+                <ul>
+                    <li>коркарди хатогиҳо</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>finally</strong>
+                <ul>
+                    <li>ҳамеша иҷро мешавад</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Истиснои фармоишӣ</strong>
+                <ul>
+                    <li>эҷоди хатогиҳои худ</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Файлҳо": `
+        <ul>
+            <li>
+                <strong>Кор бо файлҳо</strong>
+                <ul>
+                    <li>FileReader / FileWriter</li>
+                    <li>Хондан ва навиштан</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Сериализатсия</strong>
+                <ul>
+                    <li>нигоҳдории объектҳо</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Риштаҳои бисёркорӣ": `
+        <ul>
+            <li>
+                <strong>Thread</strong>
+                <ul>
+                    <li>эҷоди риштаҳо</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Синхронизатсия</strong>
+                <ul>
+                    <li>ҳифзи додаҳо</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Пойгоҳҳои додаҳо": `
+        <ul>
+            <li>
+                <strong>SQL</strong>
+                <ul>
+                    <li>SELECT, INSERT, UPDATE</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>JDBC</strong>
+                <ul>
+                    <li>пайвастшавӣ ба пойгоҳи додаҳо</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>CRUD</strong>
+                <ul>
+                    <li>амалиётҳо бо додаҳо</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Java муосир": `
+        <ul>
+            <li>
+                <strong>Lambda</strong>
+                <ul>
+                    <li>функсияҳои кӯтоҳ</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Stream API</strong>
+                <ul>
+                    <li>filter, map, collect</li>
+                </ul>
+            </li>
+        </ul>
+        `,
+
+                    "Лоиҳаи ниҳоӣ": `
+        <ul>
+            <li>Эҷоди барномаи пурра</li>
+            <li>Кор бо пойгоҳи додаҳо</li>
+            <li>Меъморӣ</li>
+        </ul>
+        `
+                }
+            },
+            {
+                name: "JavaScript",
+                icon: "JS",
+                hours: 40,
+                level: "Шурӯъкунанда → Пешрафта",
+                desc: "Забон барои эҷоди вебсайтҳо ва барномаҳои интерактивӣ.",
+                topics: {
+                    "Асосҳои синтаксис": `
+<h3>Ядрои JavaScript</h3>
+<p>JavaScript — забони чандпарадигмавӣ бо намудгузории динамикӣ.</p>
+<ul>
+<li><strong>Тағйирёбандаҳо</strong>: var, let, const — фарқиятҳо ва доираҳои намоёнӣ</li>
+<li><strong>Намудҳои додаҳо</strong>: number, string, boolean, null, undefined, symbol, bigint</li>
+<li><strong>Функсияҳо</strong>: declaration, expression, arrow functions, замыкания</li>
+<li><strong>Операторҳо</strong>: муқоиса (=== vs ==), мантиқӣ, spread/rest</li>
+<li><strong>Даврҳо</strong>: for, while, for...of, for...in</li>
+<li><strong>Массивҳо ва методҳо</strong>: map, filter, reduce, forEach, find</li>
+</ul>
+<pre><code>// Намунаи JS муосир
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map(n => n * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]</code></pre>
+`,
+
+                    "Объектҳо ва прототипҳо": `
+<h3>Модели объектии JavaScript</h3>
+<ul>
+<li><strong>Эҷоди объектҳо</strong>: литералҳо, конструкторҳо, Object.create()</li>
+<li><strong>Хусусиятҳо ва методҳо</strong>: геттерҳо, сеттерҳо, дескрипторҳо</li>
+<li><strong>Мероси прототипӣ</strong>: __proto__, prototype, занҷираи прототипҳо</li>
+<li><strong>Классҳои ES6</strong>: class, constructor, extends, super</li>
+<li><strong>Методҳо ва хусусиятҳои статикӣ</strong></li>
+</ul>
+`,
+
+                    "DOM ва браузер": `
+<h3>Кор бо саҳифаи веб</h3>
+<ul>
+<li><strong>Селекторҳо</strong>: querySelector, getElementById, getElementsByClass</li>
+<li><strong>Навигатсия дар DOM</strong>: parentNode, children, siblings</li>
+<li><strong>Тағйир додани унсурҳо</strong>: textContent, innerHTML, classList, style</li>
+<li><strong>Эҷод ва нест кардан</strong>: createElement, appendChild, remove</li>
+<li><strong>Атрибутҳо ва data-атрибутҳо</strong></li>
+</ul>
+`,
+
+                    "Ҳодисаҳо": `
+<h3>Коркарди ҳодисаҳо</h3>
+<ul>
+<li><strong>Намудҳои ҳодисаҳо</strong>: click, input, submit, load, scroll</li>
+<li><strong>Коркардкунандагон</strong>: addEventListener, removeEventListener</li>
+<li><strong>Объекти ҳодиса</strong>: target, preventDefault, stopPropagation</li>
+<li><strong>Болоравӣ ва фуроравӣ</strong></li>
+<li><strong>Делегатсияи ҳодисаҳо</strong></li>
+<li><strong>Ҳодисаҳои фармоишӣ</strong></li>
+</ul>
+`,
+
+                    "Асинхронӣ": `
+<h3>Барномасозии асинхронӣ</h3>
+<ul>
+<li><strong>Функсияҳои Callback</strong>: мушкилоти callback hell</li>
+<li><strong>Промисҳо</strong>: эҷод, then, catch, finally</li>
+<li><strong>Async/await</strong>: равиши муосир</li>
+<li><strong>Fetch API</strong>: GET, POST, кор бо ҷавобҳо</li>
+<li><strong>Коркарди хатогиҳо дар рамзи асинхронӣ</strong></li>
+<li><strong>Promise.all, Promise.race, Promise.allSettled</strong></li>
+</ul>
+<pre><code>// Намунаи async/await
+async function fetchData() {
+    try {
+        const response = await fetch('https://api.example.com/data');
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Хатогӣ:', error);
+    }
+}</code></pre>
+`,
+
+                    "Консепсияҳои пешрафта": `
+<h3>JavaScript касбӣ</h3>
+<ul>
+<li><strong>Замыкания</strong>: муҳити лексикӣ, татбиқи амалӣ</li>
+<li><strong>Контексти this</strong>: call, apply, bind, функсияҳои стрелкавӣ</li>
+<li><strong>Каррирование ва татбиқи қисман</strong></li>
+<li><strong>Мемоизатсия ва оптимизатсия</strong></li>
+<li><strong>Генераторҳо ва итераторҳо</strong></li>
+<li><strong>Proxy ва Reflect</strong></li>
+<li><strong>Модулҳои ES6: import/export</strong></li>
+</ul>
+`,
+
+                    "Абзорҳои муосир": `
+<h3>Экосистемаи JavaScript</h3>
+<ul>
+<li><strong>Менеҷерҳои бастаҳо</strong>: npm, yarn</li>
+<li><strong>Ҷамъкунандаҳо</strong>: Webpack, Vite, Parcel</li>
+<li><strong>Транспилятсия</strong>: Babel</li>
+<li><strong>Линтерҳо ва форматтерҳо</strong>: ESLint, Prettier</li>
+<li><strong>TypeScript</strong>: намудгузории статикӣ</li>
+<li><strong>Санҷиш</strong>: Jest, Mocha</li>
+</ul>
+`,
+
+                    "Фреймворкҳо (шарҳ)": `
+<h3>Фреймворкҳои маъмул</h3>
+<ul>
+<li><strong>React</strong>: компонентҳо, хукҳо, DOM-и виртуалӣ</li>
+<li><strong>Vue</strong>: реактивӣ, шаблонҳо, Vuex</li>
+<li><strong>Angular</strong>: TypeScript, dependency injection, RxJS</li>
+<li><strong>Node.js</strong>: JavaScript-и серверӣ, Express</li>
+</ul>
+`,
+
+                    "Лоиҳаи ниҳоӣ": `
+<h3>Таҳияи барномаи пурра</h3>
+<ul>
+<li>Банақшагирии меъморӣ</li>
+<li>Кор бо API ва пойгоҳҳои додаҳо</li>
+<li>Аутентификатсия ва иҷозатдиҳӣ</li>
+<li>Оптимизатсияи иҷрокунӣ</li>
+<li>Деплой дар хостинг</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "Python",
+                icon: "🐍",
+                hours: 45,
+                level: "Шурӯъкунанда → Пешрафта",
+                desc: "Забони универсалӣ барои бэкенд, таҳлили додаҳо ва автоматизатсия.",
+                topics: {
+                    "Асосҳои синтаксис": `
+<h3>Python аз сифр</h3>
+<ul>
+<li><strong>Тағйирёбандаҳо ва намудҳо</strong>: int, float, str, bool, None</li>
+<li><strong>Вуруд/Хуруҷ</strong>: print, input, форматкунии f-сатрҳо</li>
+<li><strong>Операторҳои шартӣ</strong>: if, elif, else, оператори сегона</li>
+<li><strong>Даврҳо</strong>: for, while, break, continue, else дар даврҳо</li>
+<li><strong>Сохторҳои асосӣ</strong>: list, tuple, dict, set</li>
+</ul>
+`,
+
+                    "Функсияҳо ва модулҳо": `
+<h3>Ташкили рамз</h3>
+<ul>
+<li><strong>Муайянкунии функсияҳо</strong>: def, параметрҳо, return</li>
+<li><strong>Аргументҳо</strong>: позиционӣ, номгузорӣ, *args, **kwargs</li>
+<li><strong>Доираҳои намоёнӣ</strong>: global, nonlocal</li>
+<li><strong>Функсияҳои лямбда</strong></li>
+<li><strong>Декораторҳо</strong>: эҷод ва татбиқ</li>
+<li><strong>Модулҳо ва бастаҳо</strong>: import, from, __name__, __main__</li>
+</ul>
+`,
+
+                    "Кор бо додаҳо": `
+<h3>Сохторҳои додаҳо ва алгоритмҳо</h3>
+<ul>
+<li><strong>Рӯйхатҳо ва методҳо</strong>: append, extend, sort, list comprehensions</li>
+<li><strong>Луғатҳо</strong>: keys, values, items, dict comprehensions</li>
+<li><strong>Маҷмӯъҳо</strong>: union, intersection, difference</li>
+<li><strong>Кортежҳо ва namedtuple</strong></li>
+<li><strong>Стекҳо ва навбатҳо</strong>: collections.deque</li>
+<li><strong>Генераторҳо ва yield</strong></li>
+<li><strong>Итераторҳо ва объектҳои итерируемӣ</strong></li>
+</ul>
+<pre><code># List comprehension
+squares = [x**2 for x in range(10) if x % 2 == 0]
+print(squares)  # [0, 4, 16, 36, 64]</code></pre>
+`,
+
+                    "ООП дар Python": `
+<h3>Барномасозии объектгаро</h3>
+<ul>
+<li><strong>Классҳо ва объектҳо</strong>: class, __init__, self</li>
+<li><strong>Методҳои ҷодугарӣ</strong>: __str__, __repr__, __len__, __getitem__</li>
+<li><strong>Мерос</strong>: super(), MRO</li>
+<li><strong>Инкапсулятсия</strong>: атрибутҳои private, protected</li>
+<li><strong>Полиморфизм</strong>: duck typing</li>
+<li><strong>Классҳои абстрактӣ</strong>: ABC, abstractmethod</li>
+<li><strong>Дескрипторҳо ва хусусиятҳо</strong>: @property, @setter</li>
+</ul>
+`,
+
+                    "Кор бо файлҳо": `
+<h3>Вуруд/Хуруҷ ва системаи файлӣ</h3>
+<ul>
+<li><strong>Кушодани файлҳо</strong>: open, режимҳо (r, w, a, b)</li>
+<li><strong>Менеҷери контекст</strong>: with</li>
+<li><strong>Хондан</strong>: read, readline, readlines</li>
+<li><strong>Навиштан</strong>: write, writelines</li>
+<li><strong>Кор бо JSON</strong>: json.dump, json.load</li>
+<li><strong>Файлҳои CSV</strong>: модули csv</li>
+<li><strong>Кор бо директорияҳо</strong>: os, pathlib</li>
+</ul>
+`,
+
+                    "Коркарди хатогиҳо": `
+<h3>Истисноҳо ва ислоҳкунӣ</h3>
+<ul>
+<li><strong>Иерархияи истисноҳо</strong>: Exception, BaseException</li>
+<li><strong>try-except-else-finally</strong></li>
+<li><strong>raise ва эҷоди истисноҳои худ</strong></li>
+<li><strong>assert ва ислоҳкунӣ</strong></li>
+<li><strong>Логирование</strong>: модули logging</li>
+</ul>
+`,
+
+                    "Китобхонаҳо барои додаҳо": `
+<h3>Стеки Data Science</h3>
+<ul>
+<li><strong>NumPy</strong>: массивҳо, амалиётҳо, broadcasting</li>
+<li><strong>Pandas</strong>: DataFrame, Series, гурӯҳбандӣ, merge</li>
+<li><strong>Matplotlib</strong>: графикҳо, танзими визуализатсия</li>
+<li><strong>Seaborn</strong>: графикҳои оморӣ</li>
+<li><strong>Scikit-learn</strong>: асосҳои ML, моделҳо</li>
+</ul>
+`,
+
+                    "Таҳияи веб": `
+<h3>Python-и серверӣ</h3>
+<ul>
+<li><strong>Flask</strong>: маршрутҳо, шаблонҳо, дархостҳо</li>
+<li><strong>Django</strong>: моделҳо, views, templates, admin</li>
+<li><strong>FastAPI</strong>: асинхронӣ, Pydantic</li>
+<li><strong>SQLAlchemy</strong>: ORM, кор бо пойгоҳи додаҳо</li>
+<li><strong>Alembic</strong>: мигратсияҳо</li>
+</ul>
+`,
+
+                    "Асинхронӣ": `
+<h3>asyncio ва параллелизм</h3>
+<ul>
+<li><strong>async/await</strong>: корутинҳо</li>
+<li><strong>Event loop</strong></li>
+<li><strong>Вазифаҳо ва футурҳо</strong></li>
+<li><strong>aiohttp</strong>: дархостҳои асинхронӣ</li>
+<li><strong>Риштаҳои бисёркорӣ</strong>: threading, GIL</li>
+<li><strong>Протсессҳои бисёркорӣ</strong>: multiprocessing</li>
+</ul>
+`,
+
+                    "Санҷиш": `
+<h3>Сифати рамз</h3>
+<ul>
+<li><strong>unittest</strong>: TestCase, assertions</li>
+<li><strong>pytest</strong>: фикстурҳо, параметризатсия</li>
+<li><strong>mock</strong>: ивазкунии объектҳо</li>
+<li><strong>Фарогирии санҷиш</strong>: coverage</li>
+</ul>
+`,
+
+                    "Лоиҳаи ниҳоӣ": `
+<h3>Таҳияи комплексӣ</h3>
+<ul>
+<li>Барномаи веб дар Django/Flask</li>
+<li>API бо ҳуҷҷатгузорӣ</li>
+<li>Кор бо PostgreSQL</li>
+<li>Аутентификатсияи JWT</li>
+<li>Деплой дар сервер</li>
+<li>Танзими CI/CD</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "C++",
+                icon: "C++",
+                hours: 50,
+                level: "Пешрафта",
+                desc: "Забон барои барномасозии системавӣ ва барномаҳои баландсифат.",
+                topics: {
+                    "Асосҳои синтаксис": `
+<h3>Сохторҳои асосӣ</h3>
+<ul>
+<li><strong>Тағйирёбандаҳо ва намудҳо</strong>: int, float, char, bool, auto</li>
+<li><strong>Модификаторҳо</strong>: const, static, extern, volatile</li>
+<li><strong>Вуруд/Хуруҷ</strong>: cin, cout, cerr</li>
+<li><strong>Сохторҳои идоракунӣ</strong>: if, switch, for, while</li>
+<li><strong>Функсияҳо</strong>: эълон, муайянкунӣ, аз нав боркунӣ</li>
+<li><strong>Фазоҳои ном</strong>: namespace, using</li>
+</ul>
+`,
+
+                    "Нишондиҳандаҳо ва истинодҳо": `
+<h3>Кор бо хотира</h3>
+<ul>
+<li><strong>Нишондиҳандаҳо</strong>: эълон, разыменование, арифметика</li>
+<li><strong>Истинодҳо</strong>: истинодҳои lvalue ва rvalue</li>
+<li><strong>Хотираи динамикӣ</strong>: new, delete, new[], delete[]</li>
+<li><strong>Нишондиҳандаҳои оқилона</strong>: unique_ptr, shared_ptr, weak_ptr</li>
+<li><strong>Норасоии хотира ва пешгирии он</strong></li>
+<li><strong>Нишондиҳандаҳо ба функсияҳо</strong></li>
+</ul>
+<pre><code>// Намунаи нишондиҳандаҳои оқилона
+#include &lt;memory&gt;
+auto ptr = std::make_unique&lt;int&gt;(42);
+std::shared_ptr&lt;int&gt; shared = std::make_shared&lt;int&gt;(100);</code></pre>
+`,
+
+                    "ООП дар C++": `
+<h3>Барномасозии объектгаро</h3>
+<ul>
+<li><strong>Классҳо</strong>: эълон, методҳо, this</li>
+<li><strong>Конструкторҳо ва деструкторҳо</strong></li>
+<li><strong>Методҳои махсус</strong>: нусхабардорӣ, интиқол</li>
+<li><strong>Модификаторҳои дастрасӣ</strong>: public, private, protected</li>
+<li><strong>Мерос</strong>: сершумор, виртуалӣ</li>
+<li><strong>Полиморфизм</strong>: функсияҳои виртуалӣ, классҳои абстрактӣ</li>
+<li><strong>Функсияҳо ва классҳои дӯстона</strong></li>
+</ul>
+`,
+
+                    "STL": `
+<h3>Китобхонаи стандартии шаблонҳо</h3>
+<ul>
+<li><strong>Контейнерҳо</strong>: vector, list, deque, set, map, unordered_map</li>
+<li><strong>Итераторҳо</strong>: категорияҳо, амалиётҳо</li>
+<li><strong>Алгоритмҳо</strong>: sort, find, transform, accumulate</li>
+<li><strong>Объектҳои функсионалӣ</strong>: функторҳо, лямбдаҳо</li>
+<li><strong>Адаптерҳо</strong>: stack, queue, priority_queue</li>
+</ul>
+`,
+
+                    "Шаблонҳо": `
+<h3>Барномасозии генералӣ</h3>
+<ul>
+<li><strong>Шаблонҳои функсионалӣ</strong></li>
+<li><strong>Шаблонҳои классҳо</strong></li>
+<li><strong>Специализатсияи шаблонҳо</strong></li>
+<li><strong>Шаблонҳои Variadic</strong></li>
+<li><strong>SFINAE ва концептҳо (C++20)</strong></li>
+<li><strong>Type traits</strong></li>
+</ul>
+`,
+
+                    "Идоракунии захираҳо": `
+<h3>Идиомаи RAII ва истисноҳо</h3>
+<ul>
+<li><strong>Идиомаи RAII</strong></li>
+<li><strong>Истисноҳо</strong>: try, catch, throw, noexcept</li>
+<li><strong>Бозкунии стек (stack unwinding)</strong></li>
+<li><strong>Истисноҳои стандартӣ</strong></li>
+<li><strong>Кафолатҳои бехатарии истисноҳо</strong></li>
+</ul>
+`,
+
+                    "Риштаҳои бисёркорӣ": `
+<h3>Ҳамзамонӣ дар C++</h3>
+<ul>
+<li><strong>Риштаҳо</strong>: thread, join, detach</li>
+<li><strong>Синхронизатсия</strong>: mutex, lock_guard, unique_lock</li>
+<li><strong>Тағйирёбандаҳои шартӣ</strong></li>
+<li><strong>Амалиёти атомарӣ</strong>: atomic</li>
+<li><strong>Future ва promise</strong></li>
+<li><strong>Алгоритмҳои параллелӣ</strong></li>
+</ul>
+`,
+
+                    "C++ муосир": `
+<h3>Хусусиятҳои C++11/14/17/20</h3>
+<ul>
+<li><strong>auto ва decltype</strong></li>
+<li><strong>Диапазон-асоси for</strong></li>
+<li><strong>Ифодаҳои лямбда</strong></li>
+<li><strong>Семантикаи Move</strong>: std::move, std::forward</li>
+<li><strong>constexpr ва ҳисобҳои вақти тартибдиҳӣ</strong></li>
+<li><strong>Корутинҳо (C++20)</strong></li>
+<li><strong>Модулҳо (C++20)</strong></li>
+</ul>
+`,
+
+                    "Лоиҳаи ниҳоӣ": `
+<h3>Татбиқи амалӣ</h3>
+<ul>
+<li>Сервери шабакавӣ/клиент</li>
+<li>Муҳаррики бозӣ ё симулятори физикӣ</li>
+<li>Оптимизатсияи алгоритмҳо</li>
+<li>Кор бо додаҳои калонҳаҷм</li>
+<li>Эҷоди китобхона</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "C#",
+                icon: "C#",
+                hours: 45,
+                level: "Миёна → Пешрафта",
+                desc: "Таҳия дар платформаи .NET барои Windows, веб ва бозиҳо.",
+                topics: {
+                    "Асосҳои синтаксис": `
+<h3>Бунёди C#</h3>
+<ul>
+<li><strong>Намудҳои додаҳо</strong>: value types, reference types, nullable</li>
+<li><strong>Тағйирёбандаҳо ва константаҳо</strong>: var, const, readonly</li>
+<li><strong>Операторҳо ва ифодаҳо</strong></li>
+<li><strong>Сохторҳои идоракунӣ</strong>: if, switch, for, foreach, while</li>
+<li><strong>Массивҳо ва сатрҳо</strong></li>
+<li><strong>Методҳо</strong>: параметрҳо, ref, out, in</li>
+</ul>
+`,
+
+                    "ООП дар C#": `
+<h3>Барномасозии объектгаро</h3>
+<ul>
+<li><strong>Классҳо ва структураҳо</strong></li>
+<li><strong>Хусусиятҳо ва майдонҳо</strong>: автохусусиятҳо, ҳисобшаванда</li>
+<li><strong>Конструкторҳо</strong>: статикӣ, хусусӣ</li>
+<li><strong>Мерос</strong>: sealed, base</li>
+<li><strong>Полиморфизм</strong>: virtual, override, new</li>
+<li><strong>Классҳои абстрактӣ ва интерфейсҳо</strong></li>
+<li><strong>Модификаторҳои дастрасӣ</strong>: internal, protected internal</li>
+</ul>
+`,
+
+                    "Платформаи .NET": `
+<h3>Экосистемаи .NET</h3>
+<ul>
+<li><strong>CLR ва рамзи идорашаванда</strong></li>
+<li><strong>Ҷамъоварии партовҳо</strong>: наслҳо, Large Object Heap</li>
+<li><strong>GAC ва маҷмӯаҳо</strong></li>
+<li><strong>MSIL ва компилятсияи JIT</strong></li>
+<li><strong>AppDomain ва протсессҳо</strong></li>
+<li><strong>Бастаҳои NuGet</strong></li>
+</ul>
+`,
+
+                    "Делегатҳо ва ҳодисаҳо": `
+<h3>Равиши функсионалӣ</h3>
+<ul>
+<li><strong>Делегатҳо</strong>: эълон, multicast</li>
+<li><strong>Методҳои анонимӣ ва лямбдаҳо</strong></li>
+<li><strong>Ҳодисаҳо</strong>: event, publisher/subscriber</li>
+<li><strong>Func, Action, Predicate</strong></li>
+<li><strong>Замыкания</strong></li>
+</ul>
+<pre><code>// Намунаи делегат ва лямбда
+Func&lt;int, int, int&gt; add = (x, y) => x + y;
+Console.WriteLine(add(5, 3)); // 8</code></pre>
+`,
+
+                    "LINQ": `
+<h3>Дархостҳои забонӣ</h3>
+<ul>
+<li><strong>LINQ to Objects</strong></li>
+<li><strong>Методҳои васеъкунӣ</strong></li>
+<li><strong>Синтаксиси LINQ vs fluent</strong></li>
+<li><strong>Иҷрои таъхирнок</strong></li>
+<li><strong>Select, Where, GroupBy, Join</strong></li>
+<li><strong>LINQ to SQL/Entities</strong></li>
+<li><strong>PLINQ барои дархостҳои параллелӣ</strong></li>
+</ul>
+`,
+
+                    "Коллексияҳо ва Generics": `
+<h3>Сохторҳои додаҳои намудгузорӣшуда</h3>
+<ul>
+<li><strong>List, Dictionary, HashSet</strong></li>
+<li><strong>Queue, Stack, LinkedList</strong></li>
+<li><strong>ObservableCollection</strong></li>
+<li><strong>Эҷоди классҳои generic</strong></li>
+<li><strong>Ковариантӣ ва контравариантӣ</strong></li>
+<li><strong>IEnumerable, IEnumerator</strong></li>
+</ul>
+`,
+
+                    "Асинхронӣ": `
+<h3>async/await дар C#</h3>
+<ul>
+<li><strong>Task ва Task</strong></li>
+<li><strong>Калимаҳои асосии async/await</strong></li>
+<li><strong>ConfigureAwait</strong></li>
+<li><strong>Task.WhenAll, Task.WhenAny</strong></li>
+<li><strong>CancellationToken</strong></li>
+<li><strong>IProgress барои гузоришҳо</strong></li>
+<li><strong>ValueTask</strong></li>
+</ul>
+`,
+
+                    "Истисноҳо ва ислоҳкунӣ": `
+<h3>Коркарди хатогиҳо</h3>
+<ul>
+<li><strong>try-catch-finally</strong></li>
+<li><strong>Истисноҳои корбарӣ</strong></li>
+<li><strong>Debug vs Trace</strong></li>
+<li><strong>Атрибутҳо ва рефлексия</strong></li>
+<li><strong>Логирование: ILogger, Serilog</strong></li>
+</ul>
+`,
+
+                    "Мавзӯъҳои пешрафта": `
+<h3>Таҳияи касбӣ</h3>
+<ul>
+<li><strong>Рефлексия ва атрибутҳо</strong></li>
+<li><strong>Намудҳои динамикӣ: dynamic</strong></li>
+<li><strong>Рамзи Unsafe ва нишондиҳандаҳо</strong></li>
+<li><strong>Риштаҳои бисёркорӣ: Thread, ThreadPool</strong></li>
+<li><strong>Синхронизатсия: lock, Monitor, Mutex</strong></li>
+<li><strong>Идоракунии хотира: Span, Memory</strong></li>
+</ul>
+`,
+
+                    "Фреймворкҳо": `
+<h3>Татбиқи амалӣ</h3>
+<ul>
+<li><strong>ASP.NET Core</strong>: MVC, WebAPI, middleware</li>
+<li><strong>Entity Framework Core</strong>: Code First, мигратсияҳо</li>
+<li><strong>WPF</strong>: XAML, binding, MVVM</li>
+<li><strong>Unity</strong>: таҳияи бозиҳо</li>
+<li><strong>Xamarin/MAUI</strong>: барномаҳои мобилӣ</li>
+</ul>
+`,
+
+                    "Лоиҳаи ниҳоӣ": `
+<h3>Таҳияи комплексӣ</h3>
+<ul>
+<li>Web API бо аутентификатсияи JWT</li>
+<li>Барномаи клиент-сервер</li>
+<li>Кор бо PostgreSQL/SQL Server</li>
+<li>Контейнеризатсияи Docker</li>
+<li>Санҷишҳои Unit (xUnit, NUnit)</li>
+<li>Деплой дар Azure/AWS</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "PHP",
+                icon: "PHP",
+                hours: 35,
+                level: "Шурӯъкунанда → Миёна",
+                desc: "Забони серверӣ барои таҳияи веб.",
+                topics: {
+                    "Асосҳои синтаксис": `
+<h3>PHP аз сифр</h3>
+<ul>
+<li><strong>Тегҳои PHP</strong>: &lt;?php ?&gt;, синтаксиси кӯтоҳ</li>
+<li><strong>Тағйирёбандаҳо</strong>: эълон, намудҳо, доираи намоёнӣ</li>
+<li><strong>Константаҳо</strong>: define, const</li>
+<li><strong>Намудҳои додаҳо</strong>: string, int, float, bool, array, object, null</li>
+<li><strong>Операторҳо</strong>: арифметикӣ, муқоиса, мантиқӣ</li>
+<li><strong>Сохторҳои идоракунӣ</strong>: if, else, switch, match</li>
+<li><strong>Даврҳо</strong>: for, while, foreach, do-while</li>
+</ul>
+`,
+
+                    "Функсияҳо": `
+<h3>Ташкили рамз</h3>
+<ul>
+<li><strong>Эълони функсияҳо</strong>: function, параметрҳо, return</li>
+<li><strong>Намудгузории параметрҳо ва бозгашт</strong></li>
+<li><strong>Қиматҳои пешфарз</strong></li>
+<li><strong>Миқдори тағйирёбандаи аргументҳо</strong>: ...$args</li>
+<li><strong>Функсияҳои анонимӣ ва замыкания</strong></li>
+<li><strong>Функсияҳои стрелкавӣ (PHP 7.4+)</strong></li>
+<li><strong>Функсияҳои Callback</strong></li>
+</ul>
+<pre><code>// Намунаи функсияи стрелкавӣ
+$multiply = fn($a, $b) => $a * $b;
+echo $multiply(5, 3); // 15</code></pre>
+`,
+
+                    "Массивҳо": `
+<h3>Кор бо додаҳо</h3>
+<ul>
+<li><strong>Массивҳои индексишуда ва ассотсиативӣ</strong></li>
+<li><strong>Массивҳои бисёрченака</strong></li>
+<li><strong>Функсияҳо барои кор бо массивҳо</strong>: array_map, array_filter, array_reduce</li>
+<li><strong>Тартибдиҳӣ</strong>: sort, asort, ksort, usort</li>
+<li><strong>Таҷзияи массивҳо</strong>: list, []</li>
+<li><strong>Санҷиши мавҷудияти калидҳо</strong></li>
+</ul>
+`,
+
+                    "ООП дар PHP": `
+<h3>Барномасозии объектгаро</h3>
+<ul>
+<li><strong>Классҳо ва объектҳо</strong></li>
+<li><strong>Хусусиятҳо ва методҳо</strong>: public, private, protected</li>
+<li><strong>Конструктор ва деструктор</strong>: __construct, __destruct</li>
+<li><strong>Мерос</strong>: extends, parent::</li>
+<li><strong>Интерфейсҳо ва классҳои абстрактӣ</strong></li>
+<li><strong>Трейтҳо</strong></li>
+<li><strong>Хусусиятҳо ва методҳои статикӣ</strong></li>
+<li><strong>Методҳои ҷодугарӣ</strong>: __get, __set, __call, __toString</li>
+</ul>
+`,
+
+                    "Кор бо сервер": `
+<h3>Таҳияи веб</h3>
+<ul>
+<li><strong>Массивҳои суперглобалӣ</strong>: $_GET, $_POST, $_SERVER, $_SESSION, $_COOKIE</li>
+<li><strong>Коркарди формҳо</strong></li>
+<li><strong>Боргузории файлҳо</strong>: $_FILES</li>
+<li><strong>Сессияҳо ва кукиҳо</strong>: session_start, setcookie</li>
+<li><strong>Сарлавҳаҳои HTTP</strong>: header()</li>
+<li><strong>Редиректҳо</strong></li>
+</ul>
+`,
+
+                    "Пойгоҳҳои додаҳо": `
+<h3>Кор бо MySQL</h3>
+<ul>
+<li><strong>PDO</strong>: пайвастшавӣ, дархостҳои омодашуда</li>
+<li><strong>MySQLi</strong>: равиши объектӣ ва процедуравӣ</li>
+<li><strong>Амалиётҳои CRUD</strong></li>
+<li><strong>Транзаксияҳо</strong></li>
+<li><strong>Ҳифз аз SQL инъексияҳо</strong></li>
+<li><strong>ORM: Eloquent (Laravel), Doctrine</strong></li>
+</ul>
+`,
+
+                    "Коркарди хатогиҳо": `
+<h3>Истисноҳо ва логирование</h3>
+<ul>
+<li><strong>try-catch-finally</strong></li>
+<li><strong>Истисноҳои корбарӣ</strong></li>
+<li><strong>Коркарди хатогиҳо</strong>: set_error_handler</li>
+<li><strong>Логирование</strong>: error_log, Monolog</li>
+<li><strong>Ислоҳкунӣ</strong>: var_dump, print_r, Xdebug</li>
+</ul>
+`,
+
+                    "Усулҳои муосир": `
+<h3>Таҳияи касбӣ</h3>
+<ul>
+<li><strong>Composer</strong>: менеҷери вобастагиҳо</li>
+<li><strong>Стандартҳои PSR</strong>: PSR-1, PSR-4, PSR-12</li>
+<li><strong>Автоборкунии классҳо</strong>: spl_autoload_register</li>
+<li><strong>Фазоҳои ном</strong></li>
+<li><strong>Намунаи MVC</strong></li>
+<li><strong>REST API</strong></li>
+<li><strong>Аутентификатсияи JWT</strong></li>
+</ul>
+`,
+
+                    "Фреймворкҳо": `
+<h3>Фреймворкҳои маъмул</h3>
+<ul>
+<li><strong>Laravel</strong>: Eloquent, Blade, Artisan</li>
+<li><strong>Symfony</strong>: компонентҳо, Flex</li>
+<li><strong>Yii2</strong>: Gii, ActiveRecord</li>
+<li><strong>WordPress</strong>: мавзӯъҳо, плагинҳо, hooks</li>
+</ul>
+`,
+
+                    "Санҷиш": `
+<h3>Сифати рамз</h3>
+<ul>
+<li><strong>PHPUnit</strong>: санҷишҳои unit, assertions</li>
+<li><strong>Mockery</strong>: эҷоди мокҳо</li>
+<li><strong>Равиши TDD</strong></li>
+<li><strong>Санҷиши интегратсионӣ</strong></li>
+</ul>
+`,
+
+                    "Лоиҳаи ниҳоӣ": `
+<h3>Лоиҳаи воқеӣ</h3>
+<ul>
+<li>Таҳияи фурӯшгоҳи интернетӣ</li>
+<li>Системаи аутентификатсия ва нақшҳо</li>
+<li>Панели администратор</li>
+<li>Интегратсия бо системаҳои пардохт</li>
+<li>API барои барномаи мобилӣ</li>
+<li>Деплой дар хостинг</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "Go",
+                icon: "GO",
+                hours: 30,
+                level: "Миёна",
+                desc: "Забони муосири Google барои системҳои бори баланд.",
+                topics: {
+                    "Асосҳои синтаксис": `
+<h3>Муқаддима ба Go</h3>
+<ul>
+<li><strong>Тағйирёбандаҳо</strong>: var, :=, таъини сершумор</li>
+<li><strong>Намудҳои додаҳо</strong>: int, float64, string, bool, byte, rune</li>
+<li><strong>Константаҳо</strong>: const, iota</li>
+<li><strong>Сохторҳои идоракунӣ</strong>: if, for, switch</li>
+<li><strong>Функсияҳо</strong>: бозгашти сершумор, натиҷаҳои номгузорӣ</li>
+<li><strong>Бастаҳо ва импортҳо</strong></li>
+</ul>
+<pre><code>// Намунаи функсия бо бозгашти сершумор
+func divide(a, b float64) (float64, error) {
+    if b == 0 {
+        return 0, errors.New("тақсим ба сифр")
+    }
+    return a / b, nil
+}</code></pre>
+`,
+
+                    "Структураҳо ва интерфейсҳо": `
+<h3>Ташкили додаҳо</h3>
+<ul>
+<li><strong>Структураҳо</strong>: struct, майдонҳо, методҳо</li>
+<li><strong>Интерфейсҳо</strong>: татбиқи носарроҳат</li>
+<li><strong>Интерфейси холӣ</strong>: interface{}</li>
+<li><strong>Ҷойгиркунӣ (embedding)</strong></li>
+<li><strong>Таъкидҳои намуд ва гузаришҳои намуд</strong></li>
+</ul>
+`,
+
+                    "Коллексияҳо": `
+<h3>Сохторҳои додаҳо</h3>
+<ul>
+<li><strong>Массивҳо ва буридаҳо</strong>: make, append, copy</li>
+<li><strong>Буридаҳо</strong>: capacity, length, дар дохил</li>
+<li><strong>Харитаҳо (map)</strong>: эҷод, санҷиши мавҷудияти</li>
+<li><strong>Итератсияи Range</strong></li>
+<li><strong>Харитаҳои ҳамзамон</strong>: sync.Map</li>
+</ul>
+`,
+
+                    "Горутинҳо ва каналҳо": `
+<h3>Ҳамзамонӣ дар Go</h3>
+<ul>
+<li><strong>Горутинҳо</strong>: калимаи go, риштаҳои сабук</li>
+<li><strong>Каналҳо</strong>: буферӣ, ғайрибуферӣ</li>
+<li><strong>Select</strong>: мултиплексикатсияи каналҳо</li>
+<li><strong>WaitGroup</strong>: интизории горутинҳо</li>
+<li><strong>Mutex</strong>: sync.Mutex, sync.RWMutex</li>
+<li><strong>Амалиёти атомарӣ</strong>: atomic</li>
+<li><strong>Намунаҳои ҳамзамонӣ</strong>: ҳавзи коргарон, fan-in, fan-out</li>
+</ul>
+<pre><code>// Намунаи горутин ва канал
+ch := make(chan int)
+go func() {
+    ch <- 42
+}()
+value := <-ch
+fmt.Println(value)</code></pre>
+`,
+
+                    "Коркарди хатогиҳо": `
+<h3>Хусусиятҳои Go</h3>
+<ul>
+<li><strong>Хатогиҳо ҳамчун қиматҳо</strong>: интерфейси error</li>
+<li><strong>Эҷоди хатогиҳо</strong>: errors.New, fmt.Errorf</li>
+<li><strong>Panic ва recover</strong></li>
+<li><strong>defer</strong>: даъватҳои батаъхиргузошташуда</li>
+<li><strong>Хатогиҳои корбарӣ</strong></li>
+</ul>
+`,
+
+                    "Вуруд/Хуруҷ": `
+<h3>Кор бо файлҳо ва шабака</h3>
+<ul>
+<li><strong>Бастаи io</strong>: интерфейсҳои Reader, Writer</li>
+<li><strong>Амалиёти файлӣ</strong>: os.File, bufio</li>
+<li><strong>JSON</strong>: Marshal, Unmarshal, encoder/decoder</li>
+<li><strong>Вуруд/Хуруҷи форматнок</strong>: fmt</li>
+</ul>
+`,
+
+                    "Китобхонаи стандартӣ": `
+<h3>Қудрати бастаҳои стандартӣ</h3>
+<ul>
+<li><strong>net/http</strong>: сервер, клиент, маршрутизатсия</li>
+<li><strong>context</strong>: бекоркунӣ, таймаутҳо, интиқоли қиматҳо</li>
+<li><strong>testing</strong>: санҷишҳои unit, бенчмаркҳо</li>
+<li><strong>encoding</strong>: json, xml, csv</li>
+<li><strong>time</strong>: кор бо вақт</li>
+<li><strong>regexp</strong>: ифодаҳои мунтазам</li>
+</ul>
+`,
+
+                    "Пойгоҳҳои додаҳо": `
+<h3>Нигоҳдории додаҳо</h3>
+<ul>
+<li><strong>database/sql</strong>: ҳавзи пайвастҳо</li>
+<li><strong>ORM</strong>: GORM, SQLBoiler</li>
+<li><strong>Мигратсияҳо</strong>: golang-migrate</li>
+<li><strong>Пайвастшавӣ ба PostgreSQL, MySQL</strong></li>
+<li><strong>Транзаксияҳо ва дархостҳои омодашуда</strong></li>
+</ul>
+`,
+
+                    "Таҳияи веб": `
+<h3>Эҷоди барномаҳои веб</h3>
+<ul>
+<li><strong>Сервери HTTP</strong>: маршрутизатсия, middleware</li>
+<li><strong>Шаблонҳо</strong>: html/template</li>
+<li><strong>REST API</strong>: ҷавобҳои JSON, валидатсия</li>
+<li><strong>Фреймворкҳо</strong>: Gin, Echo, Fiber</li>
+<li><strong>WebSocket</strong>: gorilla/websocket</li>
+<li><strong>Аутентификатсияи JWT</strong></li>
+</ul>
+`,
+
+                    "Санҷиш": `
+<h3>Сифат ва иҷрокунӣ</h3>
+<ul>
+<li><strong>Санҷишҳои Unit</strong>: testing.T</li>
+<li><strong>Санҷишҳои ҷадвалӣ</strong></li>
+<li><strong>Бенчмаркҳо</strong>: testing.B</li>
+<li><strong>Моккунӣ</strong>: testify/mock</li>
+<li><strong>Профилирование</strong>: pprof</li>
+<li><strong>Трассировка</strong></li>
+</ul>
+`,
+
+                    "Абзорҳо": `
+<h3>Экосистемаи Go</h3>
+<ul>
+<li><strong>go mod</strong>: идоракунии вобастагиҳо</li>
+<li><strong>go build, run, test</strong></li>
+<li><strong>Линтерҳо</strong>: golangci-lint</li>
+<li><strong>Форматкунӣ</strong>: gofmt, goimports</li>
+<li><strong>Ҳуҷҷатгузорӣ</strong>: godoc</li>
+</ul>
+`,
+
+                    "Лоиҳаи ниҳоӣ": `
+<h3>Татбиқи амалӣ</h3>
+<ul>
+<li>Хидмати API бо бори баланд</li>
+<li>Меъмории микросервисӣ</li>
+<li>Хидмати gRPC</li>
+<li>Навбатҳои паём (RabbitMQ, Kafka)</li>
+<li>Контейнеризатсияи Docker</li>
+<li>Мониторинг ва логирование</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "Rust",
+                icon: "R",
+                hours: 40,
+                level: "Пешрафта",
+                desc: "Забони системавии бехатар бо арзиши сифри абстраксияҳо.",
+                topics: {
+                    "Асосҳои синтаксис": `
+<h3>Асосҳои Rust</h3>
+<ul>
+<li><strong>Тағйирёбандаҳо</strong>: let, mut, shadowing</li>
+<li><strong>Намудҳои додаҳо</strong>: скалярӣ ва таркибӣ</li>
+<li><strong>Константаҳо ва тағйирёбандаҳои статикӣ</strong></li>
+<li><strong>Функсияҳо</strong>: эълон, параметрҳо, бозгашт</li>
+<li><strong>Сохторҳои идоракунӣ</strong>: if, loop, while, for</li>
+<li><strong>Ифодаҳо vs операторҳо</strong></li>
+</ul>
+<pre><code>// Намунаи ифода дар Rust
+let y = {
+    let x = 3;
+    x + 1  // бе нуқтаи вергул - ин ифода аст
+};</code></pre>
+`,
+
+                    "Моликият ва қарзгирӣ": `
+<h3>Системаи беназири Rust</h3>
+<ul>
+<li><strong>Моликият (ownership)</strong>: қоидаҳо, интиқол</li>
+<li><strong>Қарзгирӣ (borrowing)</strong>: &T, &mut T</li>
+<li><strong>Давомнокии ҳаёт (lifetimes)</strong>: аннотатсияҳои возеҳ, элизия</li>
+<li><strong>Буридаҳо (slices)</strong></li>
+<li><strong>Трейти Drop</strong></li>
+<li><strong>Трейтҳои Copy ва Clone</strong></li>
+</ul>
+`,
+
+                    "Структураҳо ва шуморишҳо": `
+<h3>Намудҳои корбарӣ</h3>
+<ul>
+<li><strong>Структураҳо</strong>: классикӣ, кортежӣ, unit-like</li>
+<li><strong>Методҳо</strong>: блокҳои impl</li>
+<li><strong>Шуморишҳо (enum)</strong>: бо додаҳо, Option, Result</li>
+<li><strong>Мутобиқсозӣ бо намуна</strong>: match, if let, while let</li>
+<li><strong>Функсияҳои вобаста</strong></li>
+</ul>
+`,
+
+                    "Трейтҳо": `
+<h3>Абстраксияҳо дар Rust</h3>
+<ul>
+<li><strong>Муайянкунӣ ва татбиқи трейтҳо</strong></li>
+<li><strong>Трейтҳои стандартӣ</strong>: Display, Debug, Eq, PartialEq</li>
+<li><strong>Объектҳои трейт</strong>: dyn Trait</li>
+<li><strong>Умумикунӣ (generics)</strong></li>
+<li><strong>Марзҳои трейт (trait bounds)</strong></li>
+<li><strong>Намудҳои ассотсиативӣ</strong></li>
+<li><strong>Татбиқ барои намудҳои беруна</strong></li>
+</ul>
+`,
+
+                    "Коллексияҳо": `
+<h3>Сохторҳои додаҳои стандартӣ</h3>
+<ul>
+<li><strong>Vec</strong>: вектор, методҳо</li>
+<li><strong>String ва &str</strong></li>
+<li><strong>HashMap ва BTreeMap</strong></li>
+<li><strong>HashSet ва BTreeSet</strong></li>
+<li><strong>VecDeque</strong></li>
+<li><strong>LinkedList</strong></li>
+<li><strong>Итераторҳо ва замыкания</strong>: map, filter, collect</li>
+</ul>
+`,
+
+                    "Идоракунии хотира": `
+<h3>Кори бехатар бо хотира</h3>
+<ul>
+<li><strong>Box</strong>: нишондиҳандаи оқилона барои кӯча</li>
+<li><strong>Rc ва Arc</strong>: ҳисоби истинодҳо</li>
+<li><strong>RefCell ва тағйирпазирии дохилӣ</strong></li>
+<li><strong>Норасоии хотира ва пешгирии он</strong></li>
+<li><strong>Истинодҳои даврӣ</strong>: Weak</li>
+</ul>
+`,
+
+                    "Коркарди хатогиҳо": `
+<h3>Эътимоднокӣ</h3>
+<ul>
+<li><strong>panic!</strong>: хатогиҳои ҳалнашаванда</li>
+<li><strong>Result</strong>: Ok, Err</li>
+<li><strong>Option</strong>: Some, None</li>
+<li><strong>Оператори ?</strong></li>
+<li><strong>Комбинаторҳо</strong>: map, and_then, or_else</li>
+<li><strong>Эҷоди намудҳои хатогии худ</strong></li>
+<li><strong>Крейтҳои anyhow ва thiserror</strong></li>
+</ul>
+`,
+
+                    "Риштаҳои бисёркорӣ": `
+<h3>Ҳамзамонӣ бе тарс</h3>
+<ul>
+<li><strong>Риштаҳо</strong>: thread::spawn, join</li>
+<li><strong>Каналҳо</strong>: mpsc</li>
+<li><strong>Mutex ва RwLock</strong></li>
+<li><strong>Намудҳои атомарӣ</strong></li>
+<li><strong>Трейтҳои Send ва Sync</strong></li>
+<li><strong>Rayon</strong>: итераторҳои параллелӣ</li>
+<li><strong>async/await дар Rust</strong></li>
+</ul>
+`,
+
+                    "Модулҳо ва ташкил": `
+<h3>Сохтори лоиҳа</h3>
+<ul>
+<li><strong>Модулҳо</strong>: mod, pub, use</li>
+<li><strong>Крейтҳо</strong>: китобхонавӣ ва иҷрошаванда</li>
+<li><strong>Cargo.toml</strong>: вобастагиҳо, фичаҳо</li>
+<li><strong>Фазоҳои корӣ</strong></li>
+<li><strong>Атрибутҳо</strong></li>
+<li><strong>Санҷишҳо ва ҳуҷҷатгузорӣ</strong></li>
+</ul>
+`,
+
+                    "Мавзӯъҳои пешрафта": `
+<h3>Rust касбӣ</h3>
+<ul>
+<li><strong>Макросҳо</strong>: declarative ва procedural</li>
+<li><strong>FFI</strong>: даъвати рамзи C</li>
+<li><strong>Rust-и ғайрибехатар</strong>: unsafe</li>
+<li><strong>Pin ва Unpin</strong></li>
+<li><strong>Rust-и асинхронӣ</strong>: tokio, async-std</li>
+<li><strong>WebAssembly</strong></li>
+</ul>
+`,
+
+                    "Экосистема": `
+<h3>Абзорҳо ва китобхонаҳо</h3>
+<ul>
+<li><strong>Cargo</strong>: build, run, test, doc</li>
+<li><strong>clippy</strong>: линтер</li>
+<li><strong>rustfmt</strong>: форматкунӣ</li>
+<li><strong>Крейтҳои маъмул</strong>: serde, rayon, tokio</li>
+<li><strong>Фреймворкҳои веб</strong>: Actix, Rocket, Warp</li>
+<li><strong>Бенчмаркинг</strong></li>
+</ul>
+`,
+
+                    "Лоиҳаи ниҳоӣ": `
+<h3>Барномаҳои воқеӣ</h3>
+<ul>
+<li>Сервери шабакавӣ/клиент</li>
+<li>Парсер ё утилитаи CLI</li>
+<li>Муҳаррики бозӣ (Bevy)</li>
+<li>Барномаи WebAssembly</li>
+<li>Компоненти блокчейн</li>
+<li>Китобхонаи баландсифат</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "Kotlin",
+                icon: "K",
+                hours: 35,
+                level: "Миёна → Пешрафта",
+                desc: "Забони муосир барои таҳияи Android ва бэкенд.",
+                topics: {
+                    "Асосҳои синтаксис": `
+<h3>Асосҳои Kotlin</h3>
+<ul>
+<li><strong>Тағйирёбандаҳо</strong>: val (тағйирнопазир), var (тағйирпазир)</li>
+<li><strong>Намудҳои додаҳо</strong>: Int, Long, Float, Double, String, Boolean</li>
+<li><strong>Бехатарии null</strong>: ?., ?:, !!, даъватҳои бехатар</li>
+<li><strong>Функсияҳо</strong>: fun, параметрҳо, return</li>
+<li><strong>Ифодаҳои шартӣ</strong>: if, when</li>
+<li><strong>Даврҳо</strong>: for, while, repeat</li>
+<li><strong>Диапазонҳо</strong>: .., until, downTo</li>
+</ul>
+<pre><code>// Намунаи бехатарии null
+var name: String? = null
+val length = name?.length ?: 0  // оператори элвис</code></pre>
+`,
+
+                    "Барномасозии функсионалӣ": `
+<h3>Равиши функсионалӣ</h3>
+<ul>
+<li><strong>Ифодаҳои лямбда</strong></li>
+<li><strong>Функсияҳои тартиби боло</strong></li>
+<li><strong>Истинодҳо ба функсияҳо</strong>: ::</li>
+<li><strong>Замыкания</strong></li>
+<li><strong>Функсияҳои воридшуда</strong>: inline, noinline, crossinline</li>
+<li><strong>Пайдарпаиҳо (sequences)</strong></li>
+</ul>
+`,
+
+                    "Коллексияҳо": `
+<h3>Кор бо додаҳо</h3>
+<ul>
+<li><strong>Намудҳои коллексияҳо</strong>: List, Set, Map</li>
+<li><strong>Тағйирпазир ва тағйирнопазир</strong>: mutableListOf, listOf</li>
+<li><strong>Функсияҳо барои коллексияҳо</strong>: filter, map, flatMap, groupBy</li>
+<li><strong>Пайдарпаиҳо барои додаҳои калон</strong></li>
+<li><strong>Деструктуризатсия</strong></li>
+</ul>
+`,
+
+                    "Классҳо ва объектҳо": `
+<h3>ООП дар Kotlin</h3>
+<ul>
+<li><strong>Классҳо</strong>: конструкторҳо (primary, secondary)</li>
+<li><strong>Хусусиятҳо</strong>: геттерҳо, сеттерҳо, майдонҳои пуштибон</li>
+<li><strong>Классҳои Data</strong>: copy, componentN</li>
+<li><strong>Классҳои Enum</strong></li>
+<li><strong>Классҳои Sealed</strong></li>
+<li><strong>Object ва companion object</strong></li>
+<li><strong>Мерос</strong>: open, final, abstract</li>
+<li><strong>Интерфейсҳо</strong></li>
+</ul>
+`,
+
+                    "Васеъкуниҳо ва делегатҳо": `
+<h3>Имкониятҳои пурқувват</h3>
+<ul>
+<li><strong>Функсияҳо ва хусусиятҳои васеъкунӣ</strong></li>
+<li><strong>Делегатсияи хусусиятҳо</strong>: by lazy, by Delegates.observable</li>
+<li><strong>Делегатҳои стандартӣ</strong></li>
+<li><strong>Делегатсияи классҳо</strong>: by</li>
+</ul>
+`,
+
+                    "Корутинҳо": `
+<h3>Барномасозии асинхронӣ</h3>
+<ul>
+<li><strong>Корутинҳо</strong>: launch, async, runBlocking</li>
+<li><strong>Функсияҳои Suspend</strong></li>
+<li><strong>Контекст ва диспетчерҳо</strong>: Dispatchers.IO, Main, Default</li>
+<li><strong>Сохтори корутинҳо</strong>: Job, Deferred</li>
+<li><strong>Каналҳо</strong></li>
+<li><strong>Flow</strong>: ҷараёнҳои хунук ва гарм</li>
+<li><strong>Коркарди истисноҳо</strong></li>
+</ul>
+`,
+
+                    "Кор бо Java": `
+<h3>Интероперабелӣ</h3>
+<ul>
+<li><strong>Даъвати Java аз Kotlin</strong></li>
+<li><strong>Даъвати Kotlin аз Java</strong></li>
+<li><strong>Аннотатсияҳо</strong>: @JvmStatic, @JvmField, @JvmOverloads</li>
+<li><strong>Намудҳои платформавӣ</strong></li>
+<li><strong>Табдили SAM</strong></li>
+</ul>
+`,
+
+                    "Таҳияи Android": `
+<h3>Барномаҳои мобилӣ</h3>
+<ul>
+<li><strong>Activity ва Fragment</strong></li>
+<li><strong>Jetpack Compose</strong>: UI-и декларативӣ</li>
+<li><strong>ViewModel ва LiveData</strong></li>
+<li><strong>Room</strong>: кор бо пойгоҳи додаҳо</li>
+<li><strong>Navigation</strong></li>
+<li><strong>Dagger/Hilt</strong>: dependency injection</li>
+<li><strong>Retrofit</strong>: дархостҳои шабакавӣ</li>
+<li><strong>Корутинҳо дар Android</strong></li>
+</ul>
+`,
+
+                    "Таҳияи бэкенд": `
+<h3>Қисми серверӣ</h3>
+<ul>
+<li><strong>Ktor</strong>: фреймворки асинхронӣ</li>
+<li><strong>Spring Boot бо Kotlin</strong></li>
+<li><strong>Exposed</strong>: DSL барои SQL</li>
+<li><strong>Микросервисҳо</strong></li>
+<li><strong>WebSockets</strong></li>
+</ul>
+`,
+
+                    "Санҷиш": `
+<h3>Сифати рамз</h3>
+<ul>
+<li><strong>Санҷишҳои Unit</strong>: JUnit, Kotest</li>
+<li><strong>MockK</strong>: моккунӣ</li>
+<li><strong>Санҷиши корутинҳо</strong>: runTest, TestCoroutineDispatcher</li>
+<li><strong>Санҷишҳои UI</strong></li>
+</ul>
+`,
+
+                    "Абзорҳо": `
+<h3>Экосистема</h3>
+<ul>
+<li><strong>Gradle Kotlin DSL</strong></li>
+<li><strong>Kotlinx.serialization</strong></li>
+<li><strong>Kotlin/JS</strong></li>
+<li><strong>Kotlin/Native</strong></li>
+<li><strong>KMM</strong>: Kotlin Multiplatform Mobile</li>
+</ul>
+`,
+
+                    "Лоиҳаи ниҳоӣ": `
+<h3>Татбиқи амалӣ</h3>
+<ul>
+<li>Барномаи мобилӣ дар Compose</li>
+<li>REST API дар Ktor/Spring</li>
+<li>Лоиҳаи мултиплатформавӣ</li>
+<li>Кор бо пойгоҳҳои додаҳо</li>
+<li>Интегратсия бо API-ҳои беруна</li>
+<li>Нашр дар Google Play</li>
+</ul>
+`
+                }
+            },
+
+            {
+                name: "Swift",
+                icon: "S",
+                hours: 38,
+                level: "Миёна → Пешрафта",
+                desc: "Забони муосир барои таҳияи iOS ва macOS.",
+                topics: {
+                    "Асосҳои синтаксис": `
+<h3>Асосҳои Swift</h3>
+<ul>
+<li><strong>Тағйирёбандаҳо</strong>: var, let</li>
+<li><strong>Намудҳои додаҳо</strong>: Int, Float, Double, String, Bool, Character</li>
+<li><strong>Намудҳои ихтиёрӣ</strong>: Optional, ?, !</li>
+<li><strong>Операторҳои асосӣ</strong></li>
+<li><strong>Идоракуни ҷараён</strong>: if, guard, switch</li>
+<li><strong>Даврҳо</strong>: for-in, while, repeat-while</li>
+<li><strong>Функсияҳо</strong>: параметрҳо, қиматҳои бозгашт</li>
+</ul>
+<pre><code>// Намунаи намудҳои ихтиёрӣ
+var name: String? = "John"
+guard let unwrappedName = name else {
+    return
+}
+print(unwrappedName)</code></pre>
+`,
+
+                    "Коллексияҳо ва замыкания": `
+<h3>Сохторҳои додаҳо</h3>
+<ul>
+<li><strong>Массивҳо</strong>: Array, методҳо</li>
+<li><strong>Луғатҳо</strong>: Dictionary</li>
+<li><strong>Маҷмӯъҳо</strong>: Set</li>
+<li><strong>Замыкания</strong>: синтаксис, гирифтани қиматҳо</li>
+<li><strong>Функсияҳои тартиби боло</strong>: map, filter, reduce, compactMap</li>
+</ul>
+`,
+
+                    "ООП дар Swift": `
+<h3>Барномасозии объектгаро</h3>
+<ul>
+<li><strong>Классҳо</strong>: хусусиятҳо, методҳо, мерос</li>
+<li><strong>Структураҳо</strong>: намудҳои қимат</li>
+<li><strong>Шуморишҳо</strong>: қиматҳои ассотсиативӣ, қиматҳои хом</li>
+<li><strong>Хусусиятҳо</strong>: захирашуда, ҳисобшаванда, нозирон</li>
+<li><strong>Инициализаторҳо</strong>: designated, convenience, required</li>
+<li><strong>Протоколҳо</strong>: муайянкунӣ, татбиқ</li>
+<li><strong>Васеъкуниҳо</strong></li>
+</ul>
+`,
+
+                    "Барномасозии протоколгаро": `
+<h3>Барномасозии протоколгаро</h3>
+<ul>
+<li><strong>Васеъкуниҳои протоколҳо</strong></li>
+<li><strong>Татбиқи пешфарз</strong></li>
+<li><strong>Таркиби протоколҳо</strong></li>
+<li><strong>Намудҳои ассотсиативӣ</strong></li>
+<li><strong>Махдудиятҳои протокол</strong></li>
+<li><strong>POP vs OOP</strong></li>
+</ul>
+`,
+
+                    "Идоракунии хотира": `
+<h3>ARC дар Swift</h3>
+<ul>
+<li><strong>Ҳисоби автоматикии истинодҳо</strong></li>
+<li><strong>Истинодҳои қавӣ ва заиф</strong>: weak, unowned</li>
+<li><strong>Даврҳои истинодҳои қавӣ</strong></li>
+<li><strong>Замыкания ва рӯйхати гирифтан</strong>: [weak self]</li>
+<li><strong>Норасоии хотира ва пешгирии он</strong></li>
+</ul>
+`,
+
+                    "Коркарди хатогиҳо": `
+<h3>Коркарди хатогиҳо</h3>
+<ul>
+<li><strong>Намояндагии хатогиҳо</strong>: протоколи Error</li>
+<li><strong>Функсияҳои Throwing</strong>: throws, rethrows</li>
+<li><strong>Блокҳои Do-catch</strong></li>
+<li><strong>Қиматҳои ихтиёрии try?</strong></li>
+<li><strong>Try!</strong></li>
+<li><strong>Defer</strong></li>
+</ul>
+`,
+
+                    "Асинхронӣ": `
+<h3>Ҳамзамонӣ дар Swift</h3>
+<ul>
+<li><strong>GCD</strong>: DispatchQueue, QoS</li>
+<li><strong>Operation ва OperationQueue</strong></li>
+<li><strong>Async/await (Swift 5.5+)</strong></li>
+<li><strong>Actors</strong></li>
+<li><strong>Task ва TaskGroup</strong></li>
+<li><strong>Протоколи Sendable</strong></li>
+<li><strong>MainActor</strong></li>
+</ul>
+<pre><code>// Намунаи async/await
+func fetchData() async throws -> Data {
+    let url = URL(string: "https://api.example.com")!
+    let (data, _) = try await URLSession.shared.data(from: url)
+    return data
+}</code></pre>
+`,
+
+                    "UIKit": `
+<h3>Таҳияи интерфейсҳо</h3>
+<ul>
+<li><strong>UIViewController</strong>: давраи ҳаёт</li>
+<li><strong>UIView ва иерархия</strong></li>
+<li><strong>Auto Layout</strong>: NSLayoutConstraint, StackView</li>
+<li><strong>UITableView ва UICollectionView</strong></li>
+<li><strong>Storyboards ва XIB</strong></li>
+<li><strong>Навигатсия</strong>: UINavigationController, UITabBarController</li>
+<li><strong>Аниматсияҳо</strong>: UIView.animate</li>
+</ul>
+`,
+
+                    "SwiftUI": `
+<h3>UI-и муосир</h3>
+<ul>
+<li><strong>Синтаксиси декларативӣ</strong></li>
+<li><strong>View ва модификаторҳо</strong></li>
+<li><strong>State ва Binding</strong></li>
+<li><strong>@State, @Binding, @ObservedObject, @EnvironmentObject</strong></li>
+<li><strong>Таркиби вью</strong></li>
+<li><strong>Аниматсияҳо дар SwiftUI</strong></li>
+<li><strong>PreviewProvider</strong></li>
+</ul>
+`,
+
+                    "Нигоҳдории додаҳо": `
+<h3>Нигоҳдории доимӣ</h3>
+<ul>
+<li><strong>UserDefaults</strong></li>
+<li><strong>Core Data</strong>: NSManagedObject, NSPersistentContainer</li>
+<li><strong>Realm</strong></li>
+<li><strong>FileManager</strong></li>
+<li><strong>Keychain</strong></li>
+<li><strong>Протоколи Codable</strong>: encode/decode JSON</li>
+<li><strong>SwiftData (iOS 17+)</strong></li>
+</ul>
+`,
+
+                    "Дархостҳои шабакавӣ": `
+<h3>Кор бо шабака</h3>
+<ul>
+<li><strong>URLSession</strong>: дархостҳо, вазифаҳо</li>
+<li><strong>Codable барои JSON</strong></li>
+<li><strong>Боргузории тасвирҳо</strong></li>
+<li><strong>Alamofire</strong></li>
+<li><strong>WebSockets</strong></li>
+<li><strong>Кеширование</strong></li>
+</ul>
+`,
+
+                    "Намунаҳои меъморӣ": `
+<h3>Меъмории барномаҳо</h3>
+<ul>
+<li><strong>MVC</strong></li>
+<li><strong>MVVM</strong>: ObservableObject, @Published</li>
+<li><strong>VIPER</strong></li>
+<li><strong>Clean Architecture</strong></li>
+<li><strong>Намунаи Coordinator</strong></li>
+<li><strong>Dependency Injection</strong></li>
+</ul>
+`,
+
+                    "Санҷиш": `
+<h3>Таъмини сифат</h3>
+<ul>
+<li><strong>Санҷишҳои Unit</strong>: XCTest</li>
+<li><strong>Санҷишҳои UI</strong></li>
+<li><strong>Санҷишҳои иҷрокунӣ</strong></li>
+<li><strong>Моккунӣ</strong></li>
+<li><strong>Равиши TDD</strong></li>
+</ul>
+`,
+
+                    "Абзорҳо": `
+<h3>Экосистемаи Apple</h3>
+<ul>
+<li><strong>Xcode</strong>: IDE, Interface Builder, Simulator</li>
+<li><strong>Swift Package Manager</strong></li>
+<li><strong>CocoaPods ва Carthage</strong></li>
+<li><strong>Instruments</strong>: профилирование</li>
+<li><strong>App Store Connect</strong></li>
+<li><strong>TestFlight</strong></li>
+</ul>
+`,
+
+                    "Лоиҳаи ниҳоӣ": `
+<h3>Таҳияи барнома</h3>
+<ul>
+<li>Барномаи пурраи iOS</li>
+<li>Кор бо API ва анбори маҳаллӣ</li>
+<li>Аутентификатсияи корбарон</li>
+<li>Огоҳиҳои пуш</li>
+<li>Харидҳои дарбарномавӣ</li>
+<li>Нашр дар App Store</li>
+<li>Аналитика ва мониторинг</li>
+</ul>
+`
+                }
+            }
+
+        ];
+
+        // ДАННЫЕ БЛОГА
+        const blogPosts = [
+            {
+                id: 1,
+                title: "Чӣ тавр Java омӯхтан: нақшаи 3 моҳа",
+                date: "15 март 2024",
+                excerpt: "Нақшаи қадам ба қадами омӯзиши Java аз сифр то ба кори аввал.",
+                icon: "📚",
+                readTime: 5,
+                comments: 12,
+                content: `
+        <h3>Моҳи 1: Асосҳо</h3>
+        <p>Синтаксиси Java, намудҳои додаҳо ва сохторҳои асосиро оғоз кунед. Омӯзед:</p>
+        <ul>
+            <li>Тағйирёбандаҳо ва намудҳои додаҳо</li>
+            <li>Операторҳои шартӣ ва даврҳо</li>
+            <li>Массивҳо ва методҳо</li>
+            <li>Асосҳои ООП: классҳо ва объектҳо</li>
+        </ul>
+        
+        <h3>Моҳи 2: Мавзӯъҳои пешрафта</h3>
+        <p>Дар ООП амиқ шавед ва кор бо коллексияҳоро оғоз кунед:</p>
+        <ul>
+            <li>Мерос ва полиморфизм</li>
+            <li>Интерфейсҳо ва классҳои абстрактӣ</li>
+            <li>Коллексияҳо: List, Set, Map</li>
+            <li>Коркарди истисноҳо</li>
+        </ul>
+        
+        <h3>Моҳи 3: Абзорҳо ва лоиҳаҳо</h3>
+        <p>Абзорҳои таҳияро омӯзед ва лоиҳаи аввалини худро эҷод кунед:</p>
+        <ul>
+            <li>Системаҳои назорати версия (Git)</li>
+            <li>Кор бо пойгоҳҳои додаҳо (JDBC)</li>
+            <li>Ҷамъкунандагони лоиҳаҳо (Maven/Gradle)</li>
+            <li>Эҷоди барномаи оддии веб</li>
+        </ul>
+        
+        <pre><code>// Намунаи рамз
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, Java!");
+    }
+}</code></pre>
+    `
+            },
+            {
+                id: 2,
+                title: "JavaScript: 5 хатои маъмули шурӯъкунандагон",
+                date: "10 март 2024",
+                excerpt: "Хатогиҳои маъмули ҳангоми омӯзиши JavaScript ва роҳҳои пешгирии онҳоро таҳлил мекунем.",
+                icon: "⚡",
+                readTime: 4,
+                comments: 8,
+                content: `
+        <h3>1. Ашубшавӣ бо this</h3>
+        <p>Калимаи this дар функсияҳои одӣ ва функсияҳои стрелкавӣ гуногун рафтор мекунад.</p>
+        
+        <h3>2. Нафаҳмидани асинхронӣ</h3>
+        <p>JavaScript асинхронӣ аст ва ҳангоми кор бо setTimeout, промисҳо ва fetch бояд инро ба назар гирифт.</p>
+        
+        <h3>3. Муқоисаи == ба ҷои ===</h3>
+        <p>Ҳамеша аз муқоисаи қатъӣ === истифода баред, то табдили намудҳои носарроҳатро пешгирӣ кунед.</p>
+        
+        <h3>4. Тағйирёбандаҳои глобалӣ</h3>
+        <p>Таъсири тасодуфии тағйирёбандаҳои глобалӣ - хатои маъмул. Ҳамеша let, const-ро истифода баред.</p>
+        
+        <h3>5. Кори нодуруст бо массивҳо</h3>
+        <p>Ба ҷои даврҳои for, методҳои map, filter, reduce-ро омӯзед.</p>
+    `
+            },
+            {
+                id: 3,
+                title: "Python барои Data Science: аз куҷо сар кардан",
+                date: "5 март 2024",
+                excerpt: "Роҳнамо барои шурӯъкунандагон ба таҳлили додаҳо ва омӯзиши мошин.",
+                icon: "📊",
+                readTime: 6,
+                comments: 15,
+                content: `
+        <h3>Китобхонаҳои зарурӣ</h3>
+        <ul>
+            <li>NumPy - кор бо массивҳо ва матритсаҳо</li>
+            <li>Pandas - таҳлил ва коркарди додаҳо</li>
+            <li>Matplotlib - визуализатсия</li>
+            <li>Scikit-learn - омӯзиши мошин</li>
+        </ul>
+        
+        <h3>Нақшаи омӯзиш</h3>
+        <p>1. Асосҳои Python (1 моҳ)</p>
+        <p>2. Китобхонаҳо барои додаҳо (1 моҳ)</p>
+        <p>3. Омор ва математика (дар як вақт)</p>
+        <p>4. Лоиҳаҳо ва Kaggle (доимӣ)</p>
+    `
+            },
+            {
+                id: 4,
+                title: "Git: роҳнамо барои шурӯъкунандагон",
+                date: "1 март 2024",
+                excerpt: "Фармонҳои асосии Git, ки ҳар барномасоз бояд донад.",
+                icon: "🔄",
+                readTime: 4,
+                comments: 10,
+                content: `
+        <h3>Фармонҳои асосӣ</h3>
+        <pre><code>git init - эҷоди репозиторӣ
+git add . - илова кардани ҳама файлҳо
+git commit -m "паём" - эҷоди коммит
+git push - фиристодан ба сервер
+git pull - гирифтан аз сервер
+git branch - кор бо шохаҳо</code></pre>
+        
+        <h3>Ҷараёни кор</h3>
+        <p>1. Шохаеро барои хусусияти нав эҷод кунед</p>
+        <p>2. Дар он кор кунед, коммитҳо созед</p>
+        <p>3. Тавассути pull request бо шохаи асосӣ муттаҳид кунед</p>
+        <p>4. Такрор кунед</p>
+    `
+            },
+            {
+                id: 5,
+                title: "Мусоҳиба дар IT: саволҳо оид ба алгоритмҳо",
+                date: "25 феврал 2024",
+                excerpt: "Маъмултарин вазифаҳои алгоритмӣ дар мусоҳибаҳо.",
+                icon: "💡",
+                readTime: 7,
+                comments: 21,
+                content: `
+        <h3>Вазифаҳои маъмул</h3>
+        <ul>
+            <li>Баргардонидани рӯйхати пайваст</li>
+            <li>Санҷидани сатр ба палиндром</li>
+            <li>Ёфтани такрориҳо дар массив</li>
+            <li>Татбиқи ҷустуҷӯи бинарӣ</li>
+            <li>Гардиши дарахт дар умқ/паҳно</li>
+        </ul>
+        
+        <h3>Маслиҳатҳо</h3>
+        <p>Вазифаҳоро дар LeetCode, аз осон оғоз карда, ҳал кунед. Мураккабии вақтро фаҳмед. Ҳалли худро баланд овоз шарҳ доданро машқ кунед.</p>
+    `
+            },
+            {
+                id: 6,
+                title: "Пойгоҳҳои додаҳо: SQL ё NoSQL?",
+                date: "20 феврал 2024",
+                excerpt: "Кадоми пойгоҳи додаҳоро интихоб кардан мумкин аст: SQL ё NoSQL?",
+                icon: "🗄️",
+                readTime: 5,
+                comments: 9,
+                content: `
+        <h3>Пойгоҳҳои SQL (PostgreSQL, MySQL)</h3>
+        <p>Барои ҳолатҳои зерин мувофиқанд:</p>
+        <ul>
+            <li>Сохтори возеҳи додаҳо</li>
+            <li>Дархостҳои мураккаб бо JOIN</li>
+            <li>Транзаксияҳо (банкинг, молия)</li>
+        </ul>
+        
+        <h3>NoSQL (MongoDB, Redis)</h3>
+        <p>Барои ҳолатҳои зерин мувофиқанд:</p>
+        <ul>
+            <li>Схемаи чандири додаҳо</li>
+            <li>Ҳаҷми калони додаҳо</li>
+            <li>Суръати баланди навиштан</li>
+            <li>Кеширование (Redis)</li>
+        </ul>
+    `
+            }
+        ];
+
+        // ОТЗЫВЫ
+        let reviews = [
+            {
+                name: "Анна",
+                course: "Java",
+                rating: 5,
+                text: "Курси аъло барои шурӯъкунандагон! Ҳама чиз фаҳмо шарҳ дода шудааст, амалия зиёд. Пас аз курс тавонистам ҳамчун стажёр ҷойгир шавам."
+            },
+            {
+                name: "Максим",
+                course: "JavaScript",
+                rating: 5,
+                text: "JavaScript барои ман ҷангали торик буд, аммо пас аз ин курс ман фаҳмидам, ки фронтенд чӣ гуна кор мекунад. Ташаккур!"
+            },
+            {
+                name: "Елена",
+                course: "Python",
+                rating: 4,
+                text: "Пойгоҳи хуб барои оғоз. Ба ман маъқул шуд, ки намунаҳои рамз ва шарҳҳо мавҷуданд. Каме вазифаҳои душвор кам буд."
+            }
+        ];
+
+
+        // РЕНДЕР КУРСОВ
+        const coursesContainer = document.getElementById("courses");
+
+        function renderCourses() {
+            coursesContainer.innerHTML = "";
+            courses.forEach((course, i) => {
+                let views = localStorage.getItem('course_' + course.name) || 0;
+
+                coursesContainer.innerHTML += `
+        <div class="card" onclick="openCourseModal(${i})">
+            <div class="card-top">${course.icon}</div>
+            <div class="card-content">
+                <h3>${course.name}</h3>
+                <div class="stats">
+                    <span>⏱ ${course.hours}ч</span>
+                    <span>${course.level}</span>
+                    <span>👁 ${views}</span>
+                </div>
+            </div>
+        </div>
+        `;
+            });
+        }
+
+        // РЕНДЕР БЛОГА
+        const blogContainer = document.getElementById("blog");
+
+        function renderBlog() {
+            blogContainer.innerHTML = "";
+            blogPosts.forEach((post, i) => {
+                blogContainer.innerHTML += `
+        <div class="blog-card" onclick="openBlogModal(${i})">
+            <div class="blog-image">${post.icon}</div>
+            <div class="blog-content">
+                <div class="blog-date">${post.date}</div>
+                <div class="blog-title">${post.title}</div>
+                <div class="blog-excerpt">${post.excerpt}</div>
+                <div class="blog-meta">
+                    <span>📖 ${post.readTime} мин</span>
+                    <span>💬 ${post.comments}</span>
+                </div>
+            </div>
+        </div>
+        `;
+            });
+        }
+
+        // РЕНДЕР ОТЗЫВОВ
+        const reviewsContainer = document.getElementById("reviews");
+
+        function renderReviews() {
+            reviewsContainer.innerHTML = "";
+            reviews.forEach(review => {
+                const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+
+                reviewsContainer.innerHTML += `
+        <div class="review-card">
+            <div class="review-header">
+                <div class="review-avatar">${review.name[0]}</div>
+                <div>
+                    <div class="review-name">${review.name}</div>
+                    <div class="review-course">Курс: ${review.course}</div>
+                </div>
+            </div>
+            <div class="review-text">"${review.text}"</div>
+            <div class="review-rating">${stars}</div>
+        </div>
+        `;
+            });
+        }
+
+        // ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+            if (tab === 'courses') {
+                document.querySelector('.tab').classList.add('active');
+                document.getElementById('courses-tab').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab')[1].classList.add('active');
+                document.getElementById('blog-tab').classList.add('active');
+            }
+        }
+
+        // МОДАЛКА КУРСА
+        function openCourseModal(i) {
+            const course = courses[i];
+
+            let views = localStorage.getItem('course_' + course.name) || 0;
+            views++;
+            localStorage.setItem('course_' + course.name, views);
+            renderCourses();
+
+            document.getElementById("courseModal").style.display = "block";
+            document.getElementById("courseIcon").innerText = course.icon;
+            document.getElementById("courseTitle").innerText = course.name;
+            document.getElementById("courseDesc").innerText = course.desc;
+            document.getElementById("courseMeta").innerHTML = `
+        <span>⏱ ${course.hours} часов</span>
+        <span>📊 ${course.level}</span>
+    `;
+
+            let html = "";
+            for (let t in course.topics) {
+                html += `
+        <div class="accordion">
+            <button onclick="toggleTopic(this)">${t}</button>
+            <div class="panel">${course.topics[t]}</div>
+        </div>
+        `;
+            }
+
+            document.getElementById("courseTheory").innerHTML = html;
+        }
+
+        // МОДАЛКА БЛОГА
+        function openBlogModal(i) {
+            const post = blogPosts[i];
+
+            document.getElementById("blogModal").style.display = "block";
+            document.getElementById("blogIcon").innerText = post.icon;
+            document.getElementById("blogTitle").innerText = post.title;
+            document.getElementById("blogDate").innerText = post.date;
+            document.getElementById("blogContent").innerHTML = post.content;
+        }
+
+        function toggleTopic(btn) {
+            const panel = btn.nextElementSibling;
+            panel.style.display = panel.style.display === "block" ? "none" : "block";
+        }
+
+        // TOGGLE FAQ
+        function toggleFAQ(btn) {
+            btn.classList.toggle('active');
+            const answer = btn.nextElementSibling;
+
+            // Закрываем все другие
+            document.querySelectorAll('.faq-answer').forEach(a => {
+                if (a !== answer) a.classList.remove('show');
+            });
+            document.querySelectorAll('.faq-question').forEach(q => {
+                if (q !== btn) q.classList.remove('active');
+            });
+
+            // Открываем/закрываем текущий
+            answer.classList.toggle('show');
+        }
+
+        function closeCourseModal() {
+            document.getElementById("courseModal").style.display = "none";
+        }
+
+        function closeBlogModal() {
+            document.getElementById("blogModal").style.display = "none";
+        }
+
+        // ДОБАВЛЕНИЕ ОТЗЫВА
+        function addReview(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("nameInput").value;
+            const course = document.getElementById("courseInput").value;
+            const rating = parseInt(document.getElementById("ratingInput").value);
+            const text = document.getElementById("reviewInput").value;
+
+            const newReview = {
+                name: name,
+                course: course,
+                rating: rating,
+                text: text
+            };
+
+            reviews.push(newReview);
+            renderReviews();
+
+            // Очистка формы
+            document.getElementById("nameInput").value = "";
+            document.getElementById("courseInput").value = "";
+            document.getElementById("ratingInput").value = "";
+            document.getElementById("reviewInput").value = "";
+
+            alert("Спасибо за отзыв!");
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeCourseModal();
+                closeBlogModal();
+            }
+        });
+
+        // ИНИЦИАЛИЗАЦИЯ
+        renderCourses();
+        renderBlog();
+        renderReviews();
+    </script>
+</body>
+
+</html>
