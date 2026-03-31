@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <script>
+    // Проверяем, была ли уже анимация в этой сессии
+    if (sessionStorage.getItem('has_entered')) {
+        // Если уже была, добавляем класс 'no-animation' к <html> сразу
+        document.documentElement.classList.add('no-animation');
+    } else {
+        // Если это первый вход, ставим метку
+        sessionStorage.setItem('has_entered', 'true');
+    }
+</script>
     <title>Impossible Group | IT Academy Khujand</title>
 
 <meta name="description" content="Impossible Group — ведущая IT-академия и команда разработчиков в Худжанде. Обучение Web-дизайну и разработке.">
@@ -16,6 +26,30 @@
     <title>IT Academy | Premium Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
+        /* --- ЛОГИКА ДЛЯ ПОВТОРНОГО ВХОДА --- */
+
+/* Скрываем лоадер сразу */
+.no-intro #cinematic-loader {
+    display: none !important;
+}
+
+/* Отменяем все начальные смещения и прозрачность для анимаций входа */
+.no-intro .reveal,
+.no-intro .animate-in,
+.no-intro .intro-text,
+.no-intro .intro-logo-box,
+.no-intro .hero h1 {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+    filter: none !important;
+}
+
+/* Если у тебя Hero секция тоже анимируется, делаем её сразу видимой */
+.no-intro .hero {
+    padding-top: 180px; /* Чтобы не было скачка из-за отсутствия анимации */
+}
         /* Эффект для появления блоков */
 .reveal {
     opacity: 0;
@@ -275,7 +309,7 @@ body { font-size: 18px; }
 .intro-logo-box {
     opacity: 0;
     transform: scale(0.6) translateY(50px);
-    animation: logoPop 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 3.0s;
+    animation: logoPop 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 1.0s;
 }
 
 /* --- ОГРОМНЫЙ ЛОГОТИП --- */
@@ -305,6 +339,7 @@ body { font-size: 18px; }
     100% { opacity: 1; transform: scale(1) translateY(0); filter: brightness(1) blur(0); }
 }
 
+
     </style>
 </head>
 <body>
@@ -323,16 +358,20 @@ body { font-size: 18px; }
 <header id="main-header">
     <a href="index.html" class="logo">NEXT.DEV</a>
     <nav>
+        <a href="index.html" style="color: var(--primary); opacity: 1;">RU</a>
+        <a href="index_tj.html">TJ</a>
+        <a href="index_en.html">EN</a>
+        <span style="margin: 0 20px; color: #ddd;">|</span>
         <a href="index.html">Главная</a>
         <a href="istori.html">История</a>
         <a href="news.html">Новости</a>
-        <a href="courses.html">Курсы</a>
         <a href="contacts.html">Контакты</a>
         <div class="search-box">
             <span>🔍</span>
             <input type="text" placeholder="Поиск в академии...">
         </div>
     </nav>
+</header>
 </header>
 
 
@@ -514,6 +553,19 @@ body { font-size: 18px; }
 <div id="cursor"></div>
 <div id="cursor-blur"></div>
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Проверяем, заходил ли пользователь уже в этой сессии
+    if (!sessionStorage.getItem('animation_played')) {
+        // Если НЕ заходил: запускаем анимацию
+        document.body.classList.add('first-load');
+        
+        // Ставим отметку, что анимация проиграна
+        sessionStorage.setItem('animation_played', 'true');
+    } else {
+        // Если уже заходил: отключаем все анимации появления
+        document.body.classList.add('no-animation');
+    }
+});
     // ХЕДЕР ПРИ СКРОЛЛЕ
     window.onscroll = function() {
         const header = document.getElementById("main-header");
@@ -660,6 +712,25 @@ window.addEventListener('load', () => {
 
 // Блокируем скролл, пока идет анимация
 document.body.style.overflow = 'hidden';
+window.addEventListener('load', function() {
+    const loader = document.getElementById('cinematic-loader');
+    
+    // Если это первый вход (класса no-intro нет)
+    if (!document.documentElement.classList.contains('no-intro')) {
+        
+        // Ждем завершения твоей красивой анимации (например, 4 секунды)
+        setTimeout(() => {
+            loader.classList.add('fade-out');
+            
+            // Сохраняем в память, что анимация уже была показана
+            sessionStorage.setItem('is_returning_user', 'true');
+        }, 4000); 
+
+    } else {
+        // Если пользователь вернулся, просто удаляем лоадер из DOM, чтобы не мешал
+        if(loader) loader.remove();
+    }
+});
 </script>
 <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
