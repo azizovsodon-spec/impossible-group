@@ -129,7 +129,7 @@
             if (cleanVal.includes("кто создал") || cleanVal.includes("разработчик") || cleanVal.includes("команда") || cleanVal.includes("автор")) {
                 autoReply = "🤖 Над проектом NEXT.DEV работали трое: Азизов Шодон (Project Lead), Хобилов Чахонгир (UI/UX Дизайнер) и Мирзокамоли Мирзонабизод (Backend).";
             } else if (cleanVal.includes("привет") || cleanVal.includes("салам") || cleanVal.includes("здравствуй")) {
-                autoReply = "🤖 Салам! Чем могу помочь?";
+                autoReply = "🤖 Привет! Чем могу помочь?";
             } else if (cleanVal.includes("цена") || cleanVal.includes("сколько стоит") || cleanVal.includes("прайс")) {
                 autoReply = "🤖 Стоимость разработки зависит от сложности проекта. Для точного расчета оставьте заявку в разделе 'Контакты'.";
             } else if (cleanVal.includes("услуги") || cleanVal.includes("что делаете")) {
@@ -156,7 +156,7 @@
                 
                 // Уведомляем пользователя
                 setTimeout(() => {
-                    addMsg("🤖 Я передал ваш вопрос нашему консультанту Шодиёну. Он ответит вам здесь в ближайшее время.", "bot");
+                    addMsg("🤖 Я передал ваш вопрос нашему консультанту. Он ответит вам здесь в ближайшее время.", "bot");
                 }, 1000);
             }
             input.value = "";
